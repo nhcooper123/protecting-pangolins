@@ -56,3 +56,4 @@ rsconnect/
 *.fdb_latexmk
 *.pdf
 *.fls
+.Rproj.user
