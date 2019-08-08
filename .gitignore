@@ -1,3 +1,7 @@
+# Project specific
+#raw-data/*
+#data/*
+
 # History files
 .Rhistory
 .Rapp.history
@@ -34,3 +38,21 @@ vignettes/*.pdf
 
 # Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
 rsconnect/
+
+# Mac
+*.DS_Store
+
+# LaTeX #
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.fff
+*.lof
+*.lot
+*.out
+*.toc
+*.ttt
+*.fdb_latexmk
+*.pdf
+*.fls
