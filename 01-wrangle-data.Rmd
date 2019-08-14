@@ -1,0 +1,128 @@
+---
+title: "Wrangle pangolin data"
+output: html_document
+---
+
+This script takes georeferenced data and IUCN range maps for pangolins and wrangles these for further analysis. sf objects are hard to export, so we suggest after running this script you move straight to plotting and analysis scripts. Or run these via sourcing these at the bottom of this script.
+
+## Load libraries
+```{r, message = FALSE, warning = FALSE}
+## Install sfe from GitHub
+##devtools::install_github("JCur96/sfe", force = TRUE)
+
+library(sfe)
+library(rgeos)
+library(rgdal)
+library(Hmisc)
+library(tidyverse)
+library(here)
+library(patchwork)
+
+# Short function to get decades
+floor_decade <- function(x){
+  if(!is.na(x)){
+  x - x %% 10
+  }else{NA_character_}
+}
+```
+
+## Read in the georeferenced data
+```{r, message = FALSE, warning = FALSE}
+## NHM georeferenced data
+nhm <- read_csv(here("raw-data/NHM_pangolins_June2019.csv"))
+
+## GBIF georeferenced data
+#gbif <- read_csv(here("raw-data/gbif_pangolins_sept2019.csv"))
+```
+
+## Read in the IUCN range maps
+```{r, message = FALSE, warning = FALSE}
+iucn <- readOGR(dsn = here("raw-data/IUCN_pholidota"), 
+                layer = 'maps_pholidota')
+
+```
+
+## Tidy the georeferenced data
+
+- Merge the datasets
+- Change species binomial columns to "binomial" as many of the functions rely on the data having a column of species names under the column header of "binomial". 
+- Filter out blank or NA values from binomial, latitude and longitude. 
+- Convert to the sf format, ensuring correct projection in latitude and longitude.
+```{r}
+## Merge all the georeferenced data together
+specs <- 
+  nhm %>%
+  full_join(gbif, by = RegistrationNumber)
+
+## Tidy georeferenced data
+specs <- 
+  specs %>%
+  rename(binomial = Binomial) %>%
+  # Exclude specimens with no name or coordinates
+  filter(!is.na(binomial) & binomial != "unknown" &
+         !is.na(Latitude) & !is.na(Longitude)) %>%
+  # Add decade variable (function above)
+  # This maps to character to deal with NAs so needs coercing back to numeric
+  mutate(Decade = map_chr(Year, floor_decade)) %>%
+  mutate(Decade = as.numeric(Decade)) %>%
+  # Remove non needed columns
+  select(-NOTES, -LocalityType, -Material, -Locality) %>%
+  # Convert to sf format
+  st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326)
+
+```
+
+## Tidy the IUCN range maps
+
+- Convert to the sf format, ensuring correct projection in latitude and longitude.
+```{r}
+## IUCN range maps
+iucn <- 
+  iucn %>%
+  st_as_sf() %>%
+  st_transform(4326)
+```
+
+## Add error polygons to data
+
+- change the Extent column into kilometers and rename it
+- add a `buffer` to the point data using the point-radius method.
+```{r, message = FALSE, warning = FALSE}
+specs_errors <-
+  specs %>%
+  mutate(Extent_km = Extent_m / 1000) %>%
+  addError()
+```
+
+## Calculate "overlaps" and "centroid-distances"
+The next set of functions calculate percentage overlap between point-radius data and IUCN range maps for each species. Then extract the binomial overlap or not. Then add distance column (and a distance2 column, as there are a few IUCN records with two range polygons, and
+without this inclusion the function will not run).
+
+```{r, message = FALSE, warning = FALSE}
+# For speed and viewability we strip out all the extraneous stuff,
+# we just need the species name and the geometry
+myvars <- c('binomial', 'geometry')
+iucn2 <- iucn[myvars]
+iucn2 <- resolveIUCNGeom(iucn2)
+iucn2 <- st_as_sf(iucn2)
+
+# Work out the percentage overlaps among point-radius polygons and IUCN ranges
+overlaps <- calculateOverlaps(specs_errors, iucn2)
+# Flatten this to 0 for 0% overlap, and 1 for > 0% overlap
+overlaps <- binomialOverlap(overlaps)
+# Add centroid-distances
+overlaps <- centroidCentroidDistance(overlaps, iucn2)
+# Finally add successes and failures
+#overlaps <- countNumbSpecimens(overlaps)
+#overlaps <- countNumbOverlaps(overlaps)
+
+```
+
+We can now use `overlaps` in our analyses and plots. 
+
+## Plot maps
+```{r}
+source(here("analyses/02-figures-maps.R"))
+```
+
+
