@@ -1,5 +1,5 @@
 # Project specific
-#raw-data/*
+raw-data/*
 #data/*
 
 # History files
