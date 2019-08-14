@@ -113,6 +113,8 @@ overlaps <- binomialOverlap(overlaps)
 # Add centroid-distances
 overlaps <- centroidCentroidDistance(overlaps, iucn2)
 # Finally add successes and failures
+# This might need to be done after dropping species
+# waiting on Jake to fix (or I can)
 #overlaps <- countNumbSpecimens(overlaps)
 #overlaps <- countNumbOverlaps(overlaps)
 
