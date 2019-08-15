@@ -11,26 +11,23 @@ overlaps2 <-
   overlaps %>%
   filter(Certainty >= 50 & Extent_km < 50)  
 
+##----------------------------------------------------------
+# Omit duplicates (years analyses)
+##-----------------------------------------------------------
+
+#overlaps3 <-
+#  overlaps %>%
+ # select(-RegistrationNumber) 
+### leave everything but year, lat, long, error?
+
+
+##----------------------------------------------------------
+# Omit duplicates (other analyses)
+##-----------------------------------------------------------
+
 ##-----------------------------------------------------------
 ## Model fitting
 ##-----------------------------------------------------------
-## Binomial
-##-----------
-model1 <- glm(cbind(numberOfOverlaps, (numberOfSpecimens - numberOfOverlaps)) ~
-             binomial, data = overlaps2, family = 'binomial')
-
-## Check for overdispersion (should be < 2)
-sum_model1 <- summary(model1)
-sum_model1$deviance / sum_model1$df.resid
-
-## Model diagnostics
-plot(model1)
-
-## Model outputs
-anova(model1, test = "Chisq")
-summary(model1)
-
-##-----------
 ## Year
 ##-----------
 model2 <- glm(cbind(numberOfOverlaps, (numberOfSpecimens - numberOfOverlaps)) ~

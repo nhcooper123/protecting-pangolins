@@ -16,6 +16,20 @@ overlaps2 <-
   overlaps %>%
   filter(Certainty >= 50 & Extent_km < 50)  
 
+##----------------------------------------------------------
+# Omit duplicates (years analyses)
+##-----------------------------------------------------------
+#overlaps3 <-
+#  overlaps %>%
+# select(-RegistrationNumber) 
+### leave everything but year, lat, long, error? then take distinct?
+
+
+##----------------------------------------------------------
+# Omit duplicates (other analyses)
+##-----------------------------------------------------------
+
+
 ##-----------------------------------------------------------
 # % area overlap plots
 ##-----------------------------------------------------------
