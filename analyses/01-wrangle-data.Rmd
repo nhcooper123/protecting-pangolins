@@ -42,6 +42,12 @@ iucn <- readOGR(dsn = here("raw-data/IUCN_pholidota"),
 
 ```
 
+## Read in the IUCN range maps
+```{r, message = FALSE, warning = FALSE}
+ecology <- read_csv(here("raw-data/pangolin-ecology.csv"))
+```
+
+
 ## Tidy the georeferenced data
 
 - Merge the datasets
@@ -49,10 +55,11 @@ iucn <- readOGR(dsn = here("raw-data/IUCN_pholidota"),
 - Filter out blank or NA values from binomial, latitude and longitude. 
 - Convert to the sf format, ensuring correct projection in latitude and longitude.
 ```{r}
-## Merge all the georeferenced data together
+## Merge all the georeferenced and ecology data together
 specs <- 
   nhm %>%
-  full_join(gbif, by = RegistrationNumber)
+  full_join(gbif, by = RegistrationNumber) %>%
+  full_join(ecology, by = c(binomial = Binomial))
 
 ## Tidy georeferenced data
 specs <- 
@@ -69,14 +76,12 @@ specs <-
   select(-NOTES, -LocalityType, -Material, -Locality) %>%
   # Convert to sf format
   st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326)
-
 ```
 
 ## Tidy the IUCN range maps
 
 - Convert to the sf format, ensuring correct projection in latitude and longitude.
 ```{r}
-## IUCN range maps
 iucn <- 
   iucn %>%
   st_as_sf() %>%
