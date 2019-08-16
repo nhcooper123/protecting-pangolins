@@ -58,8 +58,8 @@ ecology <- read_csv(here("raw-data/pangolin-ecology.csv"))
 ## Merge all the georeferenced and ecology data together
 specs <- 
   nhm %>%
-  full_join(gbif, by = RegistrationNumber) %>%
-  full_join(ecology, by = c(binomial = Binomial))
+  #full_join(gbif, by = RegistrationNumber) %>%
+  full_join(ecology, by = c("Binomial" = "binomial"))
 
 ## Tidy georeferenced data
 specs <- 
