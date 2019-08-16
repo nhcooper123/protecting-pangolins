@@ -42,25 +42,46 @@ iucn <- readOGR(dsn = here("raw-data/IUCN_pholidota"),
 
 ```
 
-## Read in the IUCN range maps
+## Read in the ecology data
 ```{r, message = FALSE, warning = FALSE}
 ecology <- read_csv(here("raw-data/pangolin-ecology.csv"))
 ```
 
-
-## Tidy the georeferenced data
-
-- Merge the datasets
-- Change species binomial columns to "binomial" as many of the functions rely on the data having a column of species names under the column header of "binomial". 
-- Filter out blank or NA values from binomial, latitude and longitude. 
-- Convert to the sf format, ensuring correct projection in latitude and longitude.
-```{r}
 ## Merge all the georeferenced and ecology data together
+```{r}
 specs <- 
   nhm %>%
   #full_join(gbif, by = RegistrationNumber) %>%
   full_join(ecology, by = c("Binomial" = "binomial"))
+```
 
+## Identify duplicates
+
+- these are either specimens from the same species with the exact same latitude and longitude coordinates or...
+- specimens from the same species with the exact same latitude and longitude coordinates and the same year
+- adds two columns identifying duplicates to exclude in analyses
+
+```{r}
+specsx <-
+  specs %>%
+  select(Binomial, Latitude, Longitude)
+
+specsx_year <-
+  specs %>%
+  select(Binomial, Latitude, Longitude, Year)
+
+specs <- 
+  specs %>%
+  mutate(duplicates = duplicated(specsx)) %>%
+  mutate(duplicates_year = duplicated(specsx_year))
+```
+## Tidy the georeferenced data
+
+- Change species binomial columns to "binomial" as many of the functions rely on the data having a column of species names under the column header of "binomial". 
+- Filter out blank or NA values from binomial, latitude and longitude. 
+- Convert to the sf format, ensuring correct projection in latitude and longitude.
+  
+```{r}
 ## Tidy georeferenced data
 specs <- 
   specs %>%
@@ -72,8 +93,10 @@ specs <-
   # This maps to character to deal with NAs so needs coercing back to numeric
   mutate(Decade = map_chr(Year, floor_decade)) %>%
   mutate(Decade = as.numeric(Decade)) %>%
+  # Convert extents to km
+  mutate(Extent_km = Extent_m / 1000) %>%
   # Remove non needed columns
-  select(-NOTES, -LocalityType, -Material, -Locality) %>%
+  select(-NOTES, -LocalityType, -Material, -Locality, -Extent_m) %>%
   # Convert to sf format
   st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326)
 ```
@@ -95,7 +118,6 @@ iucn <-
 ```{r, message = FALSE, warning = FALSE}
 specs_errors <-
   specs %>%
-  mutate(Extent_km = Extent_m / 1000) %>%
   addError()
 ```
 
@@ -117,12 +139,6 @@ overlaps <- calculateOverlaps(specs_errors, iucn2)
 overlaps <- binomialOverlap(overlaps)
 # Add centroid-distances
 overlaps <- centroidCentroidDistance(overlaps, iucn2)
-# Finally add successes and failures
-# This might need to be done after dropping species
-# waiting on Jake to fix (or I can)
-#overlaps <- countNumbSpecimens(overlaps)
-#overlaps <- countNumbOverlaps(overlaps)
-
 ```
 
 We can now use `overlaps` in our analyses and plots. 
