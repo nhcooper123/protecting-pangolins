@@ -78,3 +78,55 @@ overlaps_landuse <-
 
 # Close data set 
 nc_close(nc_data)
+
+#----------------------------------
+# Repeat for low LUH2 data...
+#----------------------------------
+
+#----------------------------------
+# Read in the netCDF data
+#----------------------------------
+# Read in the netCDF data
+nc_dataX <- nc_open('raw-data/spatial-data/LUH2_low_states.nc')
+
+# Capture the lat, lon and time variables
+lon <- ncvar_get(nc_dataX, "lon")
+lat <- ncvar_get(nc_dataX, "lat", verbose = F)
+time <- ncvar_get(nc_dataX, "time")
+
+# Start with overlaps then add each variable in turn
+# The functions below will throw warnings about coordinate
+# systems but all are in WGS84 so it's fine
+## This takes 5-10 minutes to run - go and get a coffee ###
+overlaps_landuseX <- overlaps
+
+# Primary forest
+overlaps_landuseX <- 
+  get_landuse_diff("primf", nc_dataX, overlaps_landuseX) 
+
+# Primary non forest
+overlaps_landuseX <- 
+  get_landuse_diff("primn", nc_dataX, overlaps_landuseX) 
+
+# Secondary forest
+overlaps_landuseX <- 
+  get_landuse_diff("secdf", nc_dataX, overlaps_landuseX) 
+
+# Secondary non forest
+overlaps_landuseX <- 
+  get_landuse_diff("secdn", nc_dataX, overlaps_landuseX) 
+
+# Pasture
+overlaps_landuseX <- 
+  get_landuse_diff("pastr", nc_dataX, overlaps_landuseX) 
+
+# Rangeland
+overlaps_landuseX <- 
+  get_landuse_diff("range", nc_dataX, overlaps_landuseX) 
+
+# Urban
+overlaps_landuseX <- 
+  get_landuse_diff("urban", nc_dataX, overlaps_landuseX) 
+
+# Close data set 
+nc_close(nc_dataX)
