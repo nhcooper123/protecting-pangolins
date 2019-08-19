@@ -22,35 +22,60 @@ overlaps_landuse_all <- countNumbSpecimens(overlaps_landuse_all)
 # Number of overlaps per species
 overlaps_landuse_all <- countNumbOverlaps(overlaps_landuse_all)
 
-
 ##------------------------------------------------------------------
 ## Model fitting - binomial GLMs with no overlaps vs not per species
 ##------------------------------------------------------------------
+# Fit model for all land use variables...
+binomial_output <- data.frame(array(dim = c(28, 5)))
+names(binomial_output) <- c("variable", "df1", "df2", "res.dev", "p")
 
+for(i in 16:43){
+  
 modela <- glm(cbind(numberOfOverlaps, (numberOfSpecimens - numberOfOverlaps)) ~
-                primf, data = overlaps_landuse_all, family = 'binomial')
-
-## Check for overdispersion (should be < 2)
-sum_model2 <- summary(model2)
-sum_model2$deviance / sum_model2$df.resid
-
-## Model diagnostics
-plot(model2)
+                overlaps_landuse_all[ , i][[1]], data = overlaps_landuse_all, family = 'binomial')
 
 ## Model outputs
-anova(model2, test = "Chisq")
-summary(model2)
+z <- anova(modela, test = "Chisq")
+summary(modela)
 
+binomial_output$variable[i-15] <- names(overlaps_landuse_all)[i]
+binomial_output$df1[i-15] <- z$Df[2]
+binomial_output$df2[i-15] <- z$`Resid. Df`[2]
+binomial_output$res.dev[i-15] <- z$`Resid. Dev`[2] 
+binomial_output$p[i-15] <- z$`Pr(>Chi)`[2]  
 
+}
+# Save outputs
+write_csv(path = here::here("outputs/landuse_binomial_output.csv"), binomial_output)
 ##-----------------------------------------------------------
 ## Model fitting - with % overlaps of area
 ##-----------------------------------------------------------
+percent_output <- data.frame(array(dim = c(28, 5)))
+names(percent_output) <- c("variable", "df1", "df2", "F", "p")
 
-model2a <- lm(Percent_overlap ~ primf, data = overlaps_all)
+for(i in 16:43){
+  
+  modela <- lm(Percent_overlap ~ overlaps_landuse_all[ , i][[1]], 
+               data = overlaps_landuse_all)
+  
+  ## Model outputs
+  z <- anova(modela)
+  
+  percent_output$variable[i-15] <- names(overlaps_landuse_all)[i]
+  percent_output$df1[i-15] <- z$Df[1]
+  percent_output$df2[i-15] <- z$Df[2]
+  percent_output$F[i-15] <- z$`F value`[1] 
+  percent_output$p[i-15] <- z$`Pr(>F)`[1]  
+  
+}
 
-## Model diagnostics
-plot(model2a)
+# Save outputs
+write_csv(path = here::here("outputs/landuse_percent_output.csv"), percent_output)
 
-## Model outputs
-anova(model2a)
-summary(model2a)
+# Quick plot
+ggplot(overlaps_landuse_all, aes(x = primf_1850, y = Percent_overlap)) +
+  geom_point() +
+  xlab('diff') +
+  ylab('% area overlap') +
+  theme_bw(base_size = 14) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.6))
