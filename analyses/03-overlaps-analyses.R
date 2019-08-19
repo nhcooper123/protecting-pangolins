@@ -168,7 +168,7 @@ anova(model5a)
 summary(model5a)
 
 ##-----------------------------------------------------------
-## Model fitting - with % overlaps of area
+## Model fitting - distances
 ##-----------------------------------------------------------
 ## Year
 ##-----------
