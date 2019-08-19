@@ -64,11 +64,11 @@ specs <-
 ```{r}
 specsx <-
   specs %>%
-  select(Binomial, Latitude, Longitude)
+  dplyr::select(Binomial, Latitude, Longitude)
 
 specsx_year <-
   specs %>%
-  select(Binomial, Latitude, Longitude, Year)
+  dplyr::select(Binomial, Latitude, Longitude, Year)
 
 specs <- 
   specs %>%
@@ -96,7 +96,7 @@ specs <-
   # Convert extents to km
   mutate(Extent_km = Extent_m / 1000) %>%
   # Remove non needed columns
-  select(-NOTES, -LocalityType, -Material, -Locality, -Extent_m) %>%
+  dplyr::select(-NOTES, -LocalityType, -Material, -Locality, -Extent_m) %>%
   # Convert to sf format
   st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326)
 ```
@@ -138,7 +138,7 @@ overlaps <- calculateOverlaps(specs_errors, iucn2)
 # Flatten this to 0 for 0% overlap, and 1 for > 0% overlap
 overlaps <- binomialOverlap(overlaps)
 # Add centroid-distances
-overlaps <- centroidCentroidDistance(overlaps, iucn2)
+#overlaps <- centroidDistance(overlaps, iucn2)
 ```
 
 We can now use `overlaps` in our analyses and plots. 
