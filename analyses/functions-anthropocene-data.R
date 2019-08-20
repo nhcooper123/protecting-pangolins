@@ -117,47 +117,26 @@ extract_hpd <- function(overlaps_data){
   diff.rurc.2000 <- rurc_2014AD - rurc_2000AD
   diff.urbc.2000 <- urbc_2014AD - urbc_2000AD
   
-  # Save the differences as rasters.
-  raster.diff.popc.1850 <- raster(diff.popc.1850)
-  raster.diff.popd.1850 <- raster(diff.popd.1850)
-  raster.diff.rurc.1850 <- raster(diff.rurc.1850)
-  raster.diff.urbc.1850 <- raster(diff.urbc.1850)
-  
-  raster.diff.popc.1900 <- raster(diff.popc.1900)
-  raster.diff.popd.1900 <- raster(diff.popd.1900)
-  raster.diff.rurc.1900 <- raster(diff.rurc.1900)
-  raster.diff.urbc.1900 <- raster(diff.urbc.1900)
-  
-  raster.diff.popc.1950 <- raster(diff.popc.1950)
-  raster.diff.popd.1950 <- raster(diff.popd.1950)
-  raster.diff.rurc.1950 <- raster(diff.rurc.1950)
-  raster.diff.urbc.1950 <- raster(diff.urbc.1950)
-  
-  raster.diff.popc.2000 <- raster(diff.popc.2000)
-  raster.diff.popd.2000 <- raster(diff.popd.2000)
-  raster.diff.rurc.2000 <- raster(diff.rurc.2000)
-  raster.diff.urbc.2000 <- raster(diff.urbc.2000)
-  
   # Extract mean values across raster cells for specimen error polygons
-  values.popc.1850 <- raster::extract(raster.diff.popc.1850, overlaps_data, fun = mean, na.rm = TRUE)
-  values.popd.1850 <- raster::extract(raster.diff.popd.1850, overlaps_data, fun = mean, na.rm = TRUE)
-  values.rurc.1850 <- raster::extract(raster.diff.rurc.1850, overlaps_data, fun = mean, na.rm = TRUE)
-  values.urbc.1850 <- raster::extract(raster.diff.urbc.1850, overlaps_data, fun = mean, na.rm = TRUE)
+  values.popc.1850 <- raster::extract(diff.popc.1850, overlaps_data, fun = mean, na.rm = TRUE)
+  values.popd.1850 <- raster::extract(diff.popd.1850, overlaps_data, fun = mean, na.rm = TRUE)
+  values.rurc.1850 <- raster::extract(diff.rurc.1850, overlaps_data, fun = mean, na.rm = TRUE)
+  values.urbc.1850 <- raster::extract(diff.urbc.1850, overlaps_data, fun = mean, na.rm = TRUE)
   
-  values.popc.1900 <- raster::extract(raster.diff.popc.1900, overlaps_data, fun = mean, na.rm = TRUE)
-  values.popd.1900 <- raster::extract(raster.diff.popd.1900, overlaps_data, fun = mean, na.rm = TRUE)
-  values.rurc.1900 <- raster::extract(raster.diff.rurc.1900, overlaps_data, fun = mean, na.rm = TRUE)
-  values.urbc.1900 <- raster::extract(raster.diff.urbc.1900, overlaps_data, fun = mean, na.rm = TRUE)
+  values.popc.1900 <- raster::extract(diff.popc.1900, overlaps_data, fun = mean, na.rm = TRUE)
+  values.popd.1900 <- raster::extract(diff.popd.1900, overlaps_data, fun = mean, na.rm = TRUE)
+  values.rurc.1900 <- raster::extract(diff.rurc.1900, overlaps_data, fun = mean, na.rm = TRUE)
+  values.urbc.1900 <- raster::extract(diff.urbc.1900, overlaps_data, fun = mean, na.rm = TRUE)
   
-  values.popc.1950 <- raster::extract(raster.diff.popc.1950, overlaps_data, fun = mean, na.rm = TRUE)
-  values.popd.1950 <- raster::extract(raster.diff.popd.1950, overlaps_data, fun = mean, na.rm = TRUE)
-  values.rurc.1950 <- raster::extract(raster.diff.rurc.1950, overlaps_data, fun = mean, na.rm = TRUE)
-  values.urbc.1950 <- raster::extract(raster.diff.urbc.1950, overlaps_data, fun = mean, na.rm = TRUE)
+  values.popc.1950 <- raster::extract(diff.popc.1950, overlaps_data, fun = mean, na.rm = TRUE)
+  values.popd.1950 <- raster::extract(diff.popd.1950, overlaps_data, fun = mean, na.rm = TRUE)
+  values.rurc.1950 <- raster::extract(diff.rurc.1950, overlaps_data, fun = mean, na.rm = TRUE)
+  values.urbc.1950 <- raster::extract(diff.urbc.1950, overlaps_data, fun = mean, na.rm = TRUE)
   
-  values.popc.2000 <- raster::extract(raster.diff.popc.2000, overlaps_data, fun = mean, na.rm = TRUE)
-  values.popd.2000 <- raster::extract(raster.diff.popd.2000, overlaps_data, fun = mean, na.rm = TRUE)
-  values.rurc.2000 <- raster::extract(raster.diff.rurc.2000, overlaps_data, fun = mean, na.rm = TRUE)
-  values.urbc.2000 <- raster::extract(raster.diff.urbc.2000, overlaps_data, fun = mean, na.rm = TRUE)
+  values.popc.2000 <- raster::extract(diff.popc.2000, overlaps_data, fun = mean, na.rm = TRUE)
+  values.popd.2000 <- raster::extract(diff.popd.2000, overlaps_data, fun = mean, na.rm = TRUE)
+  values.rurc.2000 <- raster::extract(diff.rurc.2000, overlaps_data, fun = mean, na.rm = TRUE)
+  values.urbc.2000 <- raster::extract(diff.urbc.2000, overlaps_data, fun = mean, na.rm = TRUE)
   
   # Create variable names
   v1 <- sym("popc_1850")
@@ -202,7 +181,7 @@ extract_hpd <- function(overlaps_data){
     mutate(!!v13 := values.popc.2000) %>%
     mutate(!!v14 := values.popd.2000) %>%
     mutate(!!v15 := values.rurc.2000) %>%
-    mutate(!!v16 := values.urbc.2000) %>%
+    mutate(!!v16 := values.urbc.2000) 
     
     return(overlaps_data)
   
