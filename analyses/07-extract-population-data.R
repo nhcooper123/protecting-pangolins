@@ -19,4 +19,5 @@ for (i in 1:length(files)){
   assign(filenames[i], raster(files[i], crs = "+proj=longlat +datum=WGS84"))}
 
 #------------------------------------
+#### This takes a while!######
 overlaps_hpd <- extract_hpd(overlaps)
