@@ -1,6 +1,6 @@
 # Land use change analyses
 
-## Requires overlaps_landuse from script 04
+## Requires overlaps_landuse from script 05
 
 ###
 # Prep data
