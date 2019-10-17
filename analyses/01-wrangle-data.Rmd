@@ -32,7 +32,7 @@ floor_decade <- function(x){
 nhm <- read_csv(here("raw-data/NHM_pangolins_June2019.csv"))
 
 ## GBIF georeferenced data
-#gbif <- read_csv(here("raw-data/gbif_pangolins_sept2019.csv"))
+#gbif <- read_csv(here("raw-data/gbif_pangolins_oct2019.csv"))
 ```
 
 ## Read in the IUCN range maps
