@@ -31,8 +31,11 @@ floor_decade <- function(x){
 ## NHM georeferenced data
 nhm <- read_csv(here("raw-data/NHM_pangolins_June2019.csv"))
 
+# Remove material column
+nhm <- nhm %>% select(-Material)
+
 ## GBIF georeferenced data
-gbif <- read_csv(here("raw-data/gbif_pangolins_oct2019.csv"))
+gbif <- read_csv(here("raw-data/gbif_pangolins_Oct2019.csv"))
 ```
 
 ## Read in the IUCN range maps
@@ -95,7 +98,7 @@ specs <-
   # Convert extents to km
   mutate(Extent_km = Extent_m / 1000) %>%
   # Remove non needed columns
-  dplyr::select(-NOTES, -LocalityType, -Material, -Locality, -Extent_m) %>%
+  dplyr::select(-NOTES, -LocalityType, -Locality, -Extent_m) %>%
   # Convert to sf format
   st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326)
 ```
