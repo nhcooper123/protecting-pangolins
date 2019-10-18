@@ -97,7 +97,7 @@ africa <-
           data = specs_errors_africa, show.legend = FALSE) +
   geom_sf(alpha = 0.5, fill = "#2c7fb8", colour = NA,
           data = iucn_africa, show.legend = FALSE) +
-  geom_sf(alpha = 1, fill = "black", 
+  geom_sf(alpha = 1, fill = "black", size = 0.5,
           data = specs_africa, show.legend = FALSE) +
   coord_sf(xlim = xlim_af, ylim = ylim_af, expand = TRUE) +
   theme_bw() +
@@ -116,7 +116,7 @@ africa
             data = specs_errors_asia, show.legend = FALSE) +
     geom_sf(alpha = 0.5, fill = "#2c7fb8", colour = NA, 
             data = iucn_asia, show.legend = FALSE) +
-    geom_sf(alpha = 1, fill = "black", 
+    geom_sf(alpha = 1, fill = "black", size = 0.5,
             data = specs_asia, show.legend = FALSE) +
     coord_sf(xlim = xlim_as, ylim = ylim_as, expand = TRUE) +
   theme_bw() +
