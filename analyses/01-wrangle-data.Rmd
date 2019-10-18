@@ -31,8 +31,11 @@ floor_decade <- function(x){
 ## NHM georeferenced data
 nhm <- read_csv(here("raw-data/NHM_pangolins_June2019.csv"))
 
-# Remove material column
-nhm <- nhm %>% select(-Material)
+# Remove material column and unknown species names
+nhm <- 
+  nhm %>% 
+  select(-Material) %>%
+  filter(Binomial != "unknown")
 
 ## GBIF georeferenced data
 gbif <- read_csv(here("raw-data/gbif_pangolins_Oct2019.csv"))
