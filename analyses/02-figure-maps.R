@@ -19,7 +19,7 @@ remove_x <-
 ##----------------------------------------------
 specs_africa <-
   specs %>%
-  filter(Extent_m < 1000000) %>%
+  filter(Extent_km < 1000) %>%
   filter(binomial == "Phataginus tetradactyla" |
          binomial == "Phataginus tricuspis" |
          binomial == "Smutsia gigantea" |
@@ -27,7 +27,7 @@ specs_africa <-
 
 specs_asia <-
   specs %>%
-  filter(Extent_m < 1000000) %>%
+  filter(Extent_km < 1000) %>%
   filter(binomial != "Phataginus tetradactyla" &
            binomial != "Phataginus tricuspis" &
            binomial != "Smutsia gigantea" &
@@ -35,7 +35,7 @@ specs_asia <-
 
 specs_errors_africa <-
   specs_errors %>%
-  filter(Extent_m < 1000000) %>%
+  filter(Extent_km < 1000) %>%
   filter(binomial == "Phataginus tetradactyla" |
            binomial == "Phataginus tricuspis" |
            binomial == "Smutsia gigantea" |
@@ -43,7 +43,7 @@ specs_errors_africa <-
 
 specs_errors_asia <-
   specs_errors %>%
-  filter(Extent_m < 1000000) %>%
+  filter(Extent_km < 1000) %>%
   filter(binomial != "Phataginus tetradactyla" &
            binomial != "Phataginus tricuspis" &
            binomial != "Smutsia gigantea" &
