@@ -145,7 +145,7 @@ We can now use `overlaps` in our analyses and plots.
 
 ## Plot maps
 ```{r}
-source(here("analyses/02-figures-maps.R"))
+source(here("analyses/02-figure-maps.R"))
 ```
 
 
