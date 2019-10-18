@@ -35,75 +35,70 @@ overlaps_all <-
 overlaps_all <- countNumbSpecimens(overlaps_all)
 # Number of overlaps per species
 overlaps_all <- countNumbOverlaps(overlaps_all)
-##------------------------------------------------------------------
-## Model fitting - binomial GLMs with no overlaps vs not per species
-##------------------------------------------------------------------
+
+##-----------------------------------------------------------
+## Model fitting - binomial overlap
+##-----------------------------------------------------------
 ## Year
 ##-----------
-model1 <- glm(cbind(numberOfOverlaps, (numberOfSpecimens - numberOfOverlaps)) ~
-                Year, data = overlaps_year, family = 'binomial')
-
-## Check for overdispersion (should be < 2)
-sum_model1 <- summary(model1)
-sum_model1$deviance / sum_model1$df.resid
+model1 <- glm(binomial_overlap ~ Year, data = overlaps_year,
+              family = binomial)
 
 ## Model diagnostics
 plot(model1)
 
 ## Model outputs
-anova(model1, test = "Chisq")
+anova(model1, test = "Chi")
 summary(model1)
 
 ##-----------
 ## Continent
 ##-----------
-model2 <- glm(cbind(numberOfOverlaps, (numberOfSpecimens - numberOfOverlaps)) ~
-                Continent, data = overlaps_all, family = 'binomial')
-
-## Check for overdispersion (should be < 2)
-sum_model2 <- summary(model2)
-sum_model2$deviance / sum_model2$df.resid
-
+model2 <- glm(binomial_overlap ~ Continent, data = overlaps_all,
+             family = binomial)
 ## Model diagnostics
 plot(model2)
 
 ## Model outputs
-anova(model2, test = "Chisq")
+anova(model2, test = "Chi")
 summary(model2)
 
 ##-----------
 ## Ecology
 ##-----------
-model3 <- glm(cbind(numberOfOverlaps, (numberOfSpecimens - numberOfOverlaps)) ~
-                ecology, data = overlaps_all, family = 'binomial')
-
-## Check for overdispersion (should be < 2)
-sum_model3 <- summary(model3)
-sum_model3$deviance / sum_model3$df.resid
+model3 <- glm(binomial_overlap ~ ecology, data = overlaps_all,
+             family = binomial)
 
 ## Model diagnostics
 plot(model3)
 
 ## Model outputs
-anova(model3, test = "Chisq")
+anova(model3, test = "Chi")
 summary(model3)
 
 ##-----------
 ## IUCN
 ##-----------
-model4 <- glm(cbind(numberOfOverlaps, (numberOfSpecimens - numberOfOverlaps)) ~
-                redlist, data = overlaps_all, family = 'binomial')
-
-## Check for overdispersion (should be < 2)
-sum_model4 <- summary(model4)
-sum_model4$deviance / sum_model4$df.resid
-
+model4 <- glm(binomial_overlap ~ redlist, data = overlaps_all,
+             family = binomial)
 ## Model diagnostics
 plot(model4)
 
 ## Model outputs
-anova(model4, test = "Chisq")
+anova(model4, test = "Chi")
 summary(model4)
+
+##-----------
+## Species
+##-----------
+model5 <- glm(binomial_overlap ~ binomial, data = overlaps_all,
+             family = binomial)
+## Model diagnostics
+plot(model5)
+
+## Model outputs
+anova(model5, test = "Chi")
+summary(model5)
 
 ##-----------------------------------------------------------
 ## Model fitting - with % overlaps of area
@@ -290,3 +285,10 @@ plot(model5c)
 ## Model outputs
 anova(model5c)
 summary(model5c)
+
+output <- data.frame(array(dim = c()))
+names(output) <-
+  
+
+
+
