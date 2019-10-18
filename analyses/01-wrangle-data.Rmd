@@ -139,8 +139,6 @@ iucn2 <- st_as_sf(iucn2)
 overlaps <- calculateOverlaps(specs_errors, iucn2)
 # Flatten this to 0 for 0% overlap, and 1 for > 0% overlap
 overlaps <- binomialOverlap(overlaps)
-# Add centroid-distances
-#overlaps <- centroidDistance(overlaps, iucn2)
 ```
 
 We can now use `overlaps` in our analyses and plots. 
