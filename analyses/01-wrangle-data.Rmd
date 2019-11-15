@@ -31,14 +31,31 @@ floor_decade <- function(x){
 ## NHM georeferenced data
 nhm <- read_csv(here("raw-data/NHM_pangolins_June2019.csv"))
 
-# Remove material column and unknown species names
+# Remove material column and unknown species names or port specimens
 nhm <- 
   nhm %>% 
   select(-Material) %>%
-  filter(Binomial != "unknown")
+  filter(Binomial != "unknown") %>%
+  # Remove specimens from ports
+  filter(RegistrationNumber != "12.12.3.3" & RegistrationNumber != "no reg 9") %>%
+  # Remove specimens from Sudan as this must be an error.
+  filter(RegistrationNumber != "87.12.1.103" & RegistrationNumber != "7.12.1.102")
 
 ## GBIF georeferenced data
 gbif <- read_csv(here("raw-data/gbif_pangolins_Oct2019.csv"))
+
+## Exclude the specimens which are either misidentified or have incorrect localities
+## These are Phataginus species founr in southern Africa where the genus is not found
+## And very far from their current range. Could be Smutsia, but we can't check the specimens
+gbif <-
+  gbif %>%
+  filter(RegistrationNumber != "BOUM_11.Man.1" & 
+         RegistrationNumber != "MVZ_MVZ:Mamm:4829" &
+         RegistrationNumber != "AMNH_M-216259" &
+         RegistrationNumber != "SUI_18440" &
+         RegistrationNumber != "O_18156" &
+         RegistrationNumber != "GNM_Ma ex 1292" &
+         RegistrationNumber != "GNM_CollAn 7491")
 ```
 
 ## Read in the IUCN range maps
