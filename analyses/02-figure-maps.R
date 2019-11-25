@@ -28,7 +28,7 @@ iucn <-
 ## factor so convert Extent back to numeric...
 ##------------------------------------------------
 specs <- 
-  st_read(here("data/specimens-points2.csv")) %>%  
+  st_read(here("data/specimens-points.csv")) %>%  
   st_set_crs(4326) %>%
   mutate(Extent_km = as.numeric(as.character(Extent_km)))
 
@@ -143,7 +143,7 @@ africa
     geom_sf(alpha = 1, fill = "black", size = 0.5,
             data = specs_asia, show.legend = FALSE) +
     coord_sf(xlim = xlim_as, ylim = ylim_as, expand = TRUE) +
-  theme_bw() +
+    theme_bw() +
     remove_x +
     remove_y +
     facet_wrap(~binomial, ncol = 2) +
