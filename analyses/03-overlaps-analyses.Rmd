@@ -1,0 +1,368 @@
+---
+title: "Overlaps analyses"
+output: html_document
+---
+  
+This script takes georeferenced data and IUCN range maps for pangolins and analyses the number of overlaps in various ways.
+
+## Load libraries
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(here)
+library(broom)
+library(ggfortify)
+```
+
+First read in the data and set coordinate ref system. For some reason st_read makes everything a factor so convert Extent and Certainty back to numeric first.
+
+```{r}
+overlaps <- 
+  st_read(here("data/overlaps.csv")) %>%  
+  st_set_crs(4326) %>%
+  mutate(Extent_km = as.numeric(as.character(Extent_km))) %>%
+  mutate(Certainty = as.numeric(as.character(Certainty))) %>%
+  mutate(Year = as.numeric(as.character(Year)))
+```
+
+Omit specimens with large extents and low certainty
+
+```{r}
+overlaps2 <-
+  overlaps %>%
+  filter(Certainty >= 50 & Extent_km < 50)
+```
+
+Check this is the right length (269 specimens)
+```{r}
+overlaps2 %>%
+  summarise(n())
+```
+
+Omit duplicates (years analyses) and add success failure numbers
+
+```{r}
+overlaps_year <-
+  overlaps2 %>%
+  filter(duplicates_year == 0)
+```
+
+Add successes and failures for models
+```{r}
+# Number of specimens per species total
+overlaps_year <- countNumbSpecimens(overlaps_year)
+# Number of overlaps per species
+overlaps_year <- countNumbOverlaps(overlaps_year)
+```
+
+Omit duplicates (other analyses) and add success failure numbers
+
+```{r}
+overlaps_all <-
+  overlaps2 %>%
+  filter(duplicates == 0)
+```
+
+Add successes and failures for models
+```{r}
+# Number of specimens per species total
+overlaps_all <- countNumbSpecimens(overlaps_all)
+# Number of overlaps per species
+overlaps_all <- countNumbOverlaps(overlaps_all)
+```
+
+Short function to help write output files
+```{r}
+write_output <- function(model, response, predictor, n){
+  
+  x <- tidy(anova(model, test = "Chi"))
+  y <- summary(model)
+    
+  output[n, "response"] <- response
+  output[n, "predictor"] <- predictor
+  output[n, "res.df"] <- x$Resid..Df[2]
+  output[n, "deviance"] <- x$Deviance[[2]]
+  output[n, "resid.dev"] <- x$Resid..Dev[[2]]
+  output[n, "p"] <- x$p.value[[2]]
+  output[n, "slope"] <- y$coefficients[2]
+  output[n, "se"] <- y$coefficients[4]
+  output[n, "z"] <- y$coefficients[6]
+  output[n, "p.value"] <- y$coefficients[8]
+  return(output)
+}
+```
+
+## Model fitting - binomial overlap
+
+Create empty output file
+```{r}
+output <- data.frame(array(dim = c(8, 20)))
+names(output) <- c("response", "predictor", "res.df", 
+                   "deviance", "resid.dev", 
+                   "p", "slope", 
+                   "se", "z", 
+                   "p.value")
+```
+
+### Year
+
+```{r}
+model1 <- glm(binomial_overlap ~ Year, data = overlaps_year,
+              family = binomial)
+
+## Model diagnostics
+autoplot(model1)
+
+## Model outputs
+anova(model1, test = "Chi")
+summary(model1)
+
+## Save output
+output <- write_output(model1, "binomial", "Year", 1)
+```
+
+### Continent
+```{r}
+model2 <- glm(binomial_overlap ~ Continent, data = overlaps_all,
+             family = binomial)
+## Model diagnostics
+autoplot(model2)
+
+## Model outputs
+anova(model2, test = "Chi")
+summary(model2)
+
+## Save output
+#output <- write_output(model2, "binomial", "Continent", 2)
+```
+
+
+### Ecology
+```{r}
+model3 <- glm(binomial_overlap ~ ecology, data = overlaps_all,
+             family = binomial)
+
+## Model diagnostics
+autoplot(model3)
+
+## Model outputs
+anova(model3, test = "Chi")
+summary(model3)
+```
+
+## IUCN
+
+```{r}
+model4 <- glm(binomial_overlap ~ redlist, data = overlaps_all,
+             family = binomial)
+## Model diagnostics
+autoplot(model4)
+
+## Model outputs
+anova(model4, test = "Chi")
+summary(model4)
+```
+
+## Species
+```{r}
+model5 <- glm(binomial_overlap ~ binomial, data = overlaps_all,
+             family = binomial)
+## Model diagnostics
+plot(model5)
+
+## Model outputs
+anova(model5, test = "Chi")
+summary(model5)
+```
+
+
+## Model fitting - with % overlaps of area
+##-----------------------------------------------------------
+## Year
+##-----------
+model1a <- lm(Percent_overlap ~ Year, data = overlaps_year)
+
+## Model diagnostics
+plot(model1a)
+
+## Model outputs
+anova(model1a)
+summary(model1a)
+
+##-----------
+## Continent
+##-----------
+model2a <- lm(Percent_overlap ~ Continent, data = overlaps_all)
+
+## Model diagnostics
+plot(model2a)
+
+## Model outputs
+anova(model2a)
+summary(model2a)
+
+##-----------
+## Ecology
+##-----------
+model3a <- lm(Percent_overlap ~ ecology, data = overlaps_all)
+
+## Model diagnostics
+plot(model3a)
+
+## Model outputs
+anova(model3a)
+summary(model3a)
+
+##-----------
+## IUCN
+##-----------
+model4a <- lm(Percent_overlap ~ redlist, data = overlaps_all)
+
+## Model diagnostics
+plot(model4a)
+
+## Model outputs
+anova(model4a)
+summary(model4a)
+
+##-----------
+## Species
+##-----------
+model5a <- lm(Percent_overlap ~ binomial, data = overlaps_all)
+
+## Model diagnostics
+plot(model5a)
+
+## Model outputs
+anova(model5a)
+summary(model5a)
+
+##-----------------------------------------------------------
+## Model fitting - distances
+##-----------------------------------------------------------
+## Year
+##-----------
+model1b <- lm(log(distance) ~ Year, data = overlaps_year)
+
+## Model diagnostics
+plot(model1b)
+
+## Model outputs
+anova(model1b)
+summary(model1b)
+
+##-----------
+## Continent
+##-----------
+model2b <- lm(log(distance) ~ Continent, data = overlaps_all)
+
+## Model diagnostics
+plot(model2b)
+
+## Model outputs
+anova(model2b)
+summary(model2b)
+
+##-----------
+## Ecology
+##-----------
+model3b <- lm(log(distance) ~ ecology, data = overlaps_all)
+
+## Model diagnostics
+plot(model3b)
+
+## Model outputs
+anova(model3b)
+summary(model3b)
+
+##-----------
+## IUCN
+##-----------
+model4b <- lm(log(distance) ~ redlist, data = overlaps_all)
+
+## Model diagnostics
+plot(model4b)
+
+## Model outputs
+anova(model4b)
+summary(model4b)
+
+##-----------
+## Species
+##-----------
+model5b <- lm(log(distance) ~ binomial, data = overlaps_all)
+
+## Model diagnostics
+plot(model5b)
+
+## Model outputs
+anova(model5b)
+summary(model5b)
+
+##-----------------------------------------------------------
+## Model fitting - with extents...
+##-----------------------------------------------------------
+## Year
+##-----------
+model1c <- lm(log(Extent_km) ~ Year, data = overlaps_year)
+
+## Model diagnostics
+plot(model1c)
+
+## Model outputs
+anova(model1c)
+summary(model1c)
+
+##-----------
+## Continent
+##-----------
+model2c <- lm(log(Extent_km) ~ Continent, data = overlaps_all)
+
+## Model diagnostics
+plot(model2c)
+
+## Model outputs
+anova(model2c)
+summary(model2c)
+
+##-----------
+## Ecology
+##-----------
+model3c <- lm(log(Extent_km) ~ ecology, data = overlaps_all)
+
+## Model diagnostics
+plot(model3c)
+
+## Model outputs
+anova(model3c)
+summary(model3c)
+
+##-----------
+## IUCN
+##-----------
+model4c <- lm(log(Extent_km) ~ redlist, data = overlaps_all)
+
+## Model diagnostics
+plot(model4c)
+
+## Model outputs
+anova(model4c)
+summary(model4c)
+
+##-----------
+## Species
+##-----------
+model5c <- lm(log(Extent_km) ~ binomial, data = overlaps_all)
+
+## Model diagnostics
+plot(model5c)
+
+## Model outputs
+anova(model5c)
+summary(model5c)
+
+output <- data.frame(array(dim = c()))
+names(output) <-
+  
+
+
+
