@@ -1,21 +1,50 @@
 # ## Figures of overlaps
-# Either run this immediately after script 01 
-# (do not clear the environment) or source
-# from script 1.
+# Nov 2019
+
 ##----------------------------------------------
+# Prep
+##----------------------------------------------
+## Load libraries
+library(tidyverse)
+library(here)
+library(patchwork)
+
 # SE function
 se <- function(y) {
   return(data.frame(ymin = mean(y) - sqrt(var(y)/length(y)), 
                     ymax = mean(y) + sqrt(var(y)/length(y))))
 }
 
-##----------------------------------------------------------
 # Species list
-##-------------------------------------------------
-species.list <- c("M. crassicaudata", 
+species.list <- c("M. crassicaudata", "M.culionensis",
                   "M. javanica", "M. pentadactyla",
                   "P. tetradactyla", "P. tricuspis",
                   "S. gigantea", "S. temminckii")
+
+##-----------------------------------------------------
+# Read in the data and set coordinate ref system. 
+# For some reason st_read makes everything a factor so 
+# convert Extent and Certainty back to numeric first.
+##-----------------------------------------------------
+
+overlaps_all <- 
+  st_read(here("data/overlaps.csv")) %>%  
+  st_set_crs(4326) %>%
+  mutate(Extent_km = as.numeric(as.character(Extent_km))) %>%
+  mutate(Certainty = as.numeric(as.character(Certainty))) %>%
+  mutate(Year = as.numeric(as.character(Year))) %>%
+  mutate(Percent_overlap = as.numeric(as.character(Percent_overlap))) %>%
+  # Omit poor accuracy specimens
+  filter(Certainty >= 50 & Extent_km < 50) %>%
+  # Omit duplicates 
+  filter(duplicates == 0)
+
+# Add successes and failures for models
+# Number of specimens per species total
+overlaps_all <- countNumbSpecimens(overlaps_all)
+# Number of overlaps per species
+overlaps_all <- countNumbOverlaps(overlaps_all)
+
 ##-----------------------------------------------------------
 # % area overlap plots
 ##-----------------------------------------------------------
