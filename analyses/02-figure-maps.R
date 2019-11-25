@@ -1,5 +1,15 @@
 # Make maps for figure 1/2
 # Nov 2019
+
+## Load libraries
+library(sfe)
+library(rgeos)
+library(rgdal)
+library(Hmisc)
+library(tidyverse)
+library(here)
+library(patchwork)
+
 ##----------------------------------------------
 # Helper functions for plotting
 ##----------------------------------------------
