@@ -3,7 +3,7 @@ title: "Wrangle pangolin data"
 output: html_document
 ---
 
-This script takes georeferenced data and IUCN range maps for pangolins and wrangles these for further analysis. sf objects are hard to export, so we suggest after running this script you move straight to plotting and analysis scripts. Or run these via sourcing these at the bottom of this script.
+This script takes georeferenced data and IUCN range maps for pangolins and wrangles these for further analysis.
 
 ## Load libraries
 ```{r, message = FALSE, warning = FALSE}
@@ -163,9 +163,14 @@ overlaps <- binomialOverlap(overlaps)
 
 We can now use `overlaps` in our analyses and plots. 
 
-## Plot maps
+## Save the outputs
+Note that `st_write` will throw an error if you try to overwrite a file, so delete previous version of the files first. To avoid this error I've commented these out here.
 ```{r}
-source(here("analyses/02-figure-maps.R"))
+st_write(specs, here("data/specimens-points.csv"), 
+         layer_options = "GEOMETRY=AS_WKT")
+st_write(specs_errors, here("data/specimens-extents.csv"), 
+         layer_options = "GEOMETRY=AS_WKT")
+st_write(overlaps, here("data/overlaps.csv"), 
+         layer_options = "GEOMETRY=AS_WKT")
 ```
-
 
