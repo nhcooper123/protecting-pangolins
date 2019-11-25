@@ -1,9 +1,8 @@
 # Make maps for figure 1/2
-# Either run this immediately after script 01 
-# (do not clear the environment) or source
-# from script 1.
+# Nov 2019
 ##----------------------------------------------
 # Helper functions for plotting
+##----------------------------------------------
 remove_y <- 
   theme(axis.title.y=element_blank(),
         axis.text.y=element_blank(),
@@ -13,6 +12,31 @@ remove_x <-
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
+
+##------------------------------------------------
+## Read in the IUCN data and transform
+##------------------------------------------------
+iucn <- 
+  readOGR(dsn = here("raw-data/IUCN_pholidota"), 
+                layer = 'maps_pholidota') %>%
+  st_as_sf() %>%
+  st_transform(4326)
+
+##------------------------------------------------
+## Read in the data and set coordinate ref system
+## For some reason st_read makes everything a 
+## factor so convert Extent back to numeric...
+##------------------------------------------------
+specs <- 
+  st_read(here("data/specimens-points2.csv")) %>%  
+  st_set_crs(4326) %>%
+  mutate(Extent_km = as.numeric(as.character(Extent_km)))
+
+specs_errors <- 
+  st_read(here("data/specimens-extents.csv")) %>%  
+  st_set_crs(4326) %>%
+  mutate(Extent_km = as.numeric(as.character(Extent_km)))
+
 ##----------------------------------------------
 # Split into African and Asian species
 # Remove huge extents > 1000km
