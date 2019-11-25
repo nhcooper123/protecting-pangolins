@@ -17,6 +17,7 @@ library(Hmisc)
 library(tidyverse)
 library(here)
 library(patchwork)
+library(knitr)
 
 # Short function to get decades
 floor_decade <- function(x){
@@ -181,4 +182,71 @@ Note that `st_write` will throw an error if you try to overwrite a file, so dele
 #st_write(overlaps, here("data/overlaps.csv"), 
 #         layer_options = "GEOMETRY=AS_WKT")
 ```
+## Summary info
 
+```{r}
+specs %>%
+  # Remove specimens with low certainty and large extent
+  filter(Certainty >= 50 & Extent_km < 50) %>%
+  group_by(binomial) %>%
+  summarise(n())
+```
+
+```{r}
+specs %>%
+  # Remove specimens with low certainty and large extent
+  filter(Certainty >= 50 & Extent_km < 50) %>%
+  # Remove duplicates
+  filter(duplicates == FALSE) %>%
+  group_by(binomial) %>%
+  summarise(n())
+
+```
+
+## By years....
+Remember one year is NA so you need to minus 1 from total numbers
+```{r}
+specs %>%
+  # Remove specimens with low certainty and large extent
+  filter(Certainty >= 50 & Extent_km < 50) %>%
+  group_by(binomial, Year) %>%
+  summarise(n()) %>%
+  add_count(binomial,Year) %>%
+  summarise(sum(n))
+```
+
+
+```{r}
+specs %>%
+  # Remove specimens with low certainty and large extent
+  filter(Certainty >= 50 & Extent_km < 50) %>%
+  # Remove duplicates
+  filter(duplicates == FALSE) %>%
+  group_by(binomial, Year) %>%
+  summarise(n()) %>%
+  add_count(binomial,Year) %>%
+  summarise(sum(n))
+```
+## Totals
+
+```{r}
+specs %>%
+  summarise(n())
+```
+
+
+```{r}
+specs %>%
+  # Remove specimens with low certainty and large extent
+  filter(Certainty >= 50 & Extent_km < 50) %>%
+  summarise(n())
+```
+
+```{r}
+specs %>%
+  # Remove specimens with low certainty and large extent
+  filter(Certainty >= 50 & Extent_km < 50) %>%
+  # Remove duplicates
+  filter(duplicates == FALSE) %>%
+  summarise(n())
+```
