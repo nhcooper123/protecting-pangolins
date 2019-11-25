@@ -37,16 +37,21 @@ nhm <-
   select(-Material) %>%
   filter(Binomial != "unknown") %>%
   # Remove specimens from ports
-  filter(RegistrationNumber != "12.12.3.3" & RegistrationNumber != "no reg 9") %>%
+  filter(RegistrationNumber != "NHMUK_12.12.3.3" & 
+         RegistrationNumber != "NHMUK_no reg 9") %>%
   # Remove specimens from Sudan as this must be an error.
-  filter(RegistrationNumber != "87.12.1.103" & RegistrationNumber != "7.12.1.102")
+  filter(RegistrationNumber != "NHMUK_87.12.1.103" & 
+         RegistrationNumber != "NHMUK_7.12.1.102") %>%
+  # Remove specimens which may be errors 
+  filter(RegistrationNumber != "NHMUK_27.12.1.203")
+  
+
 
 ## GBIF georeferenced data
 gbif <- read_csv(here("raw-data/gbif_pangolins_Oct2019.csv"))
 
 ## Exclude the specimens which are either misidentified or have incorrect localities
-## These are Phataginus species founr in southern Africa where the genus is not found
-## And very far from their current range. Could be Smutsia, but we can't check the specimens
+## These are Phataginus species found in southern Africa very far from their current range, or Asia where the genus is not found. Some of these could be Smutsia, but we can't check the specimens. See text for more details.
 gbif <-
   gbif %>%
   filter(RegistrationNumber != "BOUM_11.Man.1" & 
@@ -55,7 +60,10 @@ gbif <-
          RegistrationNumber != "SUI_18440" &
          RegistrationNumber != "O_18156" &
          RegistrationNumber != "GNM_Ma ex 1292" &
-         RegistrationNumber != "GNM_CollAn 7491")
+         RegistrationNumber != "GNM_CollAn 7491" &
+         RegistrationNumber != "MNHN_MO-1899-647" &
+         RegistrationNumber != "UMMZ_156537" &
+        RegistrationNumber != "MCZ_38282")
 ```
 
 ## Read in the IUCN range maps
@@ -166,11 +174,11 @@ We can now use `overlaps` in our analyses and plots.
 ## Save the outputs
 Note that `st_write` will throw an error if you try to overwrite a file, so delete previous version of the files first. To avoid this error I've commented these out here.
 ```{r}
-st_write(specs, here("data/specimens-points.csv"), 
-         layer_options = "GEOMETRY=AS_WKT")
-st_write(specs_errors, here("data/specimens-extents.csv"), 
-         layer_options = "GEOMETRY=AS_WKT")
-st_write(overlaps, here("data/overlaps.csv"), 
-         layer_options = "GEOMETRY=AS_WKT")
+#st_write(specs, here("data/specimens-points.csv"), 
+#         layer_options = "GEOMETRY=AS_WKT")
+#st_write(specs_errors, here("data/specimens-extents.csv"), 
+#         layer_options = "GEOMETRY=AS_WKT")
+#st_write(overlaps, here("data/overlaps.csv"), 
+#         layer_options = "GEOMETRY=AS_WKT")
 ```
 
