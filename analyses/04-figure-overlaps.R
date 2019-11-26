@@ -45,7 +45,7 @@ overlaps_all <-
   countNumbOverlaps()
 
 ## Years data
-overlaps_years <- 
+overlaps_year <- 
   st_read(here("data/overlaps.csv")) %>%  
   st_set_crs(4326) %>%
   mutate_at(vars(Extent_km, Certainty, Year, Decade,
@@ -105,7 +105,7 @@ ecology_plota <-
 redlist_plota <- 
   ggplot(overlaps_all, aes(x = redlist, y = Percent_overlap)) +
   geom_point(color = 'grey', alpha = 0.5) +
-  xlab('Red List status') +
+  xlab('IUCN RedList status') +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
   stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
@@ -163,7 +163,7 @@ ecology_plotb <-
 redlist_plotb <- 
   ggplot(overlaps_all, aes(x = redlist, y = (numberOfOverlaps/numberOfSpecimens) * 100)) +
   geom_point(color = 'grey', alpha = 0.5) +
-  xlab('Red List status') +
+  xlab('IUCN RedList status') +
   ylab('% overlaps') +
   ylim(0,100) +
   theme_bw(base_size = 14) +
