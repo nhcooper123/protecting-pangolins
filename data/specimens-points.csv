@@ -576,8 +576,8 @@ WKT,RegistrationNumber,binomial,Year,Continent,Country,Certainty,redlist,ecology
 "POINT (16.331003 3.441995)",AMNH_M-269905,Phataginus tricuspis,1996,Africa,Central African Republic,100,VU,Arboreal,"1","1",1990,136.15
 "POINT (16.331003 3.441995)",AMNH_M-269901,Phataginus tricuspis,1996,Africa,Central African Republic,100,VU,Arboreal,"1","1",1990,136.15
 "POINT (21.109359 -4.992771)",USNM_101448,Phataginus tricuspis,,Africa,Democratic Republic of the Congo,100,VU,Arboreal,"0","0",,304.87
-"POINT (27.801968 -6.420927)",GNM_Ma ex 790,Phataginus tricuspis,1911,,,75,VU,Arboreal,"0","0",1910,364.34
-"POINT (27.801968 -6.420927)",GNM_Ma ex 789,Phataginus tricuspis,1911,,,75,VU,Arboreal,"1","1",1910,364.34
+"POINT (27.801968 -6.420927)",GNM_Ma ex 790,Phataginus tricuspis,1911,Africa,Democratic Republic of the Congo,75,VU,Arboreal,"0","0",1910,364.34
+"POINT (27.801968 -6.420927)",GNM_Ma ex 789,Phataginus tricuspis,1911,Africa,Democratic Republic of the Congo,75,VU,Arboreal,"1","1",1910,364.34
 "POINT (-0.33664 8.892016)",MNHN_MO-1847-1839,Phataginus tricuspis,,Africa,Mozambique,100,VU,Arboreal,"0","0",,1386.06
 "POINT (-11.348071 7.936018)",MVZ_MVZ:Mamm:183664,Phataginus tricuspis,1963,Africa,Sierra Leone,25,VU,Arboreal,"0","0",1960,0.297
 "POINT (-7.637978 4.571284)",MNHN_MO-1942-190,Phataginus tricuspis,,Africa,Liberia,25,VU,Arboreal,"0","0",,0.414
@@ -595,7 +595,7 @@ WKT,RegistrationNumber,binomial,Year,Continent,Country,Certainty,redlist,ecology
 "POINT (-5.950762 6.150745)",MNHN_MO-1962-1171,Phataginus tricuspis,,Africa,Ivory Coast,50,VU,Arboreal,"1","1",,7.91
 "POINT (-10.80796 6.315416)",O_18160,Phataginus tricuspis,,Africa,Liberia,25,VU,Arboreal,"0","0",,11.37
 "POINT (5.601245 6.334598)",USNM_377283,Phataginus tricuspis,1965,Africa,Nigeria,50,VU,Arboreal,"0","0",1960,15.88
-"POINT (15.264363 -4.443047)",GNM_Ma ex 791,Phataginus tricuspis,1911,,,25,VU,Arboreal,"0","0",1910,23.77
+"POINT (15.264363 -4.443047)",GNM_Ma ex 791,Phataginus tricuspis,1911,Africa,Democratic Republic of the Congo,25,VU,Arboreal,"0","0",1910,23.77
 "POINT (29.935834 -0.412232)",AMNH_M-269820,Phataginus tricuspis,1996,Africa,Uganda,100,VU,Arboreal,"0","0",1990,22.7
 "POINT (5.856066 6.098403)",USNM_379617,Phataginus tricuspis,1966,Africa,Nigeria,100,VU,Arboreal,"0","0",1960,23.16
 "POINT (12.34555 -4.217303)",MNHN_MO-1898-1598,Phataginus tricuspis,,Africa,Republic of the Congo,25,VU,Arboreal,"0","0",,35.65
@@ -652,7 +652,7 @@ WKT,RegistrationNumber,binomial,Year,Continent,Country,Certainty,redlist,ecology
 "POINT (-9.41 6.42)",MHNG_MHNG-MAM-620.056,Smutsia gigantea,,Africa,Liberia,100,VU,Terrestrial,"1","1",,247.54
 "POINT (-10.348199 6.921577)",USNM_269706,Smutsia gigantea,1940,Africa,Liberia,25,VU,Terrestrial,"0","0",1940,0.125
 "POINT (9.405145 -1.916371)",USNM_220404,Smutsia gigantea,1918,Africa,Gabon,100,VU,Terrestrial,"0","0",1910,25.51
-"POINT (12.914834 -2.950771)",GNM_Ma ex 877,Smutsia gigantea,1916,,,50,VU,Terrestrial,"0","0",1910,0.01
+"POINT (12.914834 -2.950771)",GNM_Ma ex 877,Smutsia gigantea,1916,Africa,Democratic Republic of the Congo,50,VU,Terrestrial,"0","0",1910,0.01
 "POINT (9.703543 1.088157)",USNM_598577,Smutsia gigantea,1968,Africa,Equatorial Guinea,50,VU,Terrestrial,"0","0",1960,4.495
 "POINT (9.83378 2.17184)",USNM_598576,Smutsia gigantea,1967,Africa,Equatorial Guinea,100,VU,Terrestrial,"0","0",1960,38.795
 "POINT (0.97572 8.534961)",MNHN_AC-1869-760,Smutsia gigantea,1869,Africa,Togo,100,VU,Terrestrial,"0","0",1860,291.11
