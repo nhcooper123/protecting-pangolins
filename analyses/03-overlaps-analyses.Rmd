@@ -1,5 +1,5 @@
 ---
-title: "Overlaps analyses"
+title: "Overlaps analyses 1 - extract summary data"
 output: html_document
 ---
   
@@ -7,362 +7,354 @@ This script takes georeferenced data and IUCN range maps for pangolins and analy
 
 ## Load libraries
 ```{r, message = FALSE, warning = FALSE}
+library(sf)
+library(sfe)
 library(tidyverse)
 library(here)
 library(broom)
 library(ggfortify)
-```
+library(knitr)
 
-First read in the data and set coordinate ref system. For some reason st_read makes everything a factor so convert Extent and Certainty back to numeric first.
-
-```{r}
-overlaps <- 
-  st_read(here("data/overlaps.csv")) %>%  
-  st_set_crs(4326) %>%
-  mutate(Extent_km = as.numeric(as.character(Extent_km))) %>%
-  mutate(Certainty = as.numeric(as.character(Certainty))) %>%
-  mutate(Year = as.numeric(as.character(Year)))
-```
-
-Omit specimens with large extents and low certainty
-
-```{r}
-overlaps2 <-
-  overlaps %>%
-  filter(Certainty >= 50 & Extent_km < 50)
-```
-
-Check this is the right length (269 specimens)
-```{r}
-overlaps2 %>%
-  summarise(n())
-```
-
-Omit duplicates (years analyses) and add success failure numbers
-
-```{r}
-overlaps_year <-
-  overlaps2 %>%
-  filter(duplicates_year == 0)
-```
-
-Add successes and failures for models
-```{r}
-# Number of specimens per species total
-overlaps_year <- countNumbSpecimens(overlaps_year)
-# Number of overlaps per species
-overlaps_year <- countNumbOverlaps(overlaps_year)
-```
-
-Omit duplicates (other analyses) and add success failure numbers
-
-```{r}
-overlaps_all <-
-  overlaps2 %>%
-  filter(duplicates == 0)
-```
-
-Add successes and failures for models
-```{r}
-# Number of specimens per species total
-overlaps_all <- countNumbSpecimens(overlaps_all)
-# Number of overlaps per species
-overlaps_all <- countNumbOverlaps(overlaps_all)
-```
-
-Short function to help write output files
-```{r}
-write_output <- function(model, response, predictor, n){
-  
-  x <- tidy(anova(model, test = "Chi"))
-  y <- summary(model)
-    
-  output[n, "response"] <- response
-  output[n, "predictor"] <- predictor
-  output[n, "res.df"] <- x$Resid..Df[2]
-  output[n, "deviance"] <- x$Deviance[[2]]
-  output[n, "resid.dev"] <- x$Resid..Dev[[2]]
-  output[n, "p"] <- x$p.value[[2]]
-  output[n, "slope"] <- y$coefficients[2]
-  output[n, "se"] <- y$coefficients[4]
-  output[n, "z"] <- y$coefficients[6]
-  output[n, "p.value"] <- y$coefficients[8]
-  return(output)
+# SE function
+se <- 
+  function(y) {
+  sqrt(var(y)/length(y))
 }
 ```
 
-## Model fitting - binomial overlap
-
-Create empty output file
-```{r}
-output <- data.frame(array(dim = c(8, 20)))
-names(output) <- c("response", "predictor", "res.df", 
-                   "deviance", "resid.dev", 
-                   "p", "slope", 
-                   "se", "z", 
-                   "p.value")
+## Prepare for the analyses
+First read in the data as CSV not spatial data as we don't need the spatial geometries here. Relevel redlist so it matches increasing extinction risk.
+```{r, message = FALSE, warning = FALSE}
+overlaps <- 
+  read_csv(here("data/overlaps.csv")) %>%  
+  mutate(redlist = factor(redlist, levels = c("VU", "EN", "CR")))
 ```
 
-### Year
+We now create four data subsets. 1 is all the data (except zero certainty specimens), 2 is all the data (except zero certainty specimens) minus duplicates, 3 is the data minus those with large extents and low certainty, 4 is the data minus those with large extents and low certainty, and with no duplicates. It needs to be done like this so we can properly count up the number of range overlapping and non range overlapping specimens.
+
+### All data
+```{r}
+overlaps_all <- 
+  overlaps %>%
+  filter(Certainty > 0) %>%
+  # Number of specimens per species total
+  countNumbSpecimens() %>%
+  # Number of overlaps per species
+  countNumbOverlaps()
+```
+
+### Remove duplicates
+```{r}
+overlaps_all_nodups <- 
+  overlaps %>%
+  filter(Certainty > 0) %>%
+  filter(duplicates == 0) %>%
+  # Number of specimens per species total
+  countNumbSpecimens() %>%
+  # Number of overlaps per species
+  countNumbOverlaps()
+```
+
+### Omit specimens with large extents and low certainty
+```{r}
+overlaps_good <-
+  overlaps %>%
+  filter(Certainty >= 50 & Extent_km < 50) %>%
+  # Number of specimens per species total
+  countNumbSpecimens() %>%
+  # Number of overlaps per species
+  countNumbOverlaps()
+```
+
+### Omit specimens with large extents and low certainty and duplicates
+```{r}
+overlaps_good_nodups <-
+  overlaps %>%
+  filter(Certainty >= 50 & Extent_km < 50) %>%
+  filter(duplicates == 0) %>%
+  # Number of specimens per species total
+  countNumbSpecimens() %>%
+  # Number of overlaps per species
+  countNumbOverlaps()
+```
+
+## Summarising the degree of overlap
+
+All data
+
+### Species
 
 ```{r}
-model1 <- glm(binomial_overlap ~ Year, data = overlaps_year,
-              family = binomial)
+all_species <-
+overlaps_all %>%
+  group_by(binomial) %>%
+  summarise(n(),
+            overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
+            mnpercent = mean(Percent_overlap),
+            sepercent = se(Percent_overlap), 
+            mnbinomial = mean(binomial_overlap),
+            sebinomial = se(binomial_overlap)) %>%
+  mutate_if(is.numeric, round, digits = 2)
 
-## Model diagnostics
-autoplot(model1)
-
-## Model outputs
-anova(model1, test = "Chi")
-summary(model1)
-
-## Save output
-output <- write_output(model1, "binomial", "Year", 1)
+kable(all_species)
 ```
 
 ### Continent
+
 ```{r}
-model2 <- glm(binomial_overlap ~ Continent, data = overlaps_all,
-             family = binomial)
-## Model diagnostics
-autoplot(model2)
+all_continents <-
+overlaps_all %>%
+  group_by(Continent) %>%
+  summarise(n(),
+            overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
+            mnpercent = mean(Percent_overlap),
+            sepercent = se(Percent_overlap), 
+            mnbinomial = mean(binomial_overlap),
+            sebinomial = se(binomial_overlap)) %>%
+  mutate_if(is.numeric, round, digits = 2)
 
-## Model outputs
-anova(model2, test = "Chi")
-summary(model2)
-
-## Save output
-#output <- write_output(model2, "binomial", "Continent", 2)
+kable(all_continents)
 ```
-
 
 ### Ecology
-```{r}
-model3 <- glm(binomial_overlap ~ ecology, data = overlaps_all,
-             family = binomial)
-
-## Model diagnostics
-autoplot(model3)
-
-## Model outputs
-anova(model3, test = "Chi")
-summary(model3)
-```
-
-## IUCN
 
 ```{r}
-model4 <- glm(binomial_overlap ~ redlist, data = overlaps_all,
-             family = binomial)
-## Model diagnostics
-autoplot(model4)
+all_ecology <-
+overlaps_all %>%
+  group_by(ecology) %>%
+  summarise(n(),
+            overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
+            mnpercent = mean(Percent_overlap),
+            sepercent = se(Percent_overlap), 
+            mnbinomial = mean(binomial_overlap),
+            sebinomial = se(binomial_overlap)) %>%
+  mutate_if(is.numeric, round, digits = 2)
 
-## Model outputs
-anova(model4, test = "Chi")
-summary(model4)
+kable(all_ecology)
 ```
 
-## Species
+### IUCN Red List
+
 ```{r}
-model5 <- glm(binomial_overlap ~ binomial, data = overlaps_all,
-             family = binomial)
-## Model diagnostics
-plot(model5)
+all_iucn <-
+overlaps_all %>%
+  group_by(redlist) %>%
+  summarise(n(),
+            overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
+            mnpercent = mean(Percent_overlap),
+            sepercent = se(Percent_overlap), 
+            mnbinomial = mean(binomial_overlap),
+            sebinomial = se(binomial_overlap)) %>%
+  mutate_if(is.numeric, round, digits = 2)
 
-## Model outputs
-anova(model5, test = "Chi")
-summary(model5)
+kable(all_iucn)
+```
+All data minus duplicates
+
+### Species
+
+```{r}
+all_species_nodups <-
+overlaps_all_nodups %>%
+  group_by(binomial) %>%
+  summarise(n(),
+            overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
+            mnpercent = mean(Percent_overlap),
+            sepercent = se(Percent_overlap), 
+            mnbinomial = mean(binomial_overlap),
+            sebinomial = se(binomial_overlap)) %>%
+  mutate_if(is.numeric, round, digits = 2)
+
+kable(all_species_nodups)
 ```
 
+### Continent
 
-## Model fitting - with % overlaps of area
-##-----------------------------------------------------------
-## Year
-##-----------
-model1a <- lm(Percent_overlap ~ Year, data = overlaps_year)
+```{r}
+all_continents_nodups <-
+overlaps_all_nodups %>%
+  group_by(Continent) %>%
+  summarise(n(),
+            overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
+            mnpercent = mean(Percent_overlap),
+            sepercent = se(Percent_overlap), 
+            mnbinomial = mean(binomial_overlap),
+            sebinomial = se(binomial_overlap)) %>%
+  mutate_if(is.numeric, round, digits = 2)
 
-## Model diagnostics
-plot(model1a)
+kable(all_continents_nodups)
+```
 
-## Model outputs
-anova(model1a)
-summary(model1a)
+### Ecology
 
-##-----------
-## Continent
-##-----------
-model2a <- lm(Percent_overlap ~ Continent, data = overlaps_all)
+```{r}
+all_ecology_nodups <-
+overlaps_all_nodups %>%
+  group_by(ecology) %>%
+  summarise(n(),
+            overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
+            mnpercent = mean(Percent_overlap),
+            sepercent = se(Percent_overlap), 
+            mnbinomial = mean(binomial_overlap),
+            sebinomial = se(binomial_overlap)) %>%
+  mutate_if(is.numeric, round, digits = 2)
 
-## Model diagnostics
-plot(model2a)
+kable(all_ecology_nodups)
+```
 
-## Model outputs
-anova(model2a)
-summary(model2a)
+### IUCN Red List
 
-##-----------
-## Ecology
-##-----------
-model3a <- lm(Percent_overlap ~ ecology, data = overlaps_all)
+```{r}
+all_iucn_nodups <-
+overlaps_all_nodups %>%
+  group_by(redlist) %>%
+  summarise(n(),
+            overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
+            mnpercent = mean(Percent_overlap),
+            sepercent = se(Percent_overlap), 
+            mnbinomial = mean(binomial_overlap),
+            sebinomial = se(binomial_overlap)) %>%
+  mutate_if(is.numeric, round, digits = 2)
 
-## Model diagnostics
-plot(model3a)
+kable(all_iucn_nodups)
+```
 
-## Model outputs
-anova(model3a)
-summary(model3a)
+"Good"" data only
 
-##-----------
-## IUCN
-##-----------
-model4a <- lm(Percent_overlap ~ redlist, data = overlaps_all)
+### Species
 
-## Model diagnostics
-plot(model4a)
+```{r}
+good_species <-
+overlaps_good %>%
+  group_by(binomial) %>%
+  summarise(n(),
+            overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
+            mnpercent = mean(Percent_overlap),
+            sepercent = se(Percent_overlap), 
+            mnbinomial = mean(binomial_overlap),
+            sebinomial = se(binomial_overlap)) %>%
+  mutate_if(is.numeric, round, digits = 2)
 
-## Model outputs
-anova(model4a)
-summary(model4a)
+kable(good_species)
+```
 
-##-----------
-## Species
-##-----------
-model5a <- lm(Percent_overlap ~ binomial, data = overlaps_all)
+### Continent
 
-## Model diagnostics
-plot(model5a)
+```{r}
+good_continents <-
+overlaps_good %>%
+  group_by(Continent) %>%
+  summarise(n(),
+            overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
+            mnpercent = mean(Percent_overlap),
+            sepercent = se(Percent_overlap), 
+            mnbinomial = mean(binomial_overlap),
+            sebinomial = se(binomial_overlap)) %>%
+  mutate_if(is.numeric, round, digits = 2)
 
-## Model outputs
-anova(model5a)
-summary(model5a)
+kable(good_continents)
+```
 
-##-----------------------------------------------------------
-## Model fitting - distances
-##-----------------------------------------------------------
-## Year
-##-----------
-model1b <- lm(log(distance) ~ Year, data = overlaps_year)
+### Ecology
 
-## Model diagnostics
-plot(model1b)
+```{r}
+good_ecology <-
+overlaps_good %>%
+  group_by(ecology) %>%
+  summarise(n(),
+            overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
+            mnpercent = mean(Percent_overlap),
+            sepercent = se(Percent_overlap), 
+            mnbinomial = mean(binomial_overlap),
+            sebinomial = se(binomial_overlap)) %>%
+  mutate_if(is.numeric, round, digits = 2)
 
-## Model outputs
-anova(model1b)
-summary(model1b)
+kable(good_ecology)
+```
 
-##-----------
-## Continent
-##-----------
-model2b <- lm(log(distance) ~ Continent, data = overlaps_all)
+### IUCN Red List
 
-## Model diagnostics
-plot(model2b)
+```{r}
+good_iucn <-
+overlaps_good %>%
+  group_by(redlist) %>%
+  summarise(n(),
+            overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
+            mnpercent = mean(Percent_overlap),
+            sepercent = se(Percent_overlap), 
+            mnbinomial = mean(binomial_overlap),
+            sebinomial = se(binomial_overlap)) %>%
+  mutate_if(is.numeric, round, digits = 2)
 
-## Model outputs
-anova(model2b)
-summary(model2b)
+kable(good_iucn)
+```
 
-##-----------
-## Ecology
-##-----------
-model3b <- lm(log(distance) ~ ecology, data = overlaps_all)
+"Good" data minus duplicates
 
-## Model diagnostics
-plot(model3b)
+### Species
 
-## Model outputs
-anova(model3b)
-summary(model3b)
+```{r}
+good_species_nodups <-
+overlaps_good_nodups %>%
+  group_by(binomial) %>%
+  summarise(n(),
+            overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
+            mnpercent = mean(Percent_overlap),
+            sepercent = se(Percent_overlap), 
+            mnbinomial = mean(binomial_overlap),
+            sebinomial = se(binomial_overlap)) %>%
+  mutate_if(is.numeric, round, digits = 2)
 
-##-----------
-## IUCN
-##-----------
-model4b <- lm(log(distance) ~ redlist, data = overlaps_all)
+kable(good_species_nodups)
+```
 
-## Model diagnostics
-plot(model4b)
+### Continent
 
-## Model outputs
-anova(model4b)
-summary(model4b)
+```{r}
+good_continents_nodups <-
+overlaps_good_nodups %>%
+  group_by(Continent) %>%
+  summarise(n(),
+            overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
+            mnpercent = mean(Percent_overlap),
+            sepercent = se(Percent_overlap), 
+            mnbinomial = mean(binomial_overlap),
+            sebinomial = se(binomial_overlap)) %>%
+  mutate_if(is.numeric, round, digits = 2)
 
-##-----------
-## Species
-##-----------
-model5b <- lm(log(distance) ~ binomial, data = overlaps_all)
+kable(good_continents_nodups)
+```
 
-## Model diagnostics
-plot(model5b)
+### Ecology
 
-## Model outputs
-anova(model5b)
-summary(model5b)
+```{r}
+good_ecology_nodups <-
+overlaps_good_nodups %>%
+  group_by(ecology) %>%
+  summarise(n(),
+            overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
+            mnpercent = mean(Percent_overlap),
+            sepercent = se(Percent_overlap), 
+            mnbinomial = mean(binomial_overlap),
+            sebinomial = se(binomial_overlap)) %>%
+  mutate_if(is.numeric, round, digits = 2)
 
-##-----------------------------------------------------------
-## Model fitting - with extents...
-##-----------------------------------------------------------
-## Year
-##-----------
-model1c <- lm(log(Extent_km) ~ Year, data = overlaps_year)
+kable(good_ecology_nodups)
+```
 
-## Model diagnostics
-plot(model1c)
+### IUCN Red List
 
-## Model outputs
-anova(model1c)
-summary(model1c)
+```{r}
+good_iucn_nodups <-
+overlaps_good_nodups %>%
+  group_by(redlist) %>%
+  summarise(n(),
+            overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
+            mnpercent = mean(Percent_overlap),
+            sepercent = se(Percent_overlap), 
+            mnbinomial = mean(binomial_overlap),
+            sebinomial = se(binomial_overlap)) %>%
+  mutate_if(is.numeric, round, digits = 2)
 
-##-----------
-## Continent
-##-----------
-model2c <- lm(log(Extent_km) ~ Continent, data = overlaps_all)
-
-## Model diagnostics
-plot(model2c)
-
-## Model outputs
-anova(model2c)
-summary(model2c)
-
-##-----------
-## Ecology
-##-----------
-model3c <- lm(log(Extent_km) ~ ecology, data = overlaps_all)
-
-## Model diagnostics
-plot(model3c)
-
-## Model outputs
-anova(model3c)
-summary(model3c)
-
-##-----------
-## IUCN
-##-----------
-model4c <- lm(log(Extent_km) ~ redlist, data = overlaps_all)
-
-## Model diagnostics
-plot(model4c)
-
-## Model outputs
-anova(model4c)
-summary(model4c)
-
-##-----------
-## Species
-##-----------
-model5c <- lm(log(Extent_km) ~ binomial, data = overlaps_all)
-
-## Model diagnostics
-plot(model5c)
-
-## Model outputs
-anova(model5c)
-summary(model5c)
-
-output <- data.frame(array(dim = c()))
-names(output) <-
-  
-
-
-
+kable(good_iucn_nodups)
+```
