@@ -5,6 +5,7 @@
 # Prep
 ##----------------------------------------------
 ## Load libraries
+library(sf)
 library(tidyverse)
 library(here)
 library(patchwork)
@@ -24,26 +25,40 @@ species.list <- c("M. crassicaudata", "M.culionensis",
 ##-----------------------------------------------------
 # Read in the data and set coordinate ref system. 
 # For some reason st_read makes everything a factor so 
-# convert Extent and Certainty back to numeric first.
+# convert Extent etc back to numeric first.
+# and relevel redlist
 ##-----------------------------------------------------
-
 overlaps_all <- 
   st_read(here("data/overlaps.csv")) %>%  
   st_set_crs(4326) %>%
-  mutate(Extent_km = as.numeric(as.character(Extent_km))) %>%
-  mutate(Certainty = as.numeric(as.character(Certainty))) %>%
-  mutate(Year = as.numeric(as.character(Year))) %>%
-  mutate(Percent_overlap = as.numeric(as.character(Percent_overlap))) %>%
+  mutate_at(vars(Extent_km, Certainty, Year, Decade,
+                 Percent_overlap, binomial_overlap), 
+            ~as.numeric(as.character(.))) %>%
+  mutate(redlist = factor(redlist, levels = c("VU", "EN", "CR"))) %>%
   # Omit poor accuracy specimens
   filter(Certainty >= 50 & Extent_km < 50) %>%
   # Omit duplicates 
-  filter(duplicates == 0)
+  filter(duplicates == 0) %>%
+  # Add successes and failures for models
+  countNumbSpecimens() %>%
+  # Number of overlaps per species
+  countNumbOverlaps()
 
-# Add successes and failures for models
-# Number of specimens per species total
-overlaps_all <- countNumbSpecimens(overlaps_all)
-# Number of overlaps per species
-overlaps_all <- countNumbOverlaps(overlaps_all)
+## Years data
+overlaps_years <- 
+  st_read(here("data/overlaps.csv")) %>%  
+  st_set_crs(4326) %>%
+  mutate_at(vars(Extent_km, Certainty, Year, Decade,
+                 Percent_overlap, binomial_overlap), 
+            ~as.numeric(as.character(.))) %>%
+  mutate(redlist = factor(redlist, levels = c("VU", "EN", "CR"))) %>%
+  # Omit poor accuracy specimens
+  filter(Certainty >= 50 & Extent_km < 50) %>%
+  # Omit duplicates 
+  filter(duplicates_year == 0) %>%
+  # Add successes and failures for models
+  countNumbSpecimens() %>%
+  countNumbOverlaps()
 
 ##-----------------------------------------------------------
 # % area overlap plots
@@ -159,109 +174,3 @@ species_plotb / (continent_plotb + year_plotb) /
   (ecology_plotb + redlist_plotb)
 
 #ggsave(here("figures/specimen-number-overlap.png"))
-##-----------------------------------------------------------
-# Distances
-##-----------------------------------------------------------
-species_plotd <- 
-  ggplot(overlaps_all, aes(x = binomial, y = distance)) +
-  geom_point(color = 'grey', alpha = 0.5) +
-  scale_x_discrete(labels = species.list) +
-  xlab("") +
-  ylab('centroid distance (km)') +
-  theme_bw(base_size = 14) +
-  theme(axis.text.x = element_text(angle = 45, vjust = 0.5, 
-                                   face = "italic")) +
-  stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
-  stat_summary(fun.y = mean, geom = 'point', size = 2)
-
-year_plotd <- 
-  ggplot(overlaps_year, aes(x = Year, y = distance)) +
-  geom_point() +
-  xlab('collection year') +
-  ylab('centroid distance (km)') +
-  theme_bw(base_size = 14) +
-  theme(axis.text.x = element_text(angle = 45, vjust = 0.6))
-
-continent_plotd <- 
-  ggplot(overlaps_all, aes(x = Continent, y = distance)) +
-  geom_point(color = 'grey', alpha = 0.5) +
-  xlab('continent') +
-  ylab('centroid distance (km)') +
-  theme_bw(base_size = 14) +
-  stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
-  stat_summary(fun.y = mean, geom = 'point', size = 2)
-
-ecology_plotd <- 
-  ggplot(overlaps_all, aes(x = ecology, y = distance)) +
-  geom_point(color = 'grey', alpha = 0.5) +
-  xlab('ecology') +
-  ylab('centroid distance (km)') +
-  theme_bw(base_size = 14) +
-  stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
-  stat_summary(fun.y = mean, geom = 'point', size = 2)
-
-redlist_plotd <- 
-  ggplot(overlaps_all, aes(x = redlist, y = distance)) +
-  geom_point(color = 'grey', alpha = 0.5) +
-  xlab('Red List status') +
-  ylab('centroid distance (km)') +
-  theme_bw(base_size = 14) +
-  stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
-  stat_summary(fun.y = mean, geom = 'point', size = 2)
-
-species_plotd / (continent_plotd + year_plotd)
-  / (ecology_plotd + redlist_plotd)
-#ggsave(here("figures/distance-overlap.png"))
-
-##-----------------------------------------------------------
-# Extents
-##-----------------------------------------------------------
-species_plote <- 
-  ggplot(overlaps_all, aes(x = binomial, y = Extent_km)) +
-  geom_point(color = 'grey', alpha = 0.5) +
-  scale_x_discrete(labels = species.list) +
-  xlab("") +
-  ylab('extent (km)') +
-  theme_bw(base_size = 14) +
-  theme(axis.text.x = element_text(angle = 45, vjust = 0.5, 
-                                   face = "italic")) +
-  stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
-  stat_summary(fun.y = mean, geom = 'point', size = 2)
-
-year_plote <- 
-  ggplot(overlaps_year, aes(x = Year, y = Extent_km)) +
-  geom_point() +
-  xlab('collection year') +
-  ylab('extent (km)') +
-  theme_bw(base_size = 14) +
-  theme(axis.text.x = element_text(angle = 45, vjust = 0.6))
-
-continent_plote <- 
-  ggplot(overlaps_all, aes(x = Continent, y = Extent_km)) +
-  geom_point(color = 'grey', alpha = 0.5) +
-  xlab('continent') +
-  ylab('extent (km)') +
-  theme_bw(base_size = 14) +
-  stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
-  stat_summary(fun.y = mean, geom = 'point', size = 2)
-
-ecology_plote <- 
-  ggplot(overlaps_all, aes(x = ecology, y = Extent_km)) +
-  geom_point(color = 'grey', alpha = 0.5) +
-  xlab('ecology') +
-  ylab('extent (km)') +
-  theme_bw(base_size = 14) +
-  stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
-  stat_summary(fun.y = mean, geom = 'point', size = 2)
-
-redlist_plote <- 
-  ggplot(overlaps_all, aes(x = redlist, y = Extent_km)) +
-  geom_point(color = 'grey', alpha = 0.5) +
-  xlab('Red List status') +
-  ylab('extent (km)') +
-  theme_bw(base_size = 14) +
-  stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
-  stat_summary(fun.y = mean, geom = 'point', size = 2)
-
-species_plote / (continent_plote + year_plote) / (ecology_plote + redlist_plote)
-#ggsave(here("figures/extent-overlap.png"))
