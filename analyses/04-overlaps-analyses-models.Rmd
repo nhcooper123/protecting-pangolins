@@ -51,39 +51,108 @@ overlaps_year <-
 ## Models with number of overlaps
 These are binomial GLMs but we only have 8 species so too little power to say much. Included mainly for completeness.
 
+First create new datasets only with unique values to avoid accidental pseudoreplication.
+```{r}
+overlaps_year_specs <-
+  overlaps_year %>%
+  select(binomial, Year, numberOfOverlaps, numberOfSpecimens) %>%
+  distinct()
+
+overlaps_all_specs <-
+  overlaps_all %>%
+  select(binomial, Continent, ecology, redlist, numberOfOverlaps, numberOfSpecimens) %>%
+  distinct()
+```
+
+
+
 ### Years
 ```{r}
 model1a <- glm(cbind(numberOfOverlaps, numberOfSpecimens - numberOfOverlaps) ~ Year,   
-               data = overlaps_year, family = binomial)
+               data = overlaps_year_specs, family = binomial)
 
 ## Model diagnostics
 autoplot(model1a)
 
 ## Model outputs
-anova(model1a)
-summary(model1a)
-
+anova(model1a, test = "Chisq")
 ```
 
+```{r}
+summary(model1a)
+```
 
-
-## Models - with % area overlaps
-
-##-----------------------------------------------------------
-## Year
-##-----------
-model1a <- lm(Percent_overlap ~ Year, data = overlaps_year)
+### Continent
+```{r}
+model1b <- glm(cbind(numberOfOverlaps, numberOfSpecimens - numberOfOverlaps) ~ Continent,   
+               data = overlaps_all_specs, family = binomial)
 
 ## Model diagnostics
-plot(model1a)
+autoplot(model1b)
+```
+
+```{r}
+## Model outputs
+anova(model1b, test = "Chisq")
+```
+
+```{r}
+summary(model1b)
+```
+
+### Ecology
+```{r}
+model1c <- glm(cbind(numberOfOverlaps, numberOfSpecimens - numberOfOverlaps) ~ ecology,   
+               data = overlaps_all_specs, family = binomial)
+
+## Model diagnostics
+autoplot(model1c)
+```
+
+```{r}
+## Model outputs
+anova(model1c, test = "Chisq")
+```
+
+```{r}
+summary(model1c)
+```
+
+### IUCN status
+```{r}
+model1d <- glm(cbind(numberOfOverlaps, numberOfSpecimens - numberOfOverlaps) ~ redlist,   
+               data = overlaps_all_specs, family = binomial)
+
+## Model diagnostics
+autoplot(model1d)
+```
+
+```{r}
+## Model outputs
+anova(model1d, test = "Chisq")
+```
+
+```{r}
+summary(model1d)
+```
+
+## Models - with % area overlaps
+Needs beta regression...
+
+### Year
+```{r}
+model2a <- lm(Percent_overlap ~ Year, data = overlaps_year)
+
+## Model diagnostics
+plot(model2a)
 
 ## Model outputs
-anova(model1a)
-summary(model1a)
+anova(model2a)
+summary(model2a)
+```
 
-##-----------
-## Continent
-##-----------
+### Continent
+```{r}
 model2a <- lm(Percent_overlap ~ Continent, data = overlaps_all)
 
 ## Model diagnostics
@@ -93,9 +162,10 @@ plot(model2a)
 anova(model2a)
 summary(model2a)
 
-##-----------
-## Ecology
-##-----------
+```
+
+### Ecology
+```{r}
 model3a <- lm(Percent_overlap ~ ecology, data = overlaps_all)
 
 ## Model diagnostics
@@ -104,10 +174,10 @@ plot(model3a)
 ## Model outputs
 anova(model3a)
 summary(model3a)
+```
 
-##-----------
-## IUCN
-##-----------
+### IUCN
+```{r}
 model4a <- lm(Percent_overlap ~ redlist, data = overlaps_all)
 
 ## Model diagnostics
@@ -116,10 +186,10 @@ plot(model4a)
 ## Model outputs
 anova(model4a)
 summary(model4a)
+```
 
-##-----------
-## Species
-##-----------
+### Species
+```{r}
 model5a <- lm(Percent_overlap ~ binomial, data = overlaps_all)
 
 ## Model diagnostics
@@ -128,3 +198,4 @@ plot(model5a)
 ## Model outputs
 anova(model5a)
 summary(model5a)
+```
