@@ -74,47 +74,62 @@ species_plota <-
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5, 
                                    face = "italic")) +
   stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
-  stat_summary(fun.y = mean, geom = 'point', size = 2)
+  stat_summary(fun.y = mean, geom = 'point', size = 2)  +
+  labs(tag = "a") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
+        axis.title = element_text(size = 12))
 
 year_plota <- 
   ggplot(overlaps_year, aes(x = Year, y = Percent_overlap)) +
   geom_point() +
-  xlab('collection year') +
+  xlab('') +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
-  theme(axis.text.x = element_text(angle = 45, vjust = 0.6))
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.6))  +
+  labs(tag = "b") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
+        axis.title = element_text(size = 12))
 
 continent_plota <- 
   ggplot(overlaps_all, aes(x = Continent, y = Percent_overlap)) +
   geom_point(color = 'grey', alpha = 0.5) +
-  xlab('continent') +
+  xlab('') +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
   stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
-  stat_summary(fun.y = mean, geom = 'point', size = 2)
+  stat_summary(fun.y = mean, geom = 'point', size = 2)  +
+  labs(tag = "c") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
+        axis.title = element_text(size = 12))
 
 ecology_plota <- 
   ggplot(overlaps_all, aes(x = ecology, y = Percent_overlap)) +
   geom_point(color = 'grey', alpha = 0.5) +
-  xlab('ecology') +
+  xlab('') +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
   stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
-  stat_summary(fun.y = mean, geom = 'point', size = 2)
+  stat_summary(fun.y = mean, geom = 'point', size = 2)  +
+  labs(tag = "d") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
+        axis.title = element_text(size = 12))
 
 redlist_plota <- 
   ggplot(overlaps_all, aes(x = redlist, y = Percent_overlap)) +
   geom_point(color = 'grey', alpha = 0.5) +
-  xlab('IUCN RedList status') +
+  xlab('') +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
   stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
-  stat_summary(fun.y = mean, geom = 'point', size = 2)
+  stat_summary(fun.y = mean, geom = 'point', size = 2) +
+  labs(tag = "e") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
+        axis.title = element_text(size = 12))
 
 species_plota / (continent_plota + year_plota) / 
   (ecology_plota + redlist_plota)
 
-#ggsave(here("figures/area-overlap.png"))
+#ggsave(here("figures/area-overlap.png"), width = 5)
 
 ##-----------------------------------------------------------
 # % overlap by specimen numbers
@@ -125,52 +140,67 @@ species_plotb <-
   geom_point(color = 'black', alpha = 0.5) +
   scale_x_discrete(labels = species.list) +
   xlab("") +
-  ylab('% overlaps') +
+  ylab('% overlap') +
   ylim(0,100) +
   theme_bw(base_size = 14) +
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5, 
-                                   face = "italic"))
+                                   face = "italic"))+
+  labs(tag = "a") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
+        axis.title = element_text(size = 12))
 
 year_plotb <- 
   ggplot(overlaps_year, aes(x = Year, y = (numberOfOverlaps/numberOfSpecimens) * 100)) +
   geom_point() +
-  xlab('collection year') +
-  ylab('% overlaps') +
+  xlab('') +
+  ylab('% overlap') +
   ylim(0,100) +
   theme_bw(base_size = 14) +
-  theme(axis.text.x = element_text(angle = 45, vjust = 0.6))
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.6)) +
+  labs(tag = "b") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
+        axis.title = element_text(size = 12))
 
 continent_plotb <- 
   ggplot(overlaps_all, aes(x = Continent, y = (numberOfOverlaps/numberOfSpecimens) * 100)) +
   geom_point(color = 'grey', alpha = 0.5) +
-  xlab('continent') +
-  ylab('% overlaps') +
+  xlab('') +
+  ylab('% overlap') +
   ylim(0,100) +
   theme_bw(base_size = 14) +
   stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
-  stat_summary(fun.y = mean, geom = 'point', size = 2)
+  stat_summary(fun.y = mean, geom = 'point', size = 2) +
+  labs(tag = "c") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
+        axis.title = element_text(size = 12))
 
 ecology_plotb <- 
   ggplot(overlaps_all, aes(x = ecology, y = (numberOfOverlaps/numberOfSpecimens) * 100)) +
   geom_point(color = 'grey', alpha = 0.5) +
-  xlab('ecology') +
-  ylab('% overlaps') +
+  xlab('') +
+  ylab('% overlap') +
   ylim(0,100) +
   theme_bw(base_size = 14) +
   stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
-  stat_summary(fun.y = mean, geom = 'point', size = 2)
+  stat_summary(fun.y = mean, geom = 'point', size = 2) +
+  labs(tag = "d") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
+        axis.title = element_text(size = 12))
 
 redlist_plotb <- 
   ggplot(overlaps_all, aes(x = redlist, y = (numberOfOverlaps/numberOfSpecimens) * 100)) +
   geom_point(color = 'grey', alpha = 0.5) +
-  xlab('IUCN RedList status') +
-  ylab('% overlaps') +
+  xlab('') +
+  ylab('% overlap') +
   ylim(0,100) +
   theme_bw(base_size = 14) +
   stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
-  stat_summary(fun.y = mean, geom = 'point', size = 2)
+  stat_summary(fun.y = mean, geom = 'point', size = 2) +
+  labs(tag = "e") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
+        axis.title = element_text(size = 12))
 
 species_plotb / (continent_plotb + year_plotb) /
   (ecology_plotb + redlist_plotb)
 
-#ggsave(here("figures/specimen-number-overlap.png"))
+#ggsave(here("figures/specimen-number-overlap.png"), width = 5)
