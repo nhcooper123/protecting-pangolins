@@ -91,9 +91,7 @@ overlaps_all %>%
   summarise(n(),
             overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
             mnpercent = mean(Percent_overlap),
-            sepercent = se(Percent_overlap), 
-            mnbinomial = mean(binomial_overlap),
-            sebinomial = se(binomial_overlap)) %>%
+            sepercent = se(Percent_overlap)) %>%
   mutate_if(is.numeric, round, digits = 2)
 
 kable(all_species)
@@ -108,9 +106,7 @@ overlaps_all %>%
   summarise(n(),
             overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
             mnpercent = mean(Percent_overlap),
-            sepercent = se(Percent_overlap), 
-            mnbinomial = mean(binomial_overlap),
-            sebinomial = se(binomial_overlap)) %>%
+            sepercent = se(Percent_overlap)) %>%
   mutate_if(is.numeric, round, digits = 2)
 
 kable(all_continents)
@@ -125,9 +121,7 @@ overlaps_all %>%
   summarise(n(),
             overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
             mnpercent = mean(Percent_overlap),
-            sepercent = se(Percent_overlap), 
-            mnbinomial = mean(binomial_overlap),
-            sebinomial = se(binomial_overlap)) %>%
+            sepercent = se(Percent_overlap)) %>%
   mutate_if(is.numeric, round, digits = 2)
 
 kable(all_ecology)
@@ -142,9 +136,7 @@ overlaps_all %>%
   summarise(n(),
             overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
             mnpercent = mean(Percent_overlap),
-            sepercent = se(Percent_overlap), 
-            mnbinomial = mean(binomial_overlap),
-            sebinomial = se(binomial_overlap)) %>%
+            sepercent = se(Percent_overlap)) %>%
   mutate_if(is.numeric, round, digits = 2)
 
 kable(all_iucn)
@@ -160,9 +152,7 @@ overlaps_all_nodups %>%
   summarise(n(),
             overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
             mnpercent = mean(Percent_overlap),
-            sepercent = se(Percent_overlap), 
-            mnbinomial = mean(binomial_overlap),
-            sebinomial = se(binomial_overlap)) %>%
+            sepercent = se(Percent_overlap)) %>%
   mutate_if(is.numeric, round, digits = 2)
 
 kable(all_species_nodups)
@@ -177,9 +167,7 @@ overlaps_all_nodups %>%
   summarise(n(),
             overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
             mnpercent = mean(Percent_overlap),
-            sepercent = se(Percent_overlap), 
-            mnbinomial = mean(binomial_overlap),
-            sebinomial = se(binomial_overlap)) %>%
+            sepercent = se(Percent_overlap)) %>%
   mutate_if(is.numeric, round, digits = 2)
 
 kable(all_continents_nodups)
@@ -194,9 +182,7 @@ overlaps_all_nodups %>%
   summarise(n(),
             overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
             mnpercent = mean(Percent_overlap),
-            sepercent = se(Percent_overlap), 
-            mnbinomial = mean(binomial_overlap),
-            sebinomial = se(binomial_overlap)) %>%
+            sepercent = se(Percent_overlap)) %>%
   mutate_if(is.numeric, round, digits = 2)
 
 kable(all_ecology_nodups)
@@ -211,9 +197,7 @@ overlaps_all_nodups %>%
   summarise(n(),
             overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
             mnpercent = mean(Percent_overlap),
-            sepercent = se(Percent_overlap), 
-            mnbinomial = mean(binomial_overlap),
-            sebinomial = se(binomial_overlap)) %>%
+            sepercent = se(Percent_overlap)) %>%
   mutate_if(is.numeric, round, digits = 2)
 
 kable(all_iucn_nodups)
@@ -230,9 +214,7 @@ overlaps_good %>%
   summarise(n(),
             overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
             mnpercent = mean(Percent_overlap),
-            sepercent = se(Percent_overlap), 
-            mnbinomial = mean(binomial_overlap),
-            sebinomial = se(binomial_overlap)) %>%
+            sepercent = se(Percent_overlap)) %>%
   mutate_if(is.numeric, round, digits = 2)
 
 kable(good_species)
@@ -247,9 +229,7 @@ overlaps_good %>%
   summarise(n(),
             overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
             mnpercent = mean(Percent_overlap),
-            sepercent = se(Percent_overlap), 
-            mnbinomial = mean(binomial_overlap),
-            sebinomial = se(binomial_overlap)) %>%
+            sepercent = se(Percent_overlap)) %>%
   mutate_if(is.numeric, round, digits = 2)
 
 kable(good_continents)
@@ -264,9 +244,7 @@ overlaps_good %>%
   summarise(n(),
             overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
             mnpercent = mean(Percent_overlap),
-            sepercent = se(Percent_overlap), 
-            mnbinomial = mean(binomial_overlap),
-            sebinomial = se(binomial_overlap)) %>%
+            sepercent = se(Percent_overlap)) %>%
   mutate_if(is.numeric, round, digits = 2)
 
 kable(good_ecology)
@@ -281,9 +259,7 @@ overlaps_good %>%
   summarise(n(),
             overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
             mnpercent = mean(Percent_overlap),
-            sepercent = se(Percent_overlap), 
-            mnbinomial = mean(binomial_overlap),
-            sebinomial = se(binomial_overlap)) %>%
+            sepercent = se(Percent_overlap)) %>%
   mutate_if(is.numeric, round, digits = 2)
 
 kable(good_iucn)
@@ -300,9 +276,7 @@ overlaps_good_nodups %>%
   summarise(n(),
             overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
             mnpercent = mean(Percent_overlap),
-            sepercent = se(Percent_overlap), 
-            mnbinomial = mean(binomial_overlap),
-            sebinomial = se(binomial_overlap)) %>%
+            sepercent = se(Percent_overlap)) %>%
   mutate_if(is.numeric, round, digits = 2)
 
 kable(good_species_nodups)
@@ -317,9 +291,7 @@ overlaps_good_nodups %>%
   summarise(n(),
             overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
             mnpercent = mean(Percent_overlap),
-            sepercent = se(Percent_overlap), 
-            mnbinomial = mean(binomial_overlap),
-            sebinomial = se(binomial_overlap)) %>%
+            sepercent = se(Percent_overlap)) %>%
   mutate_if(is.numeric, round, digits = 2)
 
 kable(good_continents_nodups)
@@ -334,9 +306,7 @@ overlaps_good_nodups %>%
   summarise(n(),
             overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
             mnpercent = mean(Percent_overlap),
-            sepercent = se(Percent_overlap), 
-            mnbinomial = mean(binomial_overlap),
-            sebinomial = se(binomial_overlap)) %>%
+            sepercent = se(Percent_overlap)) %>%
   mutate_if(is.numeric, round, digits = 2)
 
 kable(good_ecology_nodups)
@@ -351,9 +321,7 @@ overlaps_good_nodups %>%
   summarise(n(),
             overlap = mean(numberOfOverlaps)/mean(numberOfSpecimens) * 100,
             mnpercent = mean(Percent_overlap),
-            sepercent = se(Percent_overlap), 
-            mnbinomial = mean(binomial_overlap),
-            sebinomial = se(binomial_overlap)) %>%
+            sepercent = se(Percent_overlap)) %>%
   mutate_if(is.numeric, round, digits = 2)
 
 kable(good_iucn_nodups)
