@@ -13,12 +13,8 @@ library(tidyverse)
 library(here)
 library(broom)
 library(ggfortify)
-
-# SE function
-se <- 
-  function(y) {
-  sqrt(var(y)/length(y))
-}
+library(betareg)
+library(lmtest)
 ```
 
 ## Prepare for the analyses
@@ -63,8 +59,6 @@ overlaps_all_specs <-
   select(binomial, Continent, ecology, redlist, numberOfOverlaps, numberOfSpecimens) %>%
   distinct()
 ```
-
-
 
 ### Years
 ```{r}
@@ -137,65 +131,200 @@ summary(model1d)
 ```
 
 ## Models - with % area overlaps
-Needs beta regression...
+Beta regression with logit link
+
+First rescale percent to 0-1
+```{r}
+overlaps_year$Percent_overlap <- overlaps_year$Percent_overlap / 100
+overlaps_all$Percent_overlap <- overlaps_all$Percent_overlap / 100
+```
+
+Next rescale to remove zeros and 1s
+```{r}
+transform01 <- function(x) {
+  (x * (length(x) - 1) + 0.5) / (length(x))
+}
+
+overlaps_year$Percent_overlap_scaled <- transform01(overlaps_year$Percent_overlap)
+overlaps_all$Percent_overlap_scaled <- transform01(overlaps_all$Percent_overlap)
+```
 
 ### Year
 ```{r}
-model2a <- lm(Percent_overlap ~ Year, data = overlaps_year)
+# Fit model with fixed phi
+model2a1 <- betareg(Percent_overlap_scaled ~ Year, data = overlaps_year)
+# Fit model with variable phi
+model2a2 <- betareg(Percent_overlap_scaled ~ Year | Year, data = overlaps_year)
 
-## Model diagnostics
-plot(model2a)
+# Which is better fit?
+lrtest(model2a1, model2a2)
 
+```
+
+Check results are the same with bias correction and bia reduction
+```{r}
+# Fit model with fixed phi
+model2a1.bc <- betareg(Percent_overlap_scaled ~ Year, data = overlaps_year, type = "BC")
+# Fit model with variable phi
+model2a2.bc <- betareg(Percent_overlap_scaled ~ Year | Year, data = overlaps_year, type = "BC")
+# Which is better fit?
+lrtest(model2a1.bc, model2a2.bc)
+```
+
+```{r}
+# Fit model with fixed phi
+model2a1.br <- betareg(Percent_overlap_scaled ~ Year, data = overlaps_year, type = "BR")
+# Fit model with variable phi
+model2a2.br <- betareg(Percent_overlap_scaled ~ Year | Year, data = overlaps_year, type = "BR")
+
+# Which is better fit?
+lrtest(model2a1.br, model2a2.br)
+```
+
+```{r}
 ## Model outputs
-anova(model2a)
-summary(model2a)
+summary(model2a1)
 ```
 
 ### Continent
+
 ```{r}
-model2a <- lm(Percent_overlap ~ Continent, data = overlaps_all)
+# Fit model with fixed phi
+model2b1 <- betareg(Percent_overlap_scaled ~ Continent, data = overlaps_all)
+# Fit model with variable phi
+model2b2 <- betareg(Percent_overlap_scaled ~ Continent | Continent, data = overlaps_all)
 
-## Model diagnostics
-plot(model2a)
+# Which is better fit?
+lrtest(model2b1, model2b2)
+```
 
+Check results are the same with bias correction and bia reduction
+```{r}
+# Fit model with fixed phi
+model2b1.bc <- betareg(Percent_overlap_scaled ~ Continent, data = overlaps_all, type = "BC")
+# Fit model with variable phi
+model2b2.bc <- betareg(Percent_overlap_scaled ~ Continent | Continent, data = overlaps_all, type = "BC")
+# Which is better fit?
+lrtest(model2b1.bc, model2b2.bc)
+```
+
+```{r}
+# Fit model with fixed phi
+model2b1.br <- betareg(Percent_overlap_scaled ~ Continent, data = overlaps_all, type = "BR")
+# Fit model with variable phi
+model2b2.br <- betareg(Percent_overlap_scaled ~ Continent | Continent, data = overlaps_all, type = "BR")
+
+# Which is better fit?
+lrtest(model2b1.br, model2b2.br)
+```
+```{r}
 ## Model outputs
-anova(model2a)
-summary(model2a)
-
+summary(model2b2)
 ```
 
 ### Ecology
 ```{r}
-model3a <- lm(Percent_overlap ~ ecology, data = overlaps_all)
+# Fit model with fixed phi
+model2c1 <- betareg(Percent_overlap_scaled ~ ecology, data = overlaps_all)
+# Fit model with variable phi
+model2c2 <- betareg(Percent_overlap_scaled ~ ecology | ecology, data = overlaps_all)
 
-## Model diagnostics
-plot(model3a)
+# Which is better fit?
+lrtest(model2c1, model2c2)
+```
 
+Check results are the same with bias correction and bia reduction
+```{r}
+# Fit model with fixed phi
+model2c1.bc <- betareg(Percent_overlap_scaled ~ ecology, data = overlaps_all, type = "BC")
+# Fit model with variable phi
+model2c2.bc <- betareg(Percent_overlap_scaled ~ ecology | ecology, data = overlaps_all, type = "BC")
+# Which is better fit?
+lrtest(model2c1.bc, model2c2.bc)
+```
+
+```{r}
+# Fit model with fixed phi
+model2c1.br <- betareg(Percent_overlap_scaled ~ ecology, data = overlaps_all, type = "BR")
+# Fit model with variable phi
+model2c2.br <- betareg(Percent_overlap_scaled ~ ecology | ecology, data = overlaps_all, type = "BR")
+
+# Which is better fit?
+lrtest(model2c1.br, model2c2.br)
+```
+```{r}
 ## Model outputs
-anova(model3a)
-summary(model3a)
+summary(model2c2)
 ```
 
 ### IUCN
 ```{r}
-model4a <- lm(Percent_overlap ~ redlist, data = overlaps_all)
+# Fit model with fixed phi
+model2d1 <- betareg(Percent_overlap_scaled ~ redlist, data = overlaps_all)
+# Fit model with variable phi
+model2d2 <- betareg(Percent_overlap_scaled ~ redlist | redlist, data = overlaps_all)
 
-## Model diagnostics
-plot(model4a)
+# Which is better fit?
+lrtest(model2d1, model2d2)
+```
 
+Check results are the same with bias correction and bias reduction
+```{r}
+# Fit model with fixed phi
+model2d1.bc <- betareg(Percent_overlap_scaled ~ redlist, data = overlaps_all, type = "BC")
+# Fit model with variable phi
+model2d2.bc <- betareg(Percent_overlap_scaled ~ redlist | redlist, data = overlaps_all, type = "BC")
+# Which is better fit?
+lrtest(model2d1.bc, model2d2.bc)
+```
+
+```{r}
+# Fit model with fixed phi
+model2d1.br <- betareg(Percent_overlap_scaled ~ redlist, data = overlaps_all, type = "BR")
+# Fit model with variable phi
+model2d2.br <- betareg(Percent_overlap_scaled ~ redlist | redlist, data = overlaps_all, type = "BR")
+
+# Which is better fit?
+lrtest(model2d1.br, model2d2.br)
+```
+
+```{r}
 ## Model outputs
-anova(model4a)
-summary(model4a)
+summary(model2d2)
 ```
 
 ### Species
 ```{r}
-model5a <- lm(Percent_overlap ~ binomial, data = overlaps_all)
+# Fit model with fixed phi
+model2e1 <- betareg(Percent_overlap_scaled ~ binomial, data = overlaps_all)
+# Fit model with variable phi
+model2e2 <- betareg(Percent_overlap_scaled ~ binomial | binomial, data = overlaps_all)
 
-## Model diagnostics
-plot(model5a)
+# Which is better fit?
+lrtest(model2e1, model2e2)
+```
 
+Check results are the same with bias correction and bias reduction
+```{r}
+# Fit model with fixed phi
+model2e1.bc <- betareg(Percent_overlap_scaled ~ binomial, data = overlaps_all, type = "BC")
+# Fit model with variable phi
+model2e2.bc <- betareg(Percent_overlap_scaled ~ binomial | binomial, data = overlaps_all, type = "BC")
+# Which is better fit?
+lrtest(model2e1.bc, model2e2.bc)
+```
+
+```{r}
+# Fit model with fixed phi
+model2e1.br <- betareg(Percent_overlap_scaled ~ binomial, data = overlaps_all, type = "BR")
+# Fit model with variable phi
+model2e2.br <- betareg(Percent_overlap_scaled ~ binomial | binomial, data = overlaps_all, type = "BR")
+
+# Which is better fit?
+lrtest(model2e1.br, model2e2.br)
+```
+
+```{r}
 ## Model outputs
-anova(model5a)
-summary(model5a)
+summary(model2e2)
 ```
