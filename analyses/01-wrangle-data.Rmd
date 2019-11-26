@@ -176,11 +176,11 @@ We can now use `overlaps` in our analyses and plots.
 Note that `st_write` will throw an error if you try to overwrite a file, so delete previous version of the files first. To avoid this error I've commented these out here.
 ```{r}
 #st_write(specs, here("data/specimens-points.csv"), 
-#         layer_options = "GEOMETRY=AS_WKT")
+         #layer_options = "GEOMETRY=AS_WKT")
 #st_write(specs_errors, here("data/specimens-extents.csv"), 
-#         layer_options = "GEOMETRY=AS_WKT")
+         #layer_options = "GEOMETRY=AS_WKT")
 #st_write(overlaps, here("data/overlaps.csv"), 
-#         layer_options = "GEOMETRY=AS_WKT")
+         #layer_options = "GEOMETRY=AS_WKT")
 ```
 ## Summary info
 
@@ -197,7 +197,7 @@ specs %>%
   # Remove specimens with low certainty and large extent
   filter(Certainty >= 50 & Extent_km < 50) %>%
   # Remove duplicates
-  filter(duplicates == FALSE) %>%
+  filter(duplicates == 0) %>%
   group_by(binomial) %>%
   summarise(n())
 
