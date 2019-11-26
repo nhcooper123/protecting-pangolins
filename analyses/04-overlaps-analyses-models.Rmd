@@ -1,0 +1,130 @@
+---
+title: "Overlaps analyses 2 - models"
+output: html_document
+---
+  
+This script takes georeferenced data and IUCN range maps for pangolins and analyses the number of overlaps in various ways.
+
+## Load libraries
+```{r, message = FALSE, warning = FALSE}
+library(sf)
+library(sfe)
+library(tidyverse)
+library(here)
+library(broom)
+library(ggfortify)
+
+# SE function
+se <- 
+  function(y) {
+  sqrt(var(y)/length(y))
+}
+```
+
+## Prepare for the analyses
+First read in the data as CSV not spatial data as we don't need the spatial geometries here. Relevel redlist so it matches increasing extinction risk. Omit specimens with large extents and low certainty. Omit duplicates and add success failure numbers.
+```{r, message = FALSE, warning = FALSE}
+overlaps_all <- 
+  read_csv(here("data/overlaps.csv")) %>%  
+  mutate(redlist = factor(redlist, levels = c("VU", "EN", "CR"))) %>%
+  filter(Certainty >= 50 & Extent_km < 50) %>%
+  filter(duplicates == 0) %>%
+  # Number of specimens per species total
+  countNumbSpecimens() %>%
+  # Number of overlaps per species
+  countNumbOverlaps()
+```
+
+Repeat but for years data which has different duplicates:
+```{r}
+overlaps_year <- 
+  read_csv(here("data/overlaps.csv")) %>%  
+  mutate(redlist = factor(redlist, levels = c("VU", "EN", "CR"))) %>%
+  filter(Certainty >= 50 & Extent_km < 50) %>%
+  filter(duplicates_year == 0) %>%
+  # Number of specimens per species total
+  countNumbSpecimens() %>%
+  # Number of overlaps per species
+  countNumbOverlaps()
+```
+
+## Models with number of overlaps
+These are binomial GLMs but we only have 8 species so too little power to say much. Included mainly for completeness.
+
+### Years
+```{r}
+model1a <- glm(cbind(numberOfOverlaps, numberOfSpecimens - numberOfOverlaps) ~ Year,   
+               data = overlaps_year, family = binomial)
+
+## Model diagnostics
+autoplot(model1a)
+
+## Model outputs
+anova(model1a)
+summary(model1a)
+
+```
+
+
+
+## Models - with % area overlaps
+
+##-----------------------------------------------------------
+## Year
+##-----------
+model1a <- lm(Percent_overlap ~ Year, data = overlaps_year)
+
+## Model diagnostics
+plot(model1a)
+
+## Model outputs
+anova(model1a)
+summary(model1a)
+
+##-----------
+## Continent
+##-----------
+model2a <- lm(Percent_overlap ~ Continent, data = overlaps_all)
+
+## Model diagnostics
+plot(model2a)
+
+## Model outputs
+anova(model2a)
+summary(model2a)
+
+##-----------
+## Ecology
+##-----------
+model3a <- lm(Percent_overlap ~ ecology, data = overlaps_all)
+
+## Model diagnostics
+plot(model3a)
+
+## Model outputs
+anova(model3a)
+summary(model3a)
+
+##-----------
+## IUCN
+##-----------
+model4a <- lm(Percent_overlap ~ redlist, data = overlaps_all)
+
+## Model diagnostics
+plot(model4a)
+
+## Model outputs
+anova(model4a)
+summary(model4a)
+
+##-----------
+## Species
+##-----------
+model5a <- lm(Percent_overlap ~ binomial, data = overlaps_all)
+
+## Model diagnostics
+plot(model5a)
+
+## Model outputs
+anova(model5a)
+summary(model5a)
