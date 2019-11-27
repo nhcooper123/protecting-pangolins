@@ -126,7 +126,7 @@ redlist_plota <-
   theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
-species_plota / (continent_plota + year_plota) / 
+species_plota / (year_plota + continent_plota) / 
   (ecology_plota + redlist_plota)
 
 #ggsave(here("figures/area-overlap.png"), width = 5)
@@ -200,7 +200,7 @@ redlist_plotb <-
   theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
-species_plotb / (continent_plotb + year_plotb) /
+species_plotb / (year_plotb + continent_plotb) /
   (ecology_plotb + redlist_plotb)
 
 #ggsave(here("figures/specimen-number-overlap.png"), width = 5)
