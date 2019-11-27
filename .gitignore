@@ -1,7 +1,9 @@
 # Project specific
 raw-data/*
 #data/*
+
 *.html
+*.xlsx
 
 # History files
 .Rhistory
