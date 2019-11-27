@@ -35,22 +35,6 @@ overlaps_all <-
   countNumbSpecimens() %>%
   # Number of overlaps per species
   countNumbOverlaps()
-
-## Years data
-overlaps_year <- 
-  st_read(here("data/overlaps.csv")) %>%  
-  st_set_crs(4326) %>%
-  mutate_at(vars(Extent_km, Certainty, Year, Decade,
-                 Percent_overlap, binomial_overlap), 
-            ~as.numeric(as.character(.))) %>%
-  mutate(redlist = factor(redlist, levels = c("VU", "EN", "CR"))) %>%
-  # Omit poor accuracy specimens
-  filter(Certainty >= 50 & Extent_km < 50) %>%
-  # Omit duplicates 
-  filter(duplicates_year == 0) %>%
-  # Add successes and failures for models
-  countNumbSpecimens() %>%
-  countNumbOverlaps()
 ```
 
 ## Extracting land use data
@@ -85,7 +69,7 @@ time <- ncvar_get(nc_data, "time")
 
 Next we extract changes in land use variables within each point-polygon area for each specimen in the `overlaps` data. The differences are added to the data as new variables. Differences are also for various time periods.
 
-The functions below will throw warnings about coordinate systems but all are in WGS84 so it's fine
+The functions below will throw warnings about coordinate systems but all are in WGS84 so it's fine.
 
 *This takes 5-10 minutes to run - go and get a coffee*
 
@@ -93,36 +77,36 @@ The functions below will throw warnings about coordinate systems but all are in 
 overlaps_landuse_all <- overlaps_all
 
 # Primary forest
-overlaps_landuse <- 
+overlaps_landuse_all <- 
   get_landuse_diff("primf", nc_data, overlaps_landuse) 
 
 # Primary non forest
-overlaps_landuse <- 
+overlaps_landuse_all <- 
   get_landuse_diff("primn", nc_data, overlaps_landuse) 
 
 # Secondary forest
-overlaps_landuse <- 
+overlaps_landuse_all <- 
   get_landuse_diff("secdf", nc_data, overlaps_landuse) 
 
 # Secondary non forest
-overlaps_landuse <- 
+overlaps_landuse_all <- 
   get_landuse_diff("secdn", nc_data, overlaps_landuse) 
 
 # Pasture
-overlaps_landuse <- 
+overlaps_landuse_all <- 
   get_landuse_diff("pastr", nc_data, overlaps_landuse) 
 
 # Rangeland
-overlaps_landuse <- 
+overlaps_landuse_all <- 
   get_landuse_diff("range", nc_data, overlaps_landuse) 
 
 # Urban
-overlaps_landuse <- 
+overlaps_landuse_all <- 
   get_landuse_diff("urban", nc_data, overlaps_landuse) 
 
 # Close data set 
 nc_close(nc_data)
-
+```
 #----------------------------------
 # Repeat for low LUH2 data...
 #----------------------------------
