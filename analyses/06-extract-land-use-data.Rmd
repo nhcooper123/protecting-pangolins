@@ -74,39 +74,39 @@ The functions below will throw warnings about coordinate systems but all are in 
 *This takes 5-10 minutes to run - go and get a coffee*
 
 ```{r}
-overlaps_landuse_all <- overlaps_all
+overlaps_landuse <- overlaps_all
 
 # Primary forest
-overlaps_landuse_all <- 
+overlaps_landuse <- 
   get_landuse_diff("primf", nc_data, overlaps_landuse) 
 
 # Primary non forest
-overlaps_landuse_all <- 
+overlaps_landuse <- 
   get_landuse_diff("primn", nc_data, overlaps_landuse) 
 
 # Secondary forest
-overlaps_landuse_all <- 
+overlaps_landuse <- 
   get_landuse_diff("secdf", nc_data, overlaps_landuse) 
 
 # Secondary non forest
-overlaps_landuse_all <- 
+overlaps_landuse <- 
   get_landuse_diff("secdn", nc_data, overlaps_landuse) 
 
 # Pasture
-overlaps_landuse_all <- 
+overlaps_landuse <- 
   get_landuse_diff("pastr", nc_data, overlaps_landuse) 
 
 # Rangeland
-overlaps_landuse_all <- 
+overlaps_landuse <- 
   get_landuse_diff("range", nc_data, overlaps_landuse) 
 
 # Urban
-overlaps_landuse_all <- 
+overlaps_landuse <- 
   get_landuse_diff("urban", nc_data, overlaps_landuse) 
 
 # Close data set 
 nc_close(nc_data)
-```
+
 #----------------------------------
 # Repeat for low LUH2 data...
 #----------------------------------
