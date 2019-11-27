@@ -1,0 +1,34 @@
+---
+title: "Extract HPD change data"
+output: html_document
+---
+  
+This script takes extracts various types of HPD data from the error polygons of the specimens.
+
+## Load libraries
+```{r, message = FALSE, warning = FALSE}
+library(sf)
+library(sfe)
+library(tidyverse) 
+library(raster) 
+library(rgdal)
+library(here)
+
+source(here::here("analyses/functions-anthropocene-data.R"))
+```
+
+Read in hpd data for high scenario
+```{r}
+paths <- get_files("raw-data/spatial-data/Population_high")
+
+files <- get_files(path = paste0(paths, "/"))
+filenames <- get_names(path = paths)
+
+for (i in 1:length(files)){
+  assign(filenames[i], raster(files[i], crs = "+proj=longlat +datum=WGS84"))}
+```
+
+And extract the HPD...
+
+**This takes a while!**
+overlaps_hpd <- extract_hpd(overlaps)
