@@ -6,6 +6,7 @@
 ##----------------------------------------------
 ## Load libraries
 library(sf)
+library(sfe)
 library(tidyverse)
 library(here)
 library(patchwork)
