@@ -3,7 +3,7 @@ title: "Extract Land use change data"
 output: html_document
 ---
   
-This script takes extracts various types of land use data from the percentage area overlaps of the specimens.
+This script takes extracts various types of land use data from the error polygons of the specimens.
 
 ## Load libraries
 ```{r, message = FALSE, warning = FALSE}
