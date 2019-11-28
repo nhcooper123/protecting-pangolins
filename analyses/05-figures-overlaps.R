@@ -30,37 +30,25 @@ species.list <- c("M. crassicaudata", "M.culionensis",
 # and relevel redlist
 ##-----------------------------------------------------
 overlaps_all <- 
-  st_read(here("data/overlaps.csv")) %>%  
-  st_set_crs(4326) %>%
-  mutate_at(vars(Extent_km, Certainty, Year, Decade,
-                 Percent_overlap, binomial_overlap), 
-            ~as.numeric(as.character(.))) %>%
+  read_csv(here("data/overlaps.csv")) %>%  
   mutate(redlist = factor(redlist, levels = c("VU", "EN", "CR"))) %>%
-  # Omit poor accuracy specimens
   filter(Certainty >= 50 & Extent_km < 50) %>%
-  # Omit duplicates 
   filter(duplicates == 0) %>%
-  # Add successes and failures for models
+  # Number of specimens per species total
   countNumbSpecimens() %>%
   # Number of overlaps per species
   countNumbOverlaps()
 
 ## Years data
 overlaps_year <- 
-  st_read(here("data/overlaps.csv")) %>%  
-  st_set_crs(4326) %>%
-  mutate_at(vars(Extent_km, Certainty, Year, Decade,
-                 Percent_overlap, binomial_overlap), 
-            ~as.numeric(as.character(.))) %>%
+  read_csv(here("data/overlaps.csv")) %>%  
   mutate(redlist = factor(redlist, levels = c("VU", "EN", "CR"))) %>%
-  # Omit poor accuracy specimens
   filter(Certainty >= 50 & Extent_km < 50) %>%
-  # Omit duplicates 
   filter(duplicates_year == 0) %>%
-  # Add successes and failures for models
+  # Number of specimens per species total
   countNumbSpecimens() %>%
+  # Number of overlaps per species
   countNumbOverlaps()
-
 ##-----------------------------------------------------------
 # % area overlap plots
 ##-----------------------------------------------------------
