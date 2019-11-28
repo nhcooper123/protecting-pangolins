@@ -57,7 +57,7 @@ We will use the LUH2 dataset for landuse, here's a list of the variables:
 First we read in the data which is netCDF data...
 
 ```{r}
-# Read in the netCDF data - copy paste into the terminal
+# Read in the netCDF data
 nc_data <- nc_open(here("raw-data/spatial-data/LUH2_high_states.nc"))
 
 # Capture the lat, lon and time variables
@@ -73,7 +73,7 @@ The functions below will throw warnings about coordinate systems but all are in 
 *This takes 5-10 minutes to run - go and get a coffee*
 
 ```{r}
-overlaps_landuse <- overlaps_all
+overlaps_landuse <- specs_errors
 
 # Primary forest
 overlaps_landuse <- 
@@ -110,8 +110,8 @@ nc_close(nc_data)
 Repeat for low LUH2 data...
 
 ```{r}
-# Read in the netCDF data - copy paste into the terminal
-nc_data_low <- nc_open("raw-data/spatial-data/LUH2_low_states.nc")
+# Read in the netCDF data
+nc_data_low <- nc_open(here("raw-data/spatial-data/LUH2_low_states.nc"))
 
 # Capture the lat, lon and time variables
 lon <- ncvar_get(nc_data_low, "lon")
@@ -119,7 +119,7 @@ lat <- ncvar_get(nc_data_low, "lat", verbose = F)
 time <- ncvar_get(nc_data_low, "time")
 
 # Add each variable in turn
-overlaps_landuse_low <- overlaps_all
+overlaps_landuse_low <- specs_errors
 
 # Primary forest
 overlaps_landuse_low <- 
