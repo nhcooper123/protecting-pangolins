@@ -28,11 +28,7 @@ specs_errors <-
   # Omit poor accuracy specimens
   filter(Certainty >= 50 & Extent_km < 50) %>%
   # Omit duplicates 
-  filter(duplicates == 0) %>%
-  # Add successes and failures for models
-  countNumbSpecimens() %>%
-  # Number of overlaps per species
-  countNumbOverlaps()
+  filter(duplicates == 0)
 ```
 
 ## Extracting land use data
