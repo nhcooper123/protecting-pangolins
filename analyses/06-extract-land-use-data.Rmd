@@ -72,7 +72,7 @@ The functions below will throw warnings about coordinate systems but all are in 
 
 *This takes 5-10 minutes to run - go and get a coffee*
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
 overlaps_landuse <- specs_errors
 
 # Primary forest
@@ -109,7 +109,7 @@ nc_close(nc_data)
 
 Repeat for low LUH2 data...
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
 # Read in the netCDF data
 nc_data_low <- nc_open(here("raw-data/spatial-data/LUH2_low_states.nc"))
 
