@@ -17,18 +17,54 @@ library(here)
 source(here::here("analyses/functions-anthropocene-data.R"))
 ```
 
+Read in the data and set coordinate ref system. For some reason st_read makes everything a factor so convert Extent etc back to numeric first and relevel redlist
+```{r}
+specs_errors <- 
+  st_read(here("data/specimens-extents.csv")) %>%  
+  st_set_crs(4326) %>%
+  mutate_at(vars(Extent_km, Certainty), 
+            ~as.numeric(as.character(.))) %>%
+  # Omit poor accuracy specimens
+  filter(Certainty >= 50 & Extent_km < 50) %>%
+  # Omit duplicates 
+  filter(duplicates == 0)
+```
+
 Read in hpd data for high scenario
 ```{r}
-paths <- get_files("raw-data/spatial-data/Population_high")
+# Define root folder and then folders within this
+root <- "raw-data/spatial-data/Population_high"
+folders <- list.files(here(root))
+paths <- paste0(root, "/", folders)
 
-files <- get_files(path = paste0(paths, "/"))
-filenames <- get_names(path = paths)
+# Extract list of files in all the folders with paths attached
+files <- NULL
+for (i in 1:length(paths)){
+  files <- c(files, paste0(paths[i], "/", list.files(here(paths[i]))))
+}    
 
+# Extract list of files in all the folders
+filenames <- NULL
+for (i in 1:length(paths)){
+  filenames <- c(filenames, list.files(here(paths[i])))
+} 
+
+# Remove .asc from filenames  
+filenames <- str_remove(filenames, ".asc")
+
+# Read in all the data
 for (i in 1:length(files)){
-  assign(filenames[i], raster(files[i], crs = "+proj=longlat +datum=WGS84"))}
+  assign(filenames[i], raster(here(files[i]), 
+                              crs = "+proj=longlat +datum=WGS84"))}
 ```
 
 And extract the HPD...
 
 **This takes a while!**
-overlaps_hpd <- extract_hpd(overlaps)
+```{r}
+overlaps_hpd <- extract_hpd(specs_errors)
+
+# Write to file
+#st_write(overlaps_hpd, here("data/overlaps_hpd.csv"))
+```
+
