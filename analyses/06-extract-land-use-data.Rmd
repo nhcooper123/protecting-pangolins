@@ -105,6 +105,9 @@ overlaps_landuse <-
 
 # Close data set 
 nc_close(nc_data)
+
+# Write to file
+#st_write(overlaps_landuse, here("data/overlaps_landuse.csv"))
 ```
 
 Repeat for low LUH2 data...
@@ -151,4 +154,7 @@ overlaps_landuse_low <-
 
 # Close data set 
 nc_close(nc_data_low)
+
+# Write to file
+#st_write(overlaps_landuse_low, here("data/overlaps_landuse_low.csv"))
 ```
