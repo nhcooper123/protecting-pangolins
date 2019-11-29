@@ -61,7 +61,7 @@ for (i in 1:length(files)){
 And extract the HPD...
 
 **This takes a while!**
-```{r}
+```{r, message = FALSE, warning = FALSE}
 overlaps_hpd <- extract_hpd(specs_errors)
 
 # Write to file
