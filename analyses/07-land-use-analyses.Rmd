@@ -17,161 +17,33 @@ library(betareg)
 library(lmtest)
 ```
 
-## Models with number of overlaps
-These are binomial GLMs but we only have 8 species so too little power to say much. Included mainly for completeness.
-
-First create new datasets only with unique values to avoid accidental pseudoreplication.
-```{r}
-overlaps_all_specs <-
-  overlaps_all %>%
-  select(binomial, Continent, ecology, redlist, numberOfOverlaps, numberOfSpecimens) %>%
-  distinct()
+## Prepare for the analyses
+First read in the data as CSV not spatial data as we don't need the spatial geometries here. Relevel redlist so it matches increasing extinction risk.
+```{r, message = FALSE, warning = FALSE}
+overlaps_landuse <- 
+  read_csv(here("data/overlaps_landuse.csv")) %>%  
+  mutate(redlist = factor(redlist, levels = c("VU", "EN", "CR")))
 ```
 
-
+Next read in overlaps data so we can get the number of overlaps
 ```{r}
-# Fit model for all land use variables...
-binomial_output <- data.frame(array(dim = c(28, 5)))
-names(binomial_output) <- c("variable", "df1", "df2", "res.dev", "p")
+overlaps <- 
+  read_csv(here("data/overlaps.csv")) 
 
-for(i in 16:43){
-  
-modela <- glm(cbind(numberOfOverlaps, (numberOfSpecimens - numberOfOverlaps)) ~
-                overlaps_landuse[ , i][[1]], data = overlaps_landuse, 
-                family = 'binomial')
+overlaps <- 
+  as.data.frame(overlaps) %>%
+  dplyr::select(RegistrationNumber, Percent_overlap)
 
-## Model outputs
-z <- anova(modela, test = "Chisq")
-summary(modela)
-
-binomial_output$variable[i-15] <- names(overlaps_landuse_all)[i]
-binomial_output$df1[i-15] <- z$Df[2]
-binomial_output$df2[i-15] <- z$`Resid. Df`[2]
-binomial_output$res.dev[i-15] <- z$`Resid. Dev`[2] 
-binomial_output$p[i-15] <- z$`Pr(>Chi)`[2]  
-
-}
-# Save outputs
-write_csv(path = here::here("outputs/landuse_binomial_output_high.csv"), 
-          binomial_output)
-##-----------------------------------------------------------
-## Model fitting - with % overlaps of area
-##-----------------------------------------------------------
-percent_output <- data.frame(array(dim = c(28, 5)))
-names(percent_output) <- c("variable", "df1", "df2", "F", "p")
-
-for(i in 16:43){
-  
-  modela <- lm(Percent_overlap ~ overlaps_landuse_all[ , i][[1]], 
-               data = overlaps_landuse_all)
-  
-  ## Model outputs
-  z <- anova(modela)
-  
-  percent_output$variable[i-15] <- names(overlaps_landuse_all)[i]
-  percent_output$df1[i-15] <- z$Df[1]
-  percent_output$df2[i-15] <- z$Df[2]
-  percent_output$F[i-15] <- z$`F value`[1] 
-  percent_output$p[i-15] <- z$`Pr(>F)`[1]  
-  
-}
-
-# Save outputs
-write_csv(path = here::here("outputs/landuse_percent_output_high.csv"), percent_output)
-
-# Quick plot
-ggplot(overlaps_landuse_all, aes(x = primf_1850, y = Percent_overlap)) +
-  geom_point() +
-  xlab('diff') +
-  ylab('% area overlap') +
-  theme_bw(base_size = 14) +
-  theme(axis.text.x = element_text(angle = 45, vjust = 0.6))
-
-#----------------------------------------------------------------------
-### Repeat for low LUH2 data
-
-# Prep data
-##----------------------------------------------------------
-# Omit specimens with large extents and low certainty
-##-----------------------------------------------------------
-overlaps_landuse2X <-
-  overlaps_landuseX %>%
-  filter(Certainty >= 50 & Extent_km < 50)
-
-##----------------------------------------------------------
-# Omit duplicates
-# and add success failure numbers
-##-----------------------------------------------------------
-overlaps_landuse_allX <-
-  overlaps_landuse2X %>%
-  filter(duplicates == FALSE)
-
-# Add successes and failures for models
-# Number of specimens per species total
-overlaps_landuse_allX <- countNumbSpecimens(overlaps_landuse_allX)
-# Number of overlaps per species
-overlaps_landuse_allX <- countNumbOverlaps(overlaps_landuse_allX)
-
-##------------------------------------------------------------------
-## Model fitting - binomial GLMs with no overlaps vs not per species
-##------------------------------------------------------------------
-# Fit model for all land use variables...
-binomial_outputX <- data.frame(array(dim = c(28, 5)))
-names(binomial_outputX) <- c("variable", "df1", "df2", "res.dev", "p")
-
-for(i in 16:43){
-  
-  modela <- glm(cbind(numberOfOverlaps, (numberOfSpecimens - numberOfOverlaps)) ~
-                  overlaps_landuse_allX[ , i][[1]], data = overlaps_landuse_allX, family = 'binomial')
-  
-  ## Model outputs
-  z <- anova(modela, test = "Chisq")
-  summary(modela)
-  
-  binomial_outputX$variable[i-15] <- names(overlaps_landuse_allX)[i]
-  binomial_outputX$df1[i-15] <- z$Df[2]
-  binomial_outputX$df2[i-15] <- z$`Resid. Df`[2]
-  binomial_outputX$res.dev[i-15] <- z$`Resid. Dev`[2] 
-  binomial_outputX$p[i-15] <- z$`Pr(>Chi)`[2]  
-  
-}
-# Save outputs
-write_csv(path = here::here("outputs/landuse_binomial_output_low.csv"), binomial_outputX)
-##-----------------------------------------------------------
-## Model fitting - with % overlaps of area
-##-----------------------------------------------------------
-percent_outputX <- data.frame(array(dim = c(28, 5)))
-names(percent_outputX) <- c("variable", "df1", "df2", "F", "p")
-
-for(i in 16:43){
-  
-  modela <- lm(Percent_overlap ~ overlaps_landuse_allX[ , i][[1]], 
-               data = overlaps_landuse_allX)
-  
-  ## Model outputs
-  z <- anova(modela)
-  
-  percent_outputX$variable[i-15] <- names(overlaps_landuse_allX)[i]
-  percent_outputX$df1[i-15] <- z$Df[1]
-  percent_outputX$df2[i-15] <- z$Df[2]
-  percent_outputX$F[i-15] <- z$`F value`[1] 
-  percent_outputX$p[i-15] <- z$`Pr(>F)`[1]  
-  
-}
-
-# Save outputs
-write_csv(path = here::here("outputs/landuse_percent_output_low.csv"), percent_outputX)
-
-
-
+overlaps_landuse <- left_join(overlaps_landuse, overlaps, 
+                              by = "RegistrationNumber")
+```
 
 ## Models - with % area overlaps
 Beta regression with logit link
 
 First rescale percent to 0-1
 ```{r}
-overlaps_year$Percent_overlap <- overlaps_year$Percent_overlap / 100
-overlaps_all$Percent_overlap <- overlaps_all$Percent_overlap / 100
+overlaps_landuse$Percent_overlap <- overlaps_landuse$Percent_overlap / 100
 ```
 
 Next rescale to remove zeros and 1s
@@ -180,43 +52,458 @@ transform01 <- function(x) {
   (x * (length(x) - 1) + 0.5) / (length(x))
 }
 
-overlaps_year$Percent_overlap_scaled <- transform01(overlaps_year$Percent_overlap)
-overlaps_all$Percent_overlap_scaled <- transform01(overlaps_all$Percent_overlap)
+overlaps_landuse$Percent_overlap_scaled <- 
+  transform01(overlaps_landuse$Percent_overlap)
 ```
 
-### Year
+Variables are:
+* primf: forested primary land
+* primn: non-forested primary land
+* urban: urban land
+
+## Primary Forest
+### primf_1850
 ```{r}
 # Fit model with fixed phi
-model2a1 <- betareg(Percent_overlap_scaled ~ Year, data = overlaps_year)
+model1a1 <- betareg(Percent_overlap_scaled ~ primf_1850, data = overlaps_landuse)
 # Fit model with variable phi
-model2a2 <- betareg(Percent_overlap_scaled ~ Year | Year, data = overlaps_year)
+model1a2 <- betareg(Percent_overlap_scaled ~ primf_1850 | primf_1850, data = overlaps_landuse)
 
 # Which is better fit?
-lrtest(model2a1, model2a2)
+lrtest(model1a1, model1a2)
 
 ```
 
 Check results are the same with bias correction and bia reduction
 ```{r}
 # Fit model with fixed phi
-model2a1.bc <- betareg(Percent_overlap_scaled ~ Year, data = overlaps_year, type = "BC")
+model1a1.bc <- betareg(Percent_overlap_scaled ~ primf_1850, data = overlaps_landuse, type = "BC")
 # Fit model with variable phi
-model2a2.bc <- betareg(Percent_overlap_scaled ~ Year | Year, data = overlaps_year, type = "BC")
+model1a2.bc <- betareg(Percent_overlap_scaled ~ primf_1850 | primf_1850, data = overlaps_landuse, type = "BC")
 # Which is better fit?
-lrtest(model2a1.bc, model2a2.bc)
+lrtest(model1a1.bc, model1a2.bc)
 ```
 
 ```{r}
 # Fit model with fixed phi
-model2a1.br <- betareg(Percent_overlap_scaled ~ Year, data = overlaps_year, type = "BR")
+model1a1.br <- betareg(Percent_overlap_scaled ~ primf_1850, data = overlaps_landuse, type = "BR")
 # Fit model with variable phi
-model2a2.br <- betareg(Percent_overlap_scaled ~ Year | Year, data = overlaps_year, type = "BR")
+model1a2.br <- betareg(Percent_overlap_scaled ~ primf_1850 | primf_1850, data = overlaps_landuse, type = "BR")
 
 # Which is better fit?
-lrtest(model2a1.br, model2a2.br)
+lrtest(model1a1.br, model1a2.br)
 ```
 
 ```{r}
 ## Model outputs
-summary(model2a1)
+summary(model1a1)
+```
+
+### primf_1900
+```{r}
+# Fit model with fixed phi
+model1a1 <- betareg(Percent_overlap_scaled ~ primf_1900, data = overlaps_landuse)
+# Fit model with variable phi
+model1a2 <- betareg(Percent_overlap_scaled ~ primf_1900 | primf_1900, data = overlaps_landuse)
+
+# Which is better fit?
+lrtest(model1a1, model1a2)
+
+```
+
+Check results are the same with bias correction and bia reduction
+```{r}
+# Fit model with fixed phi
+model1a1.bc <- betareg(Percent_overlap_scaled ~ primf_1900, data = overlaps_landuse, type = "BC")
+# Fit model with variable phi
+model1a2.bc <- betareg(Percent_overlap_scaled ~ primf_1900 | primf_1900, data = overlaps_landuse, type = "BC")
+# Which is better fit?
+lrtest(model1a1.bc, model1a2.bc)
+```
+
+```{r}
+# Fit model with fixed phi
+model1a1.br <- betareg(Percent_overlap_scaled ~ primf_1900, data = overlaps_landuse, type = "BR")
+# Fit model with variable phi
+model1a2.br <- betareg(Percent_overlap_scaled ~ primf_1900 | primf_1900, data = overlaps_landuse, type = "BR")
+
+# Which is better fit?
+lrtest(model1a1.br, model1a2.br)
+```
+
+```{r}
+## Model outputs
+summary(model1a1)
+```
+
+### primf_1950
+```{r}
+# Fit model with fixed phi
+model1a1 <- betareg(Percent_overlap_scaled ~ primf_1950, data = overlaps_landuse)
+# Fit model with variable phi
+model1a2 <- betareg(Percent_overlap_scaled ~ primf_1950 | primf_1950, data = overlaps_landuse)
+
+# Which is better fit?
+lrtest(model1a1, model1a2)
+
+```
+
+Check results are the same with bias correction and bia reduction
+```{r}
+# Fit model with fixed phi
+model1a1.bc <- betareg(Percent_overlap_scaled ~ primf_1950, data = overlaps_landuse, type = "BC")
+# Fit model with variable phi
+model1a2.bc <- betareg(Percent_overlap_scaled ~ primf_1950 | primf_1950, data = overlaps_landuse, type = "BC")
+# Which is better fit?
+lrtest(model1a1.bc, model1a2.bc)
+```
+
+```{r}
+# Fit model with fixed phi
+model1a1.br <- betareg(Percent_overlap_scaled ~ primf_1950, data = overlaps_landuse, type = "BR")
+# Fit model with variable phi
+model1a2.br <- betareg(Percent_overlap_scaled ~ primf_1950 | primf_1950, data = overlaps_landuse, type = "BR")
+
+# Which is better fit?
+lrtest(model1a1.br, model1a2.br)
+```
+
+```{r}
+## Model outputs
+summary(model1a1)
+```
+
+### primf_2000
+```{r}
+# Fit model with fixed phi
+model1a1 <- betareg(Percent_overlap_scaled ~ primf_2000, data = overlaps_landuse)
+# Fit model with variable phi
+model1a2 <- betareg(Percent_overlap_scaled ~ primf_2000 | primf_2000, data = overlaps_landuse)
+
+# Which is better fit?
+lrtest(model1a1, model1a2)
+
+```
+
+Check results are the same with bias correction and bia reduction
+```{r}
+# Fit model with fixed phi
+model1a1.bc <- betareg(Percent_overlap_scaled ~ primf_2000, data = overlaps_landuse, type = "BC")
+# Fit model with variable phi
+model1a2.bc <- betareg(Percent_overlap_scaled ~ primf_2000 | primf_2000, data = overlaps_landuse, type = "BC")
+# Which is better fit?
+lrtest(model1a1.bc, model1a2.bc)
+```
+
+```{r}
+# Fit model with fixed phi
+model1a1.br <- betareg(Percent_overlap_scaled ~ primf_2000, data = overlaps_landuse, type = "BR")
+# Fit model with variable phi
+model1a2.br <- betareg(Percent_overlap_scaled ~ primf_2000 | primf_2000, data = overlaps_landuse, type = "BR")
+
+# Which is better fit?
+lrtest(model1a1.br, model1a2.br)
+```
+
+```{r}
+## Model outputs
+summary(model1a1)
+```
+
+## Non forested primary land
+### primn_1850
+```{r}
+# Fit model with fixed phi
+model1a1 <- betareg(Percent_overlap_scaled ~ primn_1850, data = overlaps_landuse)
+# Fit model with variable phi
+model1a2 <- betareg(Percent_overlap_scaled ~ primn_1850 | primn_1850, data = overlaps_landuse)
+
+# Which is better fit?
+lrtest(model1a1, model1a2)
+
+```
+
+Check results are the same with bias correction and bia reduction
+```{r}
+# Fit model with fixed phi
+model1a1.bc <- betareg(Percent_overlap_scaled ~ primn_1850, data = overlaps_landuse, type = "BC")
+# Fit model with variable phi
+model1a2.bc <- betareg(Percent_overlap_scaled ~ primn_1850 | primn_1850, data = overlaps_landuse, type = "BC")
+# Which is better fit?
+lrtest(model1a1.bc, model1a2.bc)
+```
+
+```{r}
+# Fit model with fixed phi
+model1a1.br <- betareg(Percent_overlap_scaled ~ primn_1850, data = overlaps_landuse, type = "BR")
+# Fit model with variable phi
+model1a2.br <- betareg(Percent_overlap_scaled ~ primn_1850 | primn_1850, data = overlaps_landuse, type = "BR")
+
+# Which is better fit?
+lrtest(model1a1.br, model1a2.br)
+```
+
+```{r}
+## Model outputs
+summary(model1a1)
+```
+
+### primn_1900
+```{r}
+# Fit model with fixed phi
+model1a1 <- betareg(Percent_overlap_scaled ~ primn_1900, data = overlaps_landuse)
+# Fit model with variable phi
+model1a2 <- betareg(Percent_overlap_scaled ~ primn_1900 | primn_1900, data = overlaps_landuse)
+
+# Which is better fit?
+lrtest(model1a1, model1a2)
+
+```
+
+Check results are the same with bias correction and bia reduction
+```{r}
+# Fit model with fixed phi
+model1a1.bc <- betareg(Percent_overlap_scaled ~ primn_1900, data = overlaps_landuse, type = "BC")
+# Fit model with variable phi
+model1a2.bc <- betareg(Percent_overlap_scaled ~ primn_1900 | primn_1900, data = overlaps_landuse, type = "BC")
+# Which is better fit?
+lrtest(model1a1.bc, model1a2.bc)
+```
+
+```{r}
+# Fit model with fixed phi
+model1a1.br <- betareg(Percent_overlap_scaled ~ primn_1900, data = overlaps_landuse, type = "BR")
+# Fit model with variable phi
+model1a2.br <- betareg(Percent_overlap_scaled ~ primn_1900 | primn_1900, data = overlaps_landuse, type = "BR")
+
+# Which is better fit?
+lrtest(model1a1.br, model1a2.br)
+```
+
+```{r}
+## Model outputs
+summary(model1a1)
+```
+
+### primn_1950
+```{r}
+# Fit model with fixed phi
+model1a1 <- betareg(Percent_overlap_scaled ~ primn_1950, data = overlaps_landuse)
+# Fit model with variable phi
+model1a2 <- betareg(Percent_overlap_scaled ~ primn_1950 | primn_1950, data = overlaps_landuse)
+
+# Which is better fit?
+lrtest(model1a1, model1a2)
+
+```
+
+Check results are the same with bias correction and bia reduction
+```{r}
+# Fit model with fixed phi
+model1a1.bc <- betareg(Percent_overlap_scaled ~ primn_1950, data = overlaps_landuse, type = "BC")
+# Fit model with variable phi
+model1a2.bc <- betareg(Percent_overlap_scaled ~ primn_1950 | primn_1950, data = overlaps_landuse, type = "BC")
+# Which is better fit?
+lrtest(model1a1.bc, model1a2.bc)
+```
+
+```{r}
+# Fit model with fixed phi
+model1a1.br <- betareg(Percent_overlap_scaled ~ primn_1950, data = overlaps_landuse, type = "BR")
+# Fit model with variable phi
+model1a2.br <- betareg(Percent_overlap_scaled ~ primn_1950 | primn_1950, data = overlaps_landuse, type = "BR")
+
+# Which is better fit?
+lrtest(model1a1.br, model1a2.br)
+```
+
+```{r}
+## Model outputs
+summary(model1a1)
+```
+
+### primn_2000
+```{r}
+# Fit model with fixed phi
+model1a1 <- betareg(Percent_overlap_scaled ~ primn_2000, data = overlaps_landuse)
+# Fit model with variable phi
+model1a2 <- betareg(Percent_overlap_scaled ~ primn_2000 | primn_2000, data = overlaps_landuse)
+
+# Which is better fit?
+lrtest(model1a1, model1a2)
+
+```
+
+Check results are the same with bias correction and bia reduction
+```{r}
+# Fit model with fixed phi
+model1a1.bc <- betareg(Percent_overlap_scaled ~ primn_2000, data = overlaps_landuse, type = "BC")
+# Fit model with variable phi
+model1a2.bc <- betareg(Percent_overlap_scaled ~ primn_2000 | primn_2000, data = overlaps_landuse, type = "BC")
+# Which is better fit?
+lrtest(model1a1.bc, model1a2.bc)
+```
+
+```{r}
+# Fit model with fixed phi
+model1a1.br <- betareg(Percent_overlap_scaled ~ primn_2000, data = overlaps_landuse, type = "BR")
+# Fit model with variable phi
+model1a2.br <- betareg(Percent_overlap_scaled ~ primn_2000 | primn_2000, data = overlaps_landuse, type = "BR")
+
+# Which is better fit?
+lrtest(model1a1.br, model1a2.br)
+```
+
+```{r}
+## Model outputs
+summary(model1a1)
+```
+
+# Urban
+### urban_1850
+```{r}
+# Fit model with fixed phi
+model1a1 <- betareg(Percent_overlap_scaled ~ urban_1850, data = overlaps_landuse)
+# Fit model with variable phi
+model1a2 <- betareg(Percent_overlap_scaled ~ urban_1850 | urban_1850, data = overlaps_landuse)
+
+# Which is better fit?
+lrtest(model1a1, model1a2)
+
+```
+
+Check results are the same with bias correction and bia reduction
+```{r}
+# Fit model with fixed phi
+model1a1.bc <- betareg(Percent_overlap_scaled ~ urban_1850, data = overlaps_landuse, type = "BC")
+# Fit model with variable phi
+model1a2.bc <- betareg(Percent_overlap_scaled ~ urban_1850 | urban_1850, data = overlaps_landuse, type = "BC")
+# Which is better fit?
+lrtest(model1a1.bc, model1a2.bc)
+```
+
+```{r}
+# Fit model with fixed phi
+model1a1.br <- betareg(Percent_overlap_scaled ~ urban_1850, data = overlaps_landuse, type = "BR")
+# Fit model with variable phi
+model1a2.br <- betareg(Percent_overlap_scaled ~ urban_1850 | urban_1850, data = overlaps_landuse, type = "BR")
+
+# Which is better fit?
+lrtest(model1a1.br, model1a2.br)
+```
+
+```{r}
+## Model outputs
+summary(model1a1)
+```
+
+### urban_1900
+```{r}
+# Fit model with fixed phi
+model1a1 <- betareg(Percent_overlap_scaled ~ urban_1900, data = overlaps_landuse)
+# Fit model with variable phi
+model1a2 <- betareg(Percent_overlap_scaled ~ urban_1900 | urban_1900, data = overlaps_landuse)
+
+# Which is better fit?
+lrtest(model1a1, model1a2)
+
+```
+
+Check results are the same with bias correction and bia reduction
+```{r}
+# Fit model with fixed phi
+model1a1.bc <- betareg(Percent_overlap_scaled ~ urban_1900, data = overlaps_landuse, type = "BC")
+# Fit model with variable phi
+model1a2.bc <- betareg(Percent_overlap_scaled ~ urban_1900 | urban_1900, data = overlaps_landuse, type = "BC")
+# Which is better fit?
+lrtest(model1a1.bc, model1a2.bc)
+```
+
+```{r}
+# Fit model with fixed phi
+model1a1.br <- betareg(Percent_overlap_scaled ~ urban_1900, data = overlaps_landuse, type = "BR")
+# Fit model with variable phi
+model1a2.br <- betareg(Percent_overlap_scaled ~ urban_1900 | urban_1900, data = overlaps_landuse, type = "BR")
+
+# Which is better fit?
+lrtest(model1a1.br, model1a2.br)
+```
+
+```{r}
+## Model outputs
+summary(model1a1)
+```
+
+### urban_1950
+```{r}
+# Fit model with fixed phi
+model1a1 <- betareg(Percent_overlap_scaled ~ urban_1950, data = overlaps_landuse)
+# Fit model with variable phi
+model1a2 <- betareg(Percent_overlap_scaled ~ urban_1950 | urban_1950, data = overlaps_landuse)
+
+# Which is better fit?
+lrtest(model1a1, model1a2)
+
+```
+
+Check results are the same with bias correction and bia reduction
+```{r}
+# Fit model with fixed phi
+model1a1.bc <- betareg(Percent_overlap_scaled ~ urban_1950, data = overlaps_landuse, type = "BC")
+# Fit model with variable phi
+model1a2.bc <- betareg(Percent_overlap_scaled ~ urban_1950 | urban_1950, data = overlaps_landuse, type = "BC")
+# Which is better fit?
+lrtest(model1a1.bc, model1a2.bc)
+```
+
+```{r}
+# Fit model with fixed phi
+model1a1.br <- betareg(Percent_overlap_scaled ~ urban_1950, data = overlaps_landuse, type = "BR")
+# Fit model with variable phi
+model1a2.br <- betareg(Percent_overlap_scaled ~ urban_1950 | urban_1950, data = overlaps_landuse, type = "BR")
+
+# Which is better fit?
+lrtest(model1a1.br, model1a2.br)
+```
+
+```{r}
+## Model outputs
+summary(model1a2)
+```
+
+### urban_2000
+```{r}
+# Fit model with fixed phi
+model1a1 <- betareg(Percent_overlap_scaled ~ urban_2000, data = overlaps_landuse)
+# Fit model with variable phi
+model1a2 <- betareg(Percent_overlap_scaled ~ urban_2000 | urban_2000, data = overlaps_landuse)
+
+# Which is better fit?
+lrtest(model1a1, model1a2)
+
+```
+
+Check results are the same with bias correction and bia reduction
+```{r}
+# Fit model with fixed phi
+model1a1.bc <- betareg(Percent_overlap_scaled ~ urban_2000, data = overlaps_landuse, type = "BC")
+# Fit model with variable phi
+model1a2.bc <- betareg(Percent_overlap_scaled ~ urban_2000 | urban_2000, data = overlaps_landuse, type = "BC")
+# Which is better fit?
+lrtest(model1a1.bc, model1a2.bc)
+```
+
+```{r}
+# Fit model with fixed phi
+model1a1.br <- betareg(Percent_overlap_scaled ~ urban_2000, data = overlaps_landuse, type = "BR")
+# Fit model with variable phi
+model1a2.br <- betareg(Percent_overlap_scaled ~ urban_2000 | urban_2000, data = overlaps_landuse, type = "BR")
+
+# Which is better fit?
+lrtest(model1a1.br, model1a2.br)
+```
+
+```{r}
+## Model outputs
+summary(model1a2)
 ```
