@@ -73,22 +73,6 @@ get_landuse_diff <- function(variable, landuse_data, overlaps_data){
 }
 
 #---------------------------------
-# Helper functions
-#---------------------------------
-
-# Extract file names with paths
-get_files <- function(path) {
-  files <- list.files(path)
-  paste0(path, files)
-}
-
-# Extract file names to make into object names
-get_names <- function(path) {
-  files <- list.files(path)
-  str_remove(files, ".asc")
-}
-
-#---------------------------------
 # Function to extract differences in variables from HPD data
 # in 2014 to that in 1850, 1900, 1950 or 2000.
 # overlaps_data = output from script 01 with polygon geometry for error 
