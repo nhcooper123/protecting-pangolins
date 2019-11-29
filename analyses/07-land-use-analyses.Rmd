@@ -3,8 +3,6 @@ title: "Landuse change analyses"
 output: html_document
 ---
 
-** Requires overlaps_landuse from script 06 **
-
 ## Load libraries
 ```{r, message = FALSE, warning = FALSE}
 library(sf)
