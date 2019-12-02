@@ -58,13 +58,30 @@ Variables are:
 * popc = population count
 * popd = population density
 
+Note that the population changes are huge and skewed so will need to be log transformed, but a small number are negative, so first we need to sort that out...
+
+```{r}
+fix.min <- function(x){
+  x + abs(min(x, na.rm = TRUE)) + 1
+}
+
+overlaps_hpd <-
+  overlaps_hpd %>%
+  mutate(log_popc_1850 = log(fix.min(popc_1850))) %>%
+  mutate(log_popc_1900 = log(fix.min(popc_1900))) %>%
+  mutate(log_popc_1950 = log(fix.min(popc_1950))) %>%
+  mutate(log_popd_1850 = log(fix.min(popd_1850))) %>%
+  mutate(log_popd_1900 = log(fix.min(popd_1900))) %>%
+  mutate(log_popd_1950 = log(fix.min(popd_1950)))
+```
+
 ## Population Count
 ### popc_1850
 ```{r}
 # Fit model with fixed phi
-model1a1 <- betareg(Percent_overlap_scaled ~ log(popc_1850+0.001), data = overlaps_hpd)
+model1a1 <- betareg(Percent_overlap_scaled ~ log_popc_1850, data = overlaps_hpd)
 # Fit model with variable phi
-model1a2 <- betareg(Percent_overlap_scaled ~ log(popc_1850+0.001) | log(popc_1850+0.001), data = overlaps_hpd)
+model1a2 <- betareg(Percent_overlap_scaled ~ log_popc_1850 | log_popc_1850, data = overlaps_hpd)
 
 # Which is better fit?
 lrtest(model1a1, model1a2)
@@ -74,18 +91,18 @@ lrtest(model1a1, model1a2)
 Check results are the same with bias correction and bia reduction
 ```{r}
 # Fit model with fixed phi
-model1a1.bc <- betareg(Percent_overlap_scaled ~ log(popc_1850+0.001), data = overlaps_hpd, type = "BC")
+model1a1.bc <- betareg(Percent_overlap_scaled ~ log_popc_1850, data = overlaps_hpd, type = "BC")
 # Fit model with variable phi
-model1a2.bc <- betareg(Percent_overlap_scaled ~ log(popc_1850+0.001) | log(popc_1850+0.001), data = overlaps_hpd, type = "BC")
+model1a2.bc <- betareg(Percent_overlap_scaled ~ log_popc_1850 | log_popc_1850, data = overlaps_hpd, type = "BC")
 # Which is better fit?
 lrtest(model1a1.bc, model1a2.bc)
 ```
 
 ```{r}
 # Fit model with fixed phi
-model1a1.br <- betareg(Percent_overlap_scaled ~ log(popc_1850+0.001), data = overlaps_hpd, type = "BR")
+model1a1.br <- betareg(Percent_overlap_scaled ~ log_popc_1850, data = overlaps_hpd, type = "BR")
 # Fit model with variable phi
-model1a2.br <- betareg(Percent_overlap_scaled ~ log(popc_1850+0.001) | log(popc_1850+0.001), data = overlaps_hpd, type = "BR")
+model1a2.br <- betareg(Percent_overlap_scaled ~ log_popc_1850 | log_popc_1850, data = overlaps_hpd, type = "BR")
 
 # Which is better fit?
 lrtest(model1a1.br, model1a2.br)
@@ -99,9 +116,9 @@ summary(model1a1)
 ### popc_1900
 ```{r}
 # Fit model with fixed phi
-model1a1 <- betareg(Percent_overlap_scaled ~ log(popc_1900+0.001), data = overlaps_hpd)
+model1a1 <- betareg(Percent_overlap_scaled ~ log_popc_1900, data = overlaps_hpd)
 # Fit model with variable phi
-model1a2 <- betareg(Percent_overlap_scaled ~ log(popc_1900+0.001) | log(popc_1900+0.001), data = overlaps_hpd)
+model1a2 <- betareg(Percent_overlap_scaled ~ log_popc_1900 | log_popc_1900, data = overlaps_hpd)
 
 # Which is better fit?
 lrtest(model1a1, model1a2)
@@ -111,18 +128,18 @@ lrtest(model1a1, model1a2)
 Check results are the same with bias correction and bia reduction
 ```{r}
 # Fit model with fixed phi
-model1a1.bc <- betareg(Percent_overlap_scaled ~ log(popc_1900+0.001), data = overlaps_hpd, type = "BC")
+model1a1.bc <- betareg(Percent_overlap_scaled ~ log_popc_1900, data = overlaps_hpd, type = "BC")
 # Fit model with variable phi
-model1a2.bc <- betareg(Percent_overlap_scaled ~ log(popc_1900+0.001) | log(popc_1900+0.001), data = overlaps_hpd, type = "BC")
+model1a2.bc <- betareg(Percent_overlap_scaled ~ log_popc_1900 | log_popc_1900, data = overlaps_hpd, type = "BC")
 # Which is better fit?
 lrtest(model1a1.bc, model1a2.bc)
 ```
 
 ```{r}
 # Fit model with fixed phi
-model1a1.br <- betareg(Percent_overlap_scaled ~ log(popc_1900+0.001), data = overlaps_hpd, type = "BR")
+model1a1.br <- betareg(Percent_overlap_scaled ~ log_popc_1900, data = overlaps_hpd, type = "BR")
 # Fit model with variable phi
-model1a2.br <- betareg(Percent_overlap_scaled ~ log(popc_1900+0.001) | log(popc_1900+0.001), data = overlaps_hpd, type = "BR")
+model1a2.br <- betareg(Percent_overlap_scaled ~ log_popc_1900 | log_popc_1900, data = overlaps_hpd, type = "BR")
 
 # Which is better fit?
 lrtest(model1a1.br, model1a2.br)
@@ -133,12 +150,12 @@ lrtest(model1a1.br, model1a2.br)
 summary(model1a1)
 ```
 
-### log(popc_1950+0.001)
+### log_popc_1950
 ```{r}
 # Fit model with fixed phi
-model1a1 <- betareg(Percent_overlap_scaled ~ log(popc_1950+0.001), data = overlaps_hpd)
+model1a1 <- betareg(Percent_overlap_scaled ~ log_popc_1950, data = overlaps_hpd)
 # Fit model with variable phi
-model1a2 <- betareg(Percent_overlap_scaled ~ log(popc_1950+0.001) | log(popc_1950+0.001), data = overlaps_hpd)
+model1a2 <- betareg(Percent_overlap_scaled ~ log_popc_1950 | log_popc_1950, data = overlaps_hpd)
 
 # Which is better fit?
 lrtest(model1a1, model1a2)
@@ -148,18 +165,18 @@ lrtest(model1a1, model1a2)
 Check results are the same with bias correction and bia reduction
 ```{r}
 # Fit model with fixed phi
-model1a1.bc <- betareg(Percent_overlap_scaled ~ log(popc_1950+0.001), data = overlaps_hpd, type = "BC")
+model1a1.bc <- betareg(Percent_overlap_scaled ~ log_popc_1950, data = overlaps_hpd, type = "BC")
 # Fit model with variable phi
-model1a2.bc <- betareg(Percent_overlap_scaled ~ log(popc_1950+0.001) | log(popc_1950+0.001), data = overlaps_hpd, type = "BC")
+model1a2.bc <- betareg(Percent_overlap_scaled ~ log_popc_1950 | log_popc_1950, data = overlaps_hpd, type = "BC")
 # Which is better fit?
 lrtest(model1a1.bc, model1a2.bc)
 ```
 
 ```{r}
 # Fit model with fixed phi
-model1a1.br <- betareg(Percent_overlap_scaled ~ log(popc_1950+0.001), data = overlaps_hpd, type = "BR")
+model1a1.br <- betareg(Percent_overlap_scaled ~ log_popc_1950, data = overlaps_hpd, type = "BR")
 # Fit model with variable phi
-model1a2.br <- betareg(Percent_overlap_scaled ~ log(popc_1950+0.001) | log(popc_1950+0.001), data = overlaps_hpd, type = "BR")
+model1a2.br <- betareg(Percent_overlap_scaled ~ log_popc_1950 | log_popc_1950, data = overlaps_hpd, type = "BR")
 
 # Which is better fit?
 lrtest(model1a1.br, model1a2.br)
@@ -208,12 +225,12 @@ summary(model1a1)
 ```
 
 ## Population density
-### log(popd_1850+0.001)
+### log_popd_1850
 ```{r}
 # Fit model with fixed phi
-model1a1 <- betareg(Percent_overlap_scaled ~ log(popd_1850+0.001), data = overlaps_hpd)
+model1a1 <- betareg(Percent_overlap_scaled ~ log_popd_1850, data = overlaps_hpd)
 # Fit model with variable phi
-model1a2 <- betareg(Percent_overlap_scaled ~ log(popd_1850+0.001) | log(popd_1850+0.001), data = overlaps_hpd)
+model1a2 <- betareg(Percent_overlap_scaled ~ log_popd_1850 | log_popd_1850, data = overlaps_hpd)
 
 # Which is better fit?
 lrtest(model1a1, model1a2)
@@ -223,18 +240,18 @@ lrtest(model1a1, model1a2)
 Check results are the same with bias correction and bia reduction
 ```{r}
 # Fit model with fixed phi
-model1a1.bc <- betareg(Percent_overlap_scaled ~ log(popd_1850+0.001), data = overlaps_hpd, type = "BC")
+model1a1.bc <- betareg(Percent_overlap_scaled ~ log_popd_1850, data = overlaps_hpd, type = "BC")
 # Fit model with variable phi
-model1a2.bc <- betareg(Percent_overlap_scaled ~ log(popd_1850+0.001) | log(popd_1850+0.001), data = overlaps_hpd, type = "BC")
+model1a2.bc <- betareg(Percent_overlap_scaled ~ log_popd_1850 | log_popd_1850, data = overlaps_hpd, type = "BC")
 # Which is better fit?
 lrtest(model1a1.bc, model1a2.bc)
 ```
 
 ```{r}
 # Fit model with fixed phi
-model1a1.br <- betareg(Percent_overlap_scaled ~ log(popd_1850+0.001), data = overlaps_hpd, type = "BR")
+model1a1.br <- betareg(Percent_overlap_scaled ~ log_popd_1850, data = overlaps_hpd, type = "BR")
 # Fit model with variable phi
-model1a2.br <- betareg(Percent_overlap_scaled ~ log(popd_1850+0.001) | log(popd_1850+0.001), data = overlaps_hpd, type = "BR")
+model1a2.br <- betareg(Percent_overlap_scaled ~ log_popd_1850 | log_popd_1850, data = overlaps_hpd, type = "BR")
 
 # Which is better fit?
 lrtest(model1a1.br, model1a2.br)
@@ -245,12 +262,12 @@ lrtest(model1a1.br, model1a2.br)
 summary(model1a1)
 ```
 
-### log(popd_1900+0.001)
+### log_popd_1900
 ```{r}
 # Fit model with fixed phi
-model1a1 <- betareg(Percent_overlap_scaled ~ log(popd_1900+0.001), data = overlaps_hpd)
+model1a1 <- betareg(Percent_overlap_scaled ~ log_popd_1900, data = overlaps_hpd)
 # Fit model with variable phi
-model1a2 <- betareg(Percent_overlap_scaled ~ log(popd_1900+0.001) | log(popd_1900+0.001), data = overlaps_hpd)
+model1a2 <- betareg(Percent_overlap_scaled ~ log_popd_1900 | log_popd_1900, data = overlaps_hpd)
 
 # Which is better fit?
 lrtest(model1a1, model1a2)
@@ -260,18 +277,18 @@ lrtest(model1a1, model1a2)
 Check results are the same with bias correction and bia reduction
 ```{r}
 # Fit model with fixed phi
-model1a1.bc <- betareg(Percent_overlap_scaled ~ log(popd_1900+0.001), data = overlaps_hpd, type = "BC")
+model1a1.bc <- betareg(Percent_overlap_scaled ~ log_popd_1900, data = overlaps_hpd, type = "BC")
 # Fit model with variable phi
-model1a2.bc <- betareg(Percent_overlap_scaled ~ log(popd_1900+0.001) | log(popd_1900+0.001), data = overlaps_hpd, type = "BC")
+model1a2.bc <- betareg(Percent_overlap_scaled ~ log_popd_1900 | log_popd_1900, data = overlaps_hpd, type = "BC")
 # Which is better fit?
 lrtest(model1a1.bc, model1a2.bc)
 ```
 
 ```{r}
 # Fit model with fixed phi
-model1a1.br <- betareg(Percent_overlap_scaled ~ log(popd_1900+0.001), data = overlaps_hpd, type = "BR")
+model1a1.br <- betareg(Percent_overlap_scaled ~ log_popd_1900, data = overlaps_hpd, type = "BR")
 # Fit model with variable phi
-model1a2.br <- betareg(Percent_overlap_scaled ~ log(popd_1900+0.001) | log(popd_1900+0.001), data = overlaps_hpd, type = "BR")
+model1a2.br <- betareg(Percent_overlap_scaled ~ log_popd_1900 | log_popd_1900, data = overlaps_hpd, type = "BR")
 
 # Which is better fit?
 lrtest(model1a1.br, model1a2.br)
@@ -282,12 +299,12 @@ lrtest(model1a1.br, model1a2.br)
 summary(model1a1)
 ```
 
-### log(popd_1950+0.001)
+### log_popd_1950
 ```{r}
 # Fit model with fixed phi
-model1a1 <- betareg(Percent_overlap_scaled ~ log(popd_1950+0.001), data = overlaps_hpd)
+model1a1 <- betareg(Percent_overlap_scaled ~ log_popd_1950, data = overlaps_hpd)
 # Fit model with variable phi
-model1a2 <- betareg(Percent_overlap_scaled ~ log(popd_1950+0.001) | log(popd_1950+0.001), data = overlaps_hpd)
+model1a2 <- betareg(Percent_overlap_scaled ~ log_popd_1950 | log_popd_1950, data = overlaps_hpd)
 
 # Which is better fit?
 lrtest(model1a1, model1a2)
@@ -297,18 +314,18 @@ lrtest(model1a1, model1a2)
 Check results are the same with bias correction and bia reduction
 ```{r}
 # Fit model with fixed phi
-model1a1.bc <- betareg(Percent_overlap_scaled ~ log(popd_1950+0.001), data = overlaps_hpd, type = "BC")
+model1a1.bc <- betareg(Percent_overlap_scaled ~ log_popd_1950, data = overlaps_hpd, type = "BC")
 # Fit model with variable phi
-model1a2.bc <- betareg(Percent_overlap_scaled ~ log(popd_1950+0.001) | log(popd_1950+0.001), data = overlaps_hpd, type = "BC")
+model1a2.bc <- betareg(Percent_overlap_scaled ~ log_popd_1950 | log_popd_1950, data = overlaps_hpd, type = "BC")
 # Which is better fit?
 lrtest(model1a1.bc, model1a2.bc)
 ```
 
 ```{r}
 # Fit model with fixed phi
-model1a1.br <- betareg(Percent_overlap_scaled ~ log(popd_1950+0.001), data = overlaps_hpd, type = "BR")
+model1a1.br <- betareg(Percent_overlap_scaled ~ log_popd_1950, data = overlaps_hpd, type = "BR")
 # Fit model with variable phi
-model1a2.br <- betareg(Percent_overlap_scaled ~ log(popd_1950+0.001) | log(popd_1950+0.001), data = overlaps_hpd, type = "BR")
+model1a2.br <- betareg(Percent_overlap_scaled ~ log_popd_1950 | log_popd_1950, data = overlaps_hpd, type = "BR")
 
 # Which is better fit?
 lrtest(model1a1.br, model1a2.br)
