@@ -51,12 +51,12 @@ First create new datasets only with unique values to avoid accidental pseudorepl
 ```{r}
 overlaps_year_specs <-
   overlaps_year %>%
-  select(binomial, Year, numberOfOverlaps, numberOfSpecimens) %>%
+  dplyr::select(binomial, Year, numberOfOverlaps, numberOfSpecimens) %>%
   distinct()
 
 overlaps_all_specs <-
   overlaps_all %>%
-  select(binomial, Continent, ecology, redlist, numberOfOverlaps, numberOfSpecimens) %>%
+  dplyr::select(binomial, Continent, ecology, redlist, numberOfOverlaps, numberOfSpecimens) %>%
   distinct()
 ```
 
