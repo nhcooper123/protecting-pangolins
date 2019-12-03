@@ -59,22 +59,22 @@ pop_plot_1850 <-
   xlab("") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
-  xlim(0, 14) +
+  xlim(0, 15) +
   ylim(0, 100) +
   labs(title = "1850") +
-  theme(plot.title = element_text(size = 12, face = "bold"),
+  theme(plot.title = element_text(size = 12, hjust = 0.5),
         axis.title = element_text(size = 12))
 
 pop_plot_1900 <- 
   ggplot(overlaps_all, aes(x = log(popc_1900), y = Percent_overlap)) +
   geom_point(alpha = 0.5) +
-  xlab("log pop count") +
+  xlab("ln(population count)") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
   ylim(0, 100) +
-  xlim(0, 14) +
+  xlim(0, 15) +
   labs(title = "1900") +
-  theme(plot.title = element_text(size = 12, face = "bold"),
+  theme(plot.title = element_text(size = 12, hjust = 0.5),
         axis.title = element_text(size = 12))
 
 pop_plot_1950 <- 
@@ -84,9 +84,9 @@ pop_plot_1950 <-
   ylab('% overlap') +
   theme_bw(base_size = 14) +
   ylim(0, 100) +
-  xlim(0, 14) +
+  xlim(0, 15) +
   labs(title = "1950") +
-  theme(plot.title = element_text(size = 12, face = "bold"),
+  theme(plot.title = element_text(size = 12, hjust = 0.5),
         axis.title = element_text(size = 12))
 
 popd_plot_1850 <- 
@@ -97,20 +97,21 @@ popd_plot_1850 <-
   theme_bw(base_size = 14) +
   ylim(0, 100) +
   xlim(0, 10) +
+  scale_x_continuous(breaks = c(0, 5, 10)) +
   labs(title = "1850") +
-  theme(plot.title = element_text(size = 12, face = "bold"),
+  theme(plot.title = element_text(size = 12, hjust = 0.5),
         axis.title = element_text(size = 12))
 
 popd_plot_1900 <- 
   ggplot(overlaps_all, aes(x = log(popd_1900), y = Percent_overlap)) +
   geom_point(alpha = 0.5) +
-  xlab("log pop density") +
+  xlab("ln(population density)") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
   ylim(0, 100) +
-  xlim(0, 10) +
+  scale_x_continuous(breaks = c(-5, 0, 5, 10)) +
   labs(title = "1900") +
-  theme(plot.title = element_text(size = 12, face = "bold"),
+  theme(plot.title = element_text(size = 12, hjust = 0.5),
         axis.title = element_text(size = 12))
 
 popd_plot_1950 <- 
@@ -120,92 +121,130 @@ popd_plot_1950 <-
   ylab('% overlap') +
   theme_bw(base_size = 14) +
   ylim(0, 100) +
-  xlim(0, 10) +
+  scale_x_continuous(breaks = c(-5, 0, 5, 10)) +
   labs(title = "1950") +
-  theme(plot.title = element_text(size = 12, face = "bold"),
+  theme(plot.title = element_text(size = 12, hjust = 0.5),
         axis.title = element_text(size = 12))
 
 (pop_plot_1850 + pop_plot_1900 + pop_plot_1950) / 
   (popd_plot_1850 + popd_plot_1900 + popd_plot_1950)
 
-#ggsave(here("figures/popsize-overlap.png"), width = 5)
+#ggsave(here("figures/popsize-overlap.png"), width = 6)
 
 ##-----------------------------------------------------------
-# % area overlap plots population
+# % area overlap plots landuse
 ##-----------------------------------------------------------
-pop_plot_1850 <- 
-  ggplot(overlaps_all, aes(x = log(popc_1850), y = Percent_overlap)) +
+primf_plot_1850 <- 
+  ggplot(overlaps_all, aes(x = primf_1850, y = Percent_overlap)) +
   geom_point(alpha = 0.5) +
   xlab("") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
-  xlim(0, 14) +
+  xlim(-0.8, 0) +
   ylim(0, 100) +
   labs(title = "1850") +
-  theme(plot.title = element_text(size = 12, face = "bold"),
+  theme(plot.title = element_text(size = 12, hjust = 0.5),
         axis.title = element_text(size = 12))
 
-pop_plot_1900 <- 
-  ggplot(overlaps_all, aes(x = log(popc_1900), y = Percent_overlap)) +
+primf_plot_1900 <- 
+  ggplot(overlaps_all, aes(x = primf_1900, y = Percent_overlap)) +
   geom_point(alpha = 0.5) +
-  xlab("log pop count") +
+  xlab("primary forest") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
   ylim(0, 100) +
-  xlim(0, 14) +
+  xlim(-0.8, 0) +
   labs(title = "1900") +
-  theme(plot.title = element_text(size = 12, face = "bold"),
+  theme(plot.title = element_text(size = 12, hjust = 0.5),
         axis.title = element_text(size = 12))
 
-pop_plot_1950 <- 
-  ggplot(overlaps_all, aes(x = log(popc_1950), y = Percent_overlap)) +
+primf_plot_1950 <- 
+  ggplot(overlaps_all, aes(x = primf_1950, y = Percent_overlap)) +
   geom_point(alpha = 0.5) +
   xlab("") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
   ylim(0, 100) +
-  xlim(0, 14) +
+  xlim(-0.8, 0) +
   labs(title = "1950") +
-  theme(plot.title = element_text(size = 12, face = "bold"),
+  theme(plot.title = element_text(size = 12, hjust = 0.5),
         axis.title = element_text(size = 12))
 
-popd_plot_1850 <- 
-  ggplot(overlaps_all, aes(x = log(popd_1850), y = Percent_overlap)) +
+primn_plot_1850 <- 
+  ggplot(overlaps_all, aes(x = primn_1850, y = Percent_overlap)) +
   geom_point(alpha = 0.5) +
   xlab("") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
+  xlim(-0.8, 0) +
   ylim(0, 100) +
-  xlim(0, 10) +
   labs(title = "1850") +
-  theme(plot.title = element_text(size = 12, face = "bold"),
+  theme(plot.title = element_text(size = 12, hjust = 0.5),
         axis.title = element_text(size = 12))
 
-popd_plot_1900 <- 
-  ggplot(overlaps_all, aes(x = log(popd_1900), y = Percent_overlap)) +
+primn_plot_1900 <- 
+  ggplot(overlaps_all, aes(x = primn_1900, y = Percent_overlap)) +
   geom_point(alpha = 0.5) +
-  xlab("log pop density") +
+  xlab("primary non-forest") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
   ylim(0, 100) +
-  xlim(0, 10) +
+  xlim(-0.8, 0) +
   labs(title = "1900") +
-  theme(plot.title = element_text(size = 12, face = "bold"),
+  theme(plot.title = element_text(size = 12, hjust = 0.5),
         axis.title = element_text(size = 12))
 
-popd_plot_1950 <- 
-  ggplot(overlaps_all, aes(x = log(popd_1950), y = Percent_overlap)) +
+primn_plot_1950 <- 
+  ggplot(overlaps_all, aes(x = primn_1950, y = Percent_overlap)) +
   geom_point(alpha = 0.5) +
   xlab("") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
   ylim(0, 100) +
-  xlim(0, 10) +
+  xlim(-0.8, 0) +
   labs(title = "1950") +
-  theme(plot.title = element_text(size = 12, face = "bold"),
+  theme(plot.title = element_text(size = 12, hjust = 0.5),
         axis.title = element_text(size = 12))
 
-(pop_plot_1850 + pop_plot_1900 + pop_plot_1950) / 
-  (popd_plot_1850 + popd_plot_1900 + popd_plot_1950)
+urb_plot_1850 <- 
+  ggplot(overlaps_all, aes(x = urban_1850, y = Percent_overlap)) +
+  geom_point(alpha = 0.5) +
+  xlab("") +
+  ylab('% overlap') +
+  theme_bw(base_size = 14) +
+  #xlim(-0.8, 0) +
+  ylim(0, 100) +
+  labs(title = "1850") +
+  theme(plot.title = element_text(size = 12, hjust = 0.5),
+        axis.title = element_text(size = 12))
 
-#ggsave(here("figures/popsize-overlap.png"), width = 5)
+urb_plot_1900 <- 
+  ggplot(overlaps_all, aes(x = urban_1900, y = Percent_overlap)) +
+  geom_point(alpha = 0.5) +
+  xlab("urban land") +
+  ylab('% overlap') +
+  theme_bw(base_size = 14) +
+  ylim(0, 100) +
+  xlim(0, 0.6) +
+  labs(title = "1900") +
+  theme(plot.title = element_text(size = 12, hjust = 0.5),
+        axis.title = element_text(size = 12))
+
+urb_plot_1950 <- 
+  ggplot(overlaps_all, aes(x = urban_1950, y = Percent_overlap)) +
+  geom_point(alpha = 0.5) +
+  xlab("") +
+  ylab('% overlap') +
+  theme_bw(base_size = 14) +
+  ylim(0, 100) +
+  xlim(0, 0.6) +
+  labs(title = "1950") +
+  theme(plot.title = element_text(size = 12, hjust = 0.5),
+        axis.title = element_text(size = 12))
+
+# Plot
+(primf_plot_1850 + primf_plot_1900 + primf_plot_1950) / 
+  (primn_plot_1850 + primn_plot_1900 + primn_plot_1950) /
+  (urb_plot_1850 + urb_plot_1900 + urb_plot_1950)
+
+#ggsave(here("figures/landuse-overlap.png"), width = 6)
