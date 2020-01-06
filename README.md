@@ -51,7 +51,6 @@ Note that throughout I've commented out `ggsave` commands so you don't clog your
 ## Other folders
 
 * `/figures` contains the figures
-* `/outputs` contains results from statistical analyses
 
 -------
 ## Session Info
