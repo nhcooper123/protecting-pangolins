@@ -5,7 +5,7 @@ Author(s): [Natalie Cooper](mailto:natalie.cooper.@nhm.ac.uk) and Jake Curry.
 This repository contains all the code and some data used in the [paper](add link later). 
 
 To cite the paper: 
-> Emilly Buckingham, Jake Curry, Louise Tomsett and Natalie Cooper. in review.
+> Emilly Buckingham, Jake Curry, Louise Tomsett and Natalie Cooper. Using natural history collections to investigate changes in pangolin (Pholidota: Manidae) geographic ranges through time. in review.
 
 To cite this repo: 
 > Natalie Cooper and Jake Curry. 2020. GitHub: nhcooper123/protecting-pangolins: code for the paper. Zenodo. DOI: [add doi].
