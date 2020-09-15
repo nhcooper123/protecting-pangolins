@@ -1,7 +1,7 @@
 ### Land use GIS functions
 
 # Function to extract differences in variables from LUH2 data
-# in 2014 to that in 1850, 1900, 1950 or 2000.
+# in 2015 to that in 1850, 1900, 1950 or 2000.
 # varable = name of one of the variables in LUH2 in ""
 # landuse_data = nc format data from states.nc of LUH2 datasets
 # overlaps_data = output from script 01 with polygon geometry for error 
@@ -13,18 +13,18 @@ get_landuse_diff <- function(variable, landuse_data, overlaps_data){
   var.array <- ncvar_get(landuse_data, variable) 
   
   # Time is the third dimension of array. 
-  # Extract for 1850, 1900, 1950, 2000 and 2014
+  # Extract for 1850, 1900, 1950, 2000 and 2015
   var.slice.1850 <- var.array[, , 1001] 
   var.slice.1900 <- var.array[, , 1051] 
   var.slice.1950 <- var.array[, , 1101]
-  var.slice.2000 <- var.array[, , 1101]
-  var.slice.2014 <- var.array[, , 1151] 
+  var.slice.2000 <- var.array[, , 1151]
+  var.slice.2015 <- var.array[, , 1166] 
   
   # Extract difference between time slices
-  var.diff.1850 <- var.slice.2014 - var.slice.1850
-  var.diff.1900 <- var.slice.2014 - var.slice.1900
-  var.diff.1950 <- var.slice.2014 - var.slice.1950
-  var.diff.2000 <- var.slice.2014 - var.slice.2000
+  var.diff.1850 <- var.slice.2015 - var.slice.1850
+  var.diff.1900 <- var.slice.2015 - var.slice.1900
+  var.diff.1950 <- var.slice.2015 - var.slice.1950
+  var.diff.2000 <- var.slice.2015 - var.slice.2000
   
   # Save the difference as a raster.
   raster.diff.1850 <- 
@@ -74,32 +74,32 @@ get_landuse_diff <- function(variable, landuse_data, overlaps_data){
 
 #---------------------------------
 # Function to extract differences in variables from HPD data
-# in 2014 to that in 1850, 1900, 1950 or 2000.
+# in 2015 to that in 1850, 1900, 1950 or 2000.
 # overlaps_data = output from script 01 with polygon geometry for error 
 # point radius polygons
 
 extract_hpd <- function(overlaps_data){
   
   # Extract difference between time slices for each variable
-  diff.popc.1850 <- popc_2014AD - popc_1850AD
-  diff.popd.1850 <- popd_2014AD - popd_1850AD
-  diff.rurc.1850 <- rurc_2014AD - rurc_1850AD
-  diff.urbc.1850 <- urbc_2014AD - urbc_1850AD
+  diff.popc.1850 <- popc_2015AD - popc_1850AD
+  diff.popd.1850 <- popd_2015AD - popd_1850AD
+  diff.rurc.1850 <- rurc_2015AD - rurc_1850AD
+  diff.urbc.1850 <- urbc_2015AD - urbc_1850AD
   
-  diff.popc.1900 <- popc_2014AD - popc_1900AD
-  diff.popd.1900 <- popd_2014AD - popd_1900AD
-  diff.rurc.1900 <- rurc_2014AD - rurc_1900AD
-  diff.urbc.1900 <- urbc_2014AD - urbc_1900AD
+  diff.popc.1900 <- popc_2015AD - popc_1900AD
+  diff.popd.1900 <- popd_2015AD - popd_1900AD
+  diff.rurc.1900 <- rurc_2015AD - rurc_1900AD
+  diff.urbc.1900 <- urbc_2015AD - urbc_1900AD
   
-  diff.popc.1950 <- popc_2014AD - popc_1950AD
-  diff.popd.1950 <- popd_2014AD - popd_1950AD
-  diff.rurc.1950 <- rurc_2014AD - rurc_1950AD
-  diff.urbc.1950 <- urbc_2014AD - urbc_1950AD
+  diff.popc.1950 <- popc_2015AD - popc_1950AD
+  diff.popd.1950 <- popd_2015AD - popd_1950AD
+  diff.rurc.1950 <- rurc_2015AD - rurc_1950AD
+  diff.urbc.1950 <- urbc_2015AD - urbc_1950AD
   
-  diff.popc.2000 <- popc_2014AD - popc_2000AD
-  diff.popd.2000 <- popd_2014AD - popd_2000AD
-  diff.rurc.2000 <- rurc_2014AD - rurc_2000AD
-  diff.urbc.2000 <- urbc_2014AD - urbc_2000AD
+  diff.popc.2000 <- popc_2015AD - popc_2000AD
+  diff.popd.2000 <- popd_2015AD - popd_2000AD
+  diff.rurc.2000 <- rurc_2015AD - rurc_2000AD
+  diff.urbc.2000 <- urbc_2015AD - urbc_2000AD
   
   # Extract mean values across raster cells for specimen error polygons
   values.popc.1850 <- raster::extract(diff.popc.1850, overlaps_data, fun = mean, na.rm = TRUE)

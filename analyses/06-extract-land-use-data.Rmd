@@ -76,5 +76,5 @@ overlaps_landuse <-
 nc_close(nc_data)
 
 # Write to file
-#st_write(overlaps_landuse, here("data/overlaps_landuse.csv"))
+st_write(overlaps_landuse, here("data/overlaps_landuse.csv"))
 ```
