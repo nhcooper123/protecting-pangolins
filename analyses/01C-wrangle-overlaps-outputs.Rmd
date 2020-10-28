@@ -3,12 +3,12 @@ title: "Extract overlaps dataset"
 output: html_document
 ---
 
-```{r}
+```{r, message = FALSE}
 library(tidyverse)
 library(here)
 ```
 Read in the specimen dataset and remove geometry
-```{r}
+```{r, message = FALSE}
 specs <- read_csv(here("data/specimens-extents.csv"))
 
 specs <- 
@@ -41,7 +41,7 @@ overlaps_aoh <-
 ```
 
 Read in the IUCN data and remove defunct columns and _ from species names
-```{r}
+```{r, message = FALSE}
 files <- paste0("raw-data/IUCN_Overlaps/", 
                 dir(path = here("raw-data/IUCN_Overlaps"), 
                     pattern = "*.csv"))
@@ -77,7 +77,7 @@ overlaps_combined <- rbind(overlaps_aoh, temm)
 
 Save the files for use in models
 ```{r}
-write_csv(overlaps_iucn, file = here("data/overlaps_iucn.csv"))
+#write_csv(overlaps_iucn, file = here("data/overlaps_iucn.csv"))
 write_csv(overlaps_aoh, file = here("data/overlaps_aoh.csv"))
 write_csv(overlaps_combined, file = here("data/overlaps_combined.csv"))
 ```
