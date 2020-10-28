@@ -3,7 +3,7 @@ title: "Wrangle pangolin data"
 output: html_document
 ---
 
-This script takes georeferenced data and IUCN range maps for pangolins and wrangles these for further analysis.
+This script takes georeferenced data for pangolins and wrangles these for further analysis.
 
 ## Load libraries
 ```{r, message = FALSE, warning = FALSE}
@@ -67,12 +67,6 @@ gbif <-
         RegistrationNumber != "MCZ_38282")
 ```
 
-## Read in the IUCN range maps
-```{r, message = FALSE, warning = FALSE}
-iucn <- readOGR(dsn = here("raw-data/IUCN_pholidota"), 
-                layer = 'maps_pholidota')
-```
-
 ## Read in the ecology data
 ```{r, message = FALSE, warning = FALSE}
 ecology <- read_csv(here("raw-data/pangolin-ecology.csv"))
@@ -132,16 +126,6 @@ specs <-
   st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326)
 ```
 
-## Tidy the IUCN range maps
-
-- Convert to the sf format, ensuring correct projection in latitude and longitude.
-```{r}
-iucn <- 
-  iucn %>%
-  st_as_sf() %>%
-  st_transform(4326)
-```
-
 ## Add error polygons to data
 
 - change the Extent column into kilometers and rename it
@@ -152,26 +136,6 @@ specs_errors <-
   addError()
 ```
 
-## Calculate "overlaps" and "centroid-distances"
-The next set of functions calculate percentage overlap between point-radius data and IUCN range maps for each species. Then extract the binomial overlap or not. Then add distance column (and a distance2 column, as there are a few IUCN records with two range polygons, and
-without this inclusion the function will not run).
-
-```{r, message = FALSE, warning = FALSE}
-# For speed and viewability we strip out all the extraneous stuff,
-# we just need the species name and the geometry
-myvars <- c('binomial', 'geometry')
-iucn2 <- iucn[myvars]
-iucn2 <- resolveIUCNGeom(iucn2)
-iucn2 <- st_as_sf(iucn2)
-
-# Work out the percentage overlaps among point-radius polygons and IUCN ranges
-overlaps <- calculateOverlaps(specs_errors, iucn2)
-# Flatten this to 0 for 0% overlap, and 1 for > 0% overlap
-overlaps <- binomialOverlap(overlaps)
-```
-
-We can now use `overlaps` in our analyses and plots. 
-
 ## Save the outputs
 Note that `st_write` will throw an error if you try to overwrite a file, so delete previous version of the files first. To avoid this error I've commented these out here.
 ```{r}
@@ -179,8 +143,6 @@ Note that `st_write` will throw an error if you try to overwrite a file, so dele
          #layer_options = "GEOMETRY=AS_WKT")
 #st_write(specs_errors, here("data/specimens-extents.csv"), 
          #layer_options = "GEOMETRY=AS_WKT")
-# We don't need the polygons for overlaps.
-#st_write(overlaps, here("data/overlaps.csv"))
 ```
 ## Summary info
 
