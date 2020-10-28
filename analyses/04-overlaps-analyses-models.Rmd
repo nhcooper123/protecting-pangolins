@@ -21,7 +21,7 @@ library(lmtest)
 First read in the data as CSV not spatial data as we don't need the spatial geometries here. Relevel redlist so it matches increasing extinction risk. Omit specimens with large extents and low certainty. Omit duplicates and add success failure numbers.
 ```{r, message = FALSE, warning = FALSE}
 overlaps_all <- 
-  read_csv(here("data/overlaps.csv")) %>%  
+  read_csv(here("data/overlaps_combined.csv")) %>%  
   mutate(redlist = factor(redlist, levels = c("VU", "EN", "CR"))) %>%
   filter(Certainty >= 50 & Extent_km < 50) %>%
   filter(duplicates == 0) %>%
@@ -34,7 +34,7 @@ overlaps_all <-
 Repeat but for years data which has different duplicates:
 ```{r}
 overlaps_year <- 
-  read_csv(here("data/overlaps.csv")) %>%  
+  read_csv(here("data/overlaps_combined.csv")) %>%  
   mutate(redlist = factor(redlist, levels = c("VU", "EN", "CR"))) %>%
   filter(Certainty >= 50 & Extent_km < 50) %>%
   filter(duplicates_year == 0) %>%

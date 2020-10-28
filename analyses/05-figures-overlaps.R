@@ -30,7 +30,7 @@ species.list <- c("M. crassicaudata", "M.culionensis",
 # and relevel redlist
 ##-----------------------------------------------------
 overlaps_all <- 
-  read_csv(here("data/overlaps.csv")) %>%  
+  read_csv(here("data/overlaps_combined.csv")) %>%  
   mutate(redlist = factor(redlist, levels = c("VU", "EN", "CR"))) %>%
   filter(Certainty >= 50 & Extent_km < 50) %>%
   filter(duplicates == 0) %>%
@@ -41,7 +41,7 @@ overlaps_all <-
 
 ## Years data
 overlaps_year <- 
-  read_csv(here("data/overlaps.csv")) %>%  
+  read_csv(here("data/overlaps_combined.csv")) %>%  
   mutate(redlist = factor(redlist, levels = c("VU", "EN", "CR"))) %>%
   filter(Certainty >= 50 & Extent_km < 50) %>%
   filter(duplicates_year == 0) %>%

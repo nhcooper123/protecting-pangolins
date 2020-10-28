@@ -26,7 +26,7 @@ se <-
 First read in the data as CSV not spatial data as we don't need the spatial geometries here. Relevel redlist so it matches increasing extinction risk.
 ```{r, message = FALSE, warning = FALSE}
 overlaps <- 
-  read_csv(here("data/overlaps.csv")) %>%  
+  read_csv(here("data/overlaps_combined.csv")) %>%  
   mutate(redlist = factor(redlist, levels = c("VU", "EN", "CR")))
 ```
 
