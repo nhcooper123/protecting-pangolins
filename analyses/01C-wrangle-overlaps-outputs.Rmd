@@ -5,4 +5,69 @@ output: html_document
 
 ```{r}
 library(tidyverse)
+library(here)
+```
+Read in the specimen dataset and remove geometry
+```{r}
+specs <- read_csv(here("data/specimens-extents.csv"))
+
+specs <- 
+  specs %>%
+  select(-WKT)
+```
+Read in the AOH data and remove defunct columns and _ from species names
+```{r, message = FALSE}
+files <- paste0("raw-data/AOH_Overlaps/", 
+                dir(path = here("raw-data/AOH_Overlaps"), 
+                    pattern = "*.csv"))
+  
+aoh <- 
+  files %>%
+  here() %>%
+  map(read_csv) %>%    
+  reduce(rbind) %>%
+  select(-percentOverlap, -X_id) %>%
+  mutate(binomial = str_replace(binomial, "_", " "))
+
+# Look at it
+# aoh
+```
+
+Merge with the specimen data
+```{r}
+overlaps_aoh <- 
+  specs %>%
+  full_join(aoh, by = c("RegistrationNumber", "binomial"))
+```
+
+Read in the IUCN data and remove defunct columns and _ from species names
+```{r}
+files <- paste0("raw-data/IUCN_Overlaps/", 
+                dir(path = here("raw-data/IUCN_Overlaps"), 
+                    pattern = "*.csv"))
+  
+iucn <- 
+  files %>%
+  here() %>%
+  map(read_csv) %>%    
+  reduce(rbind) %>%
+  select(-percentOverlap, -X_id) %>%
+  mutate(binomial = str_replace(binomial, "_", " "))
+
+# Look at it
+# iucn
+```
+
+Merge with the specimen data
+```{r}
+overlaps_iucn <- 
+  specs %>%
+  full_join(iucn, by = c("RegistrationNumber", "binomial")) %>%
+  distinct()
+```
+
+Save the files for use in models
+```{r}
+write_csv(overlaps_iucn, file = here("data/overlaps_iucn.csv"))
+write_csv(overlaps_aoh, file = here("data/overlaps_aoh.csv"))
 ```
