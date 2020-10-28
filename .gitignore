@@ -1,6 +1,8 @@
 # Project specific
 raw-data/*
 #data/*
+data/version1/*
+figures/version1/*
 
 *.html
 *.xlsx
