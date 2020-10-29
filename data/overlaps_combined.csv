@@ -1,0 +1,678 @@
+RegistrationNumber,binomial,Percent_overlap,binomial_overlap,Year,Continent,Country,Certainty,redlist,ecology,duplicates,duplicates_year,Decade,Extent_km
+NHMUK_49.77,Manis crassicaudata,13.0605038945362,1,1948,Asia,Sri Lanka,25,EN,Terrestrial,0,0,1940,3.98
+NHMUK_50.29,Manis crassicaudata,25.6067834625776,1,1936,Asia,Sri Lanka,25,EN,Terrestrial,0,0,1930,2.66
+NHMUK_57.487,Manis crassicaudata,0,0,NA,Asia,Sri Lanka,100,EN,Terrestrial,0,0,NA,256.56
+NHMUK_57.488,Manis crassicaudata,0,0,NA,Asia,Sri Lanka,100,EN,Terrestrial,1,1,NA,256.56
+NHMUK_76.138,Manis crassicaudata,25.6067834625776,1,1935,Asia,Sri Lanka,25,EN,Terrestrial,1,0,1930,2.66
+NHMUK_76.138,Manis crassicaudata,25.6067834625776,1,1935,Asia,Sri Lanka,25,EN,Terrestrial,1,1,1930,2.66
+NHMUK_76.141,Manis crassicaudata,0,0,NA,Asia,Sri Lanka,100,EN,Terrestrial,1,1,NA,256.56
+NHMUK_34.3.4.1,Manis crassicaudata,0,0,1933,Asia,Burma,75,EN,Terrestrial,0,0,1930,0.05
+NHMUK_77.3.14.8,Manis crassicaudata,15.6313378170982,1,NA,Asia,Sri Lanka,50,EN,Terrestrial,0,0,NA,5.63
+NHMUK_91.1.31.1,Manis crassicaudata,18.950989081969,1,NA,Asia,India,50,EN,Terrestrial,0,0,NA,16.7
+OMNH_659,Manis crassicaudata,15.0553798918531,1,1965,Asia,Pakistan,75,EN,Terrestrial,0,0,1960,3.036
+FMNH_92879,Manis crassicaudata,17.9336661336307,1,1959,Asia,Sri Lanka,75,EN,Terrestrial,0,0,1950,3.51
+FMNH_82823,Manis crassicaudata,80.9865724996178,1,1922,Asia,India,75,EN,Terrestrial,0,0,1920,3.69
+KU_26648,Manis crassicaudata,21.9007072685464,1,1944,Asia,Sri Lanka,75,EN,Terrestrial,0,0,1940,4.64
+FMNH_98264,Manis crassicaudata,11.2695605313584,1,1963,Asia,Sri Lanka,75,EN,Terrestrial,0,0,1960,13.8
+MCZ_BOM-5305,Manis crassicaudata,0,0,1810,Asia,India,75,EN,Terrestrial,0,0,1810,60.957
+MHNG_MHNG-MAM-1496.018,Manis crassicaudata,0,0,1977,Asia,Pakistan,75,EN,Terrestrial,0,0,1970,88.35
+AMNH_M-34255,Manis crassicaudata,15.2811510418287,1,1910,Asia,Sri Lanka,50,EN,Terrestrial,0,0,1910,4.65
+MCZ_BOM-1066,Manis crassicaudata,2.69777127036086,1,1700,Asia,India,75,EN,Terrestrial,0,0,1700,49.91
+MCZ_BOM-1065,Manis crassicaudata,2.69777127036086,1,1700,Asia,India,75,EN,Terrestrial,1,1,1700,49.91
+MCZ_32522,Manis crassicaudata,0,0,1934,Asia,Sri Lanka,100,EN,Terrestrial,0,0,1930,58
+RBINS_301B,Manis crassicaudata,0,0,1932,Asia,Sri Lanka,75,EN,Terrestrial,0,0,1930,274.14
+ROM_2603230109,Manis crassicaudata,95.1735480347077,1,NA,Asia,India,50,EN,Terrestrial,0,0,NA,1.09962
+FMNH_62918,Manis culionensis,24.3714364885312,1,1947,Asia,Philippines,75,CR,Arboreal,0,0,1940,0.5
+AMNH_M-242095,Manis culionensis,24.3714364885312,1,NA,Asia,Philippines,75,CR,Arboreal,1,0,NA,0.5
+FMNH_62919,Manis culionensis,14.9791515905081,1,1947,Asia,Philippines,75,CR,Arboreal,0,0,1940,0.9
+FMNH_62917,Manis culionensis,14.5908269571248,1,1947,Asia,Philippines,75,CR,Arboreal,0,0,1940,0.9
+FMNH_62920,Manis culionensis,14.9791515905081,1,1947,Asia,Philippines,75,CR,Arboreal,1,1,1940,0.9
+KU_165510,Manis culionensis,9.79353343347181,1,1999,Asia,Philippines,75,CR,Arboreal,0,0,1990,1.126
+MCZ_35536,Manis culionensis,2.88196844133613,1,1937,Asia,Philippines,75,CR,Arboreal,0,0,1930,3.036
+MCZ_35535,Manis culionensis,2.88196844133613,1,1937,Asia,Philippines,75,CR,Arboreal,1,1,1930,3.036
+FMNH_62921,Manis culionensis,0.0478165083464251,1,1947,Asia,Philippines,75,CR,Arboreal,0,0,1940,24.81
+AMNH_M-29745,Manis culionensis,13.1795596225402,1,NA,Asia,Philippines,25,CR,Arboreal,0,0,NA,1
+AMNH_M-203298,Manis culionensis,0,0,1962,Asia,Philippines,75,CR,Arboreal,0,0,1960,247.57
+NHMUK_39.2648,Manis javanica,20.9614196639519,1,1929,Asia,Indonesia,25,CR,Arboreal,0,0,1920,7.23
+NHMUK_39.265,Manis javanica,20.9614196639519,1,NA,Asia,Indonesia,25,CR,Arboreal,1,0,NA,7.23
+NHMUK_39.2651,Manis javanica,20.9614196639519,1,1929,Asia,Indonesia,25,CR,Arboreal,1,1,1920,7.23
+NHMUK_39.2652,Manis javanica,0,0,NA,Asia,Indonesia,100,CR,Arboreal,0,0,NA,54.22
+NHMUK_50.758,Manis javanica,20.14394897724,1,1948,Asia,Malaysia,50,CR,Arboreal,0,0,1940,12.22
+NHMUK_51.295,Manis javanica,0,0,1932,Asia,Malaysia,100,CR,Arboreal,0,0,1930,1075.93
+NHMUK_55.326,Manis javanica,26.960573934474,1,1917,Asia,Thailand,100,CR,Arboreal,0,0,1910,10.09
+NHMUK_81.2687,Manis javanica,0,0,NA,Asia,Indonesia,100,CR,Arboreal,0,0,NA,614.26
+NHMUK_26.10.4.199,Manis javanica,16.6536292758523,1,1926,Asia,Vietnam,75,CR,Arboreal,0,0,1920,17.47
+NHMUK_28.7.1.151,Manis javanica,22.2149319373236,1,1927,Asia,Vietnam,50,CR,Arboreal,0,0,1920,12.62
+NHMUK_3.2.6.81,Manis javanica,4.63170448613279,1,1901,Asia,Thailand,25,CR,Arboreal,0,0,1900,36.36
+NHMUK_6.11.6.41,Manis javanica,87.9156615625649,1,NA,Asia,Vietnam,25,CR,Arboreal,0,0,NA,0.31
+NHMUK_78.6.17.14,Manis javanica,0,0,NA,Asia,Cambodia,100,CR,Arboreal,0,0,NA,421.25
+NHMUK_79.11.21.647,Manis javanica,0,0,NA,Asia,Indonesia,100,CR,Arboreal,0,0,NA,594.96
+NHMUK_79.11.21.648,Manis javanica,0,0,NA,Asia,Indonesia,100,CR,Arboreal,1,1,NA,594.96
+NHMUK_79.11.21.649,Manis javanica,24.7016768308587,1,NA,Asia,Indonesia,25,CR,Arboreal,0,0,NA,4.09
+NHMUK_79.11.21.650,Manis javanica,24.7016768308587,1,NA,Asia,Indonesia,25,CR,Arboreal,1,1,NA,4.09
+NHMUK_79.8.30.9,Manis javanica,0,0,NA,Asia,Borneo,100,CR,Arboreal,0,0,NA,722.82
+NHMUK_81.6.30.5,Manis javanica,0,0,NA,Asia,Cambodia,100,CR,Arboreal,1,1,NA,421.25
+NHMUK_82.7.24.5,Manis javanica,0,0,NA,Asia,Indonesia,75,CR,Arboreal,0,0,NA,201.38
+NHMUK_85.8.1.366,Manis javanica,35.865937190952,1,1875,Asia,Myanmar,25,CR,Arboreal,0,0,1870,0.794
+NHMUK_9.1.5.856,Manis javanica,19.8900404023055,1,1907,Asia,Indonesia,75,CR,Arboreal,0,0,1900,10.05
+NHMUK_9.1.5.857,Manis javanica,19.8900404023055,1,1907,Asia,Indonesia,75,CR,Arboreal,1,1,1900,10.05
+NHMUK_9.1.5.858,Manis javanica,18.4067625784066,1,1907,Asia,Indonesia,75,CR,Arboreal,0,0,1900,11.24
+NHMUK_9.1.5.859,Manis javanica,18.491013022248,1,1908,Asia,Indonesia,75,CR,Arboreal,0,0,1900,10.125
+NHMUK_9.1.5.860,Manis javanica,10.2374706506847,1,1908,Asia,Indonesia,25,CR,Arboreal,0,0,1900,21.29
+NHMUK_92.9.4.12,Manis javanica,2.28661803903565,1,1892,Asia,Malaysia,75,CR,Arboreal,0,0,1890,54.83
+NHMUK_98.10.21.5,Manis javanica,0,0,1879,Asia,Thailand,75,CR,Arboreal,0,0,1870,81.39
+NHMUK_98.10.5.49,Manis javanica,0,0,1897,Asia,Thailand,100,CR,Arboreal,0,0,1890,103.66
+NHMUK_98.8.3.6,Manis javanica,0,0,1898,Asia,Malaysia,100,CR,Arboreal,0,0,1890,118.9
+NHMUK_no reg 10,Manis javanica,5.80016567939706,1,NA,Asia,Singapore,25,CR,Arboreal,0,0,NA,32.21
+UWBM_UWBM:Mamm:82627,Manis javanica,91.9707700909716,1,2010,Asia,Singapore,75,CR,Arboreal,0,0,2010,0.03
+UWBM_UWBM:Mamm:82626,Manis javanica,97.5427967445794,1,2011,Asia,Singapore,75,CR,Arboreal,0,0,2010,0.03
+UWBM_UWBM:Mamm:82629,Manis javanica,100,1,2010,Asia,Singapore,75,CR,Arboreal,0,0,2010,0.03
+MCZ_35720,Manis javanica,93.9579274340836,1,1937,Asia,Malaysia,75,CR,Arboreal,0,0,1930,0.301
+KU_73516,Manis javanica,19.8585460505432,1,1955,Asia,Indonesia,75,CR,Arboreal,0,0,1950,6
+FMNH_37989,Manis javanica,24.6158827004141,1,1931,Asia,Laos,75,CR,Arboreal,0,0,1930,7.25
+ROM_36802,Manis javanica,20.1767441766909,1,1965,Asia,Malaysia,75,CR,Arboreal,0,0,1960,15.15
+MVZ_MVZ:Mamm:119379,Manis javanica,8.12494188424395,1,1954,Asia,Singapore,75,CR,Arboreal,0,0,1950,27.044
+AMNH_M-102180,Manis javanica,6.97630107114703,1,1933,Asia,Indonesia,75,CR,Arboreal,0,0,1930,28.2
+UWBM_UWBM:Mamm:82628,Manis javanica,6.64816807431131,1,1800,Asia,Singapore,75,CR,Arboreal,0,0,1800,30
+USNM_488088,Manis javanica,2.71492056812914,1,1971,Asia,Malaysia,75,CR,Arboreal,0,0,1970,48.5
+FMNH_33550,Manis javanica,0,0,1929,Asia,Malaysia,75,CR,Arboreal,0,0,1920,63.79
+FMNH_68743,Manis javanica,0,0,1950,Asia,Malaysia,75,CR,Arboreal,0,0,1950,63.79
+FMNH_68742,Manis javanica,0,0,1950,Asia,Malaysia,75,CR,Arboreal,1,1,1950,63.79
+NCSM_8295,Manis javanica,0,0,NA,Asia,Cambodia,75,CR,Arboreal,0,0,NA,325
+MHNG_MHNG-MAM-745.041,Manis javanica,0,0,NA,Asia,Malaysia,75,CR,Arboreal,0,0,NA,488.84
+RBINS_299B,Manis javanica,0,0,NA,Asia,Myanmar,75,CR,Arboreal,0,0,NA,709.66
+RBINS_299C,Manis javanica,0,0,NA,Asia,Myanmar,75,CR,Arboreal,0,0,NA,1113.26
+UWBM_UWBM:Mamm:82865,Manis javanica,8.19181854361503,1,2019,Asia,Singapore,100,CR,Arboreal,0,0,2010,26.93
+MCZ_6439,Manis javanica,0,0,1700,Africa,Namibia,100,CR,Arboreal,0,0,1700,736.75
+UWBM_UWBM:Mamm:68927,Manis javanica,0,0,1850,Asia,Thailand,100,CR,Arboreal,0,0,1850,1065.72
+O_18148,Manis javanica,0,0,NA,Asia,Thailand,100,CR,Arboreal,1,0,NA,1065.72
+O_18147,Manis javanica,0,0,NA,Asia,Thailand,100,CR,Arboreal,1,1,NA,1065.72
+O_18144,Manis javanica,0,0,NA,Asia,Thailand,100,CR,Arboreal,1,1,NA,1065.72
+UAZ_UAZ 08572,Manis javanica,0,0,NA,Asia,Malaysia,100,CR,Arboreal,1,0,NA,1103.94
+UAZ_UAZ 08573,Manis javanica,0,0,NA,Asia,Malaysia,100,CR,Arboreal,1,1,NA,1103.94
+MVZ_MVZ:Mamm:183663,Manis javanica,0,0,1818,Asia,Malaysia,100,CR,Arboreal,1,0,1810,1103.94
+USNM_300925,Manis javanica,0,0,1953,Asia,Malaysia,100,CR,Arboreal,1,0,1950,1103.94
+MCZ_6999,Manis javanica,21.1214504236919,1,1907,Asia,Indonesia,50,CR,Arboreal,0,0,1900,5.155
+PSM_Mammal-14740,Manis javanica,21.0360838110461,1,NA,Asia,Malaysia,75,CR,Arboreal,0,0,NA,10.71
+PSM_Mammal-14739,Manis javanica,21.0360838110461,1,1967,Asia,Malaysia,75,CR,Arboreal,1,0,1960,10.71
+PSM_Mammal-14794,Manis javanica,21.0360838110461,1,1970,Asia,Malaysia,75,CR,Arboreal,1,0,1970,10.71
+PSM_Mammal-14793,Manis javanica,21.0360838110461,1,1970,Asia,Malaysia,75,CR,Arboreal,1,1,1970,10.71
+PSM_Mammal-14792,Manis javanica,21.0360838110461,1,1967,Asia,Malaysia,75,CR,Arboreal,1,1,1960,10.71
+PSM_Mammal-14791,Manis javanica,21.0360838110461,1,1966,Asia,Malaysia,75,CR,Arboreal,1,0,1960,10.71
+USNM_267387,Manis javanica,16.2017855049671,1,NA,Asia,Indonesia,50,CR,Arboreal,0,0,NA,10.92
+USNM_267388,Manis javanica,16.2017855049671,1,NA,Asia,Indonesia,50,CR,Arboreal,1,1,NA,10.92
+USNM_267389,Manis javanica,16.2017855049671,1,NA,Asia,Indonesia,50,CR,Arboreal,1,1,NA,10.92
+MNHN_MO-1962-2119,Manis javanica,6.46391750809303,1,NA,Asia,Vietnam,50,CR,Arboreal,0,0,NA,30.92
+USNM_153975,Manis javanica,2.41738300037978,1,1909,Asia,Indonesia,75,CR,Arboreal,0,0,1900,49.95
+UMZC_E.1306,Manis javanica,0,0,1899,Asia,Thailand,100,CR,Arboreal,0,0,1890,105.14
+USNM_124242,Manis javanica,18.2072077025472,1,1904,Asia,Myanmar,25,CR,Arboreal,0,0,1900,2.76
+USNM_198319,Manis javanica,30.7886135509183,1,1913,Asia,Indonesia,50,CR,Arboreal,0,0,1910,5.415
+AMNH_M-101731,Manis javanica,21.9659496174968,1,1932,Asia,Indonesia,25,CR,Arboreal,0,0,1930,7.23
+AMNH_M-101730,Manis javanica,21.9659496174968,1,1932,Asia,Indonesia,25,CR,Arboreal,1,1,1930,7.23
+AMNH_M-101732,Manis javanica,21.9659496174968,1,1932,Asia,Indonesia,25,CR,Arboreal,1,1,1930,7.23
+AMNH_M-101753,Manis javanica,20.9614196639519,1,1932,Asia,Indonesia,25,CR,Arboreal,1,0,1930,7.23
+AMNH_M-101562,Manis javanica,20.9614196639519,1,1932,Asia,Indonesia,25,CR,Arboreal,1,1,1930,7.23
+AMNH_M-102077,Manis javanica,20.9614196639519,1,1933,Asia,Indonesia,25,CR,Arboreal,1,0,1930,7.23
+AMNH_M-102045,Manis javanica,20.9614196639519,1,1933,Asia,Indonesia,25,CR,Arboreal,1,1,1930,7.23
+AMNH_M-102044,Manis javanica,20.9614196639519,1,1933,Asia,Indonesia,25,CR,Arboreal,1,1,1930,7.23
+AMNH_M-102043,Manis javanica,20.9614196639519,1,1933,Asia,Indonesia,25,CR,Arboreal,1,1,1930,7.23
+AMNH_M-102095,Manis javanica,20.9614196639519,1,1933,Asia,Indonesia,25,CR,Arboreal,1,1,1930,7.23
+AMNH_M-102094,Manis javanica,20.9614196639519,1,1933,Asia,Indonesia,25,CR,Arboreal,1,1,1930,7.23
+AMNH_M-102041,Manis javanica,20.9614196639519,1,1933,Asia,Indonesia,25,CR,Arboreal,1,1,1930,7.23
+AMNH_M-102098,Manis javanica,20.9614196639519,1,1933,Asia,Indonesia,25,CR,Arboreal,1,1,1930,7.23
+AMNH_M-102097,Manis javanica,20.9614196639519,1,1933,Asia,Indonesia,25,CR,Arboreal,1,1,1930,7.23
+AMNH_M-101677,Manis javanica,20.9614196639519,1,NA,Asia,Indonesia,25,CR,Arboreal,1,1,NA,7.23
+AMNH_M-101566,Manis javanica,20.9614196639519,1,1932,Asia,Indonesia,25,CR,Arboreal,1,1,1930,7.23
+AMNH_M-101565,Manis javanica,20.9614196639519,1,1929,Asia,Indonesia,25,CR,Arboreal,1,1,1920,7.23
+AMNH_M-101564,Manis javanica,20.9614196639519,1,1929,Asia,Indonesia,25,CR,Arboreal,1,1,1920,7.23
+AMNH_M-101563,Manis javanica,20.9614196639519,1,1929,Asia,Indonesia,25,CR,Arboreal,1,1,1920,7.23
+USNM_142460,Manis javanica,38.9279254885585,1,1905,Asia,Indonesia,50,CR,Arboreal,0,0,1900,8.17
+USNM_142461,Manis javanica,38.9279254885585,1,1905,Asia,Indonesia,50,CR,Arboreal,1,1,1900,8.17
+MCZ_36022,Manis javanica,17.8251521123688,1,1937,Asia,Indonesia,75,CR,Arboreal,0,0,1930,9.42
+USNM_154924,Manis javanica,19.8900404023055,1,1909,Asia,Indonesia,75,CR,Arboreal,1,0,1900,10.05
+USNM_236633,Manis javanica,20.4520943367852,1,1916,Asia,Thailand,50,CR,Arboreal,0,0,1910,11.05
+UBCBBM_M008731,Manis javanica,23.1888439800243,1,1961,Asia,Malaysia,75,CR,Arboreal,0,0,1960,12.75
+UBCBBM_M008722,Manis javanica,23.1888439800243,1,1961,Asia,Malaysia,75,CR,Arboreal,1,1,1960,12.75
+MNHN_MO-1897-1867,Manis javanica,19.4444731362435,1,NA,Asia,Malaysia,75,CR,Arboreal,0,0,NA,15.97
+MNHN_MO-1923-391,Manis javanica,13.0700839405176,1,NA,Asia,Vietnam,25,CR,Arboreal,0,0,NA,16.61
+USNM_199023,Manis javanica,8.87932667471263,1,1914,Asia,Indonesia,50,CR,Arboreal,0,0,1910,23.69
+USNM_358009,Manis javanica,3.89905539093753,1,1968,Asia,Vietnam,50,CR,Arboreal,0,0,1960,40.53
+MNHN_MO-1883-41,Manis javanica,2.76969024454999,1,NA,Asia,Thailand,25,CR,Arboreal,0,0,NA,48.59
+USNM_317200,Manis javanica,2.30338821231277,1,1960,Asia,Malaysia,50,CR,Arboreal,0,0,1960,53.36
+USNM_300924,Manis javanica,2.30338821231277,1,1953,Asia,Malaysia,50,CR,Arboreal,1,0,1950,53.36
+USNM_317198,Manis javanica,2.30338821231277,1,1960,Asia,Malaysia,50,CR,Arboreal,1,1,1960,53.36
+USNM_317199,Manis javanica,2.30338821231277,1,1960,Asia,Malaysia,50,CR,Arboreal,1,1,1960,53.36
+MNHN_MO-1995-30,Manis javanica,1.83522139072316,1,NA,Asia,Vietnam,50,CR,Arboreal,0,0,NA,59.32
+USNM_144418,Manis javanica,25.8437046099104,1,1907,Asia,Indonesia,25,CR,Arboreal,0,0,1900,9.39
+USNM_113114,Manis javanica,9.38509503999833,1,1901,Asia,Indonesia,100,CR,Arboreal,0,0,1900,25.11
+USNM_141165,Manis javanica,0,0,1905,Asia,Indonesia,100,CR,Arboreal,0,0,1900,74.16
+USNM_141164,Manis javanica,0,0,1905,Asia,Indonesia,100,CR,Arboreal,1,1,1900,74.16
+USNM_104598,Manis javanica,0,0,1900,Asia,Indonesia,100,CR,Arboreal,0,0,1900,136.48
+O_18146,Manis javanica,0,0,NA,Asia,Indonesia,100,CR,Arboreal,1,1,NA,594.96
+O_18145,Manis javanica,0,0,NA,Asia,Indonesia,100,CR,Arboreal,1,1,NA,614.26
+MHNG_MHNG-MAM-696.072,Manis javanica,0,0,NA,Asia,Indonesia,100,CR,Arboreal,0,0,NA,614.67
+MHNG_MHNG-MAM-129.027,Manis javanica,0,0,NA,Asia,Indonesia,100,CR,Arboreal,1,1,NA,614.67
+MHNG_MHNG-MAM-723.008,Manis javanica,0,0,NA,Asia,Indonesia,100,CR,Arboreal,1,1,NA,614.67
+MHNG_MHNG-MAM-710.073,Manis javanica,0,0,NA,Asia,Indonesia,100,CR,Arboreal,1,1,NA,614.67
+MHNG_MHNG-MAM-777.048,Manis javanica,0,0,NA,Asia,Indonesia,100,CR,Arboreal,1,1,NA,614.67
+MNHN_MO-1911-1717,Manis javanica,0,0,NA,Asia,Indonesia,100,CR,Arboreal,0,0,NA,767.99
+USNM_198852,Manis javanica,0,0,1914,Asia,Indonesia,100,CR,Arboreal,0,0,1910,490
+USNM_356430,Manis javanica,19.2411945569396,1,1966,Asia,Vietnam,100,CR,Arboreal,0,0,1960,7.9
+AMNH_M-87624,Manis javanica,0,0,1932,Asia,Laos,100,CR,Arboreal,0,0,1930,89.78
+AMNH_M-87623,Manis javanica,0,0,1932,Asia,Laos,100,CR,Arboreal,1,1,1930,89.78
+AMNH_M-87622,Manis javanica,0,0,1932,Asia,Laos,100,CR,Arboreal,1,1,1930,89.78
+MCZ_35956,Manis javanica,99.9512255065875,1,1937,Asia,Thailand,0,CR,Arboreal,0,0,1930,0.301
+USNM_321551,Manis javanica,47.2542938370862,1,1961,Asia,Cambodia,100,CR,Arboreal,0,0,1960,2
+AMNH_M-32637,Manis javanica,18.2018355492257,1,1910,Asia,Malaysia,75,CR,Arboreal,0,0,1910,16.093
+MNHN_MO-1985-104,Manis javanica,0,0,NA,Asia,Laos,100,CR,Arboreal,0,0,NA,516.14
+MNHN_MO-1929-411,Manis javanica,0,0,NA,Asia,Laos,100,CR,Arboreal,1,1,NA,516.14
+USNM_260592,Manis javanica,0,0,1935,Asia,Thailand,100,CR,Arboreal,1,0,1930,864.12
+USNM_535155,Manis javanica,0,0,1954,Asia,Thailand,100,CR,Arboreal,1,0,1950,864.12
+USNM_257682,Manis javanica,0,0,1931,Asia,Thailand,100,CR,Arboreal,1,0,1930,864.12
+USNM_83250,Manis javanica,0,0,1896,Asia,Thailand,100,CR,Arboreal,1,0,1890,864.12
+USNM_86789,Manis javanica,0,0,1899,Asia,Thailand,100,CR,Arboreal,1,0,1890,864.12
+USNM_83513,Manis javanica,0,0,1896,Asia,Thailand,100,CR,Arboreal,1,1,1890,864.12
+GNM_Ma ex 655,Manis javanica,0,0,1910,Africa,Namibia,100,CR,Arboreal,1,0,1910,950.45
+GNM_CollAn 2726,Manis javanica,0,0,1910,Africa,Namibia,100,CR,Arboreal,1,1,1910,950.45
+AMNH_M-102149,Manis javanica,0,0,1933,Asia,Indonesia,100,CR,Arboreal,0,0,1930,2658.79
+AMNH_M-102148,Manis javanica,0,0,1933,Asia,Indonesia,100,CR,Arboreal,1,1,1930,2658.79
+AMNH_M-102096,Manis javanica,0,0,1933,Asia,Indonesia,100,CR,Arboreal,1,1,1930,2658.79
+AMNH_M-102042,Manis javanica,0,0,1933,Asia,Indonesia,100,CR,Arboreal,1,1,1930,2658.79
+USNM_121516,Manis javanica,0,0,1902,Asia,Indonesia,100,CR,Arboreal,1,0,1900,2658.79
+USNM_121517,Manis javanica,0,0,1902,Asia,Indonesia,100,CR,Arboreal,1,1,1900,2658.79
+O_18150,Manis javanica,0,0,NA,Asia,Indonesia,100,CR,Arboreal,1,0,NA,2658.79
+AMNH_M-103986,Manis javanica,0,0,1935,Asia,Indonesia,100,CR,Arboreal,1,0,1930,2658.79
+AMNH_M-103985,Manis javanica,0,0,1935,Asia,Indonesia,100,CR,Arboreal,1,1,1930,2658.79
+MZLU_L897/3277,Manis javanica,19.0378493285917,1,1897,Asia,Indonesia,75,CR,Arboreal,0,0,1890,6.96
+NHMUK_39.4048,Manis pentadactyla,0,0,NA,Asia,China,100,CR,Terrestrial,0,0,NA,2824.1
+NHMUK_47.326,Manis pentadactyla,0,0,1940,Asia,India,75,CR,Terrestrial,0,0,1940,92.64
+NHMUK_50.751,Manis pentadactyla,98.6293959067423,1,1939,Asia,Myanmar,75,CR,Terrestrial,0,0,1930,0.03
+NHMUK_50.752,Manis pentadactyla,100,1,1939,Asia,Myanmar,75,CR,Terrestrial,0,0,1930,0.03
+NHMUK_50.753,Manis pentadactyla,100,1,1939,Asia,Myanmar,75,CR,Terrestrial,0,0,1930,0.03
+NHMUK_53.658,Manis pentadactyla,0,0,NA,Asia,Republic of China,100,CR,Terrestrial,0,0,NA,212.06
+NHMUK_63.36,Manis pentadactyla,96.1751836873629,1,1962,Asia,Nepal,75,CR,Terrestrial,0,0,1960,0.03
+NHMUK_73.1585,Manis pentadactyla,0,0,NA,Asia,South China,100,CR,Terrestrial,0,0,NA,1266.57
+NHMUK_81.2688,Manis pentadactyla,0,0,NA,Asia,India,100,CR,Terrestrial,0,0,NA,1677.15
+NHMUK_81.2689,Manis pentadactyla,0,0,NA,Asia,China,100,CR,Terrestrial,1,1,NA,2824.1
+NHMUK_1996.498,Manis pentadactyla,0,0,1931,Asia,China,100,CR,Terrestrial,0,0,1930,587.23
+NHMUK_14.7.19.238,Manis pentadactyla,22.1320980986406,1,NA,Asia,Myanmar,50,CR,Terrestrial,0,0,NA,11.76
+NHMUK_2.6.10.63,Manis pentadactyla,0,0,NA,Asia,China,100,CR,Terrestrial,1,1,NA,2824.1
+NHMUK_21.10.5.4,Manis pentadactyla,0,0,NA,Asia,India,100,CR,Terrestrial,1,1,NA,1677.15
+NHMUK_21.8.2.27,Manis pentadactyla,0,0,1920,Asia,India,75,CR,Terrestrial,1,0,1920,92.64
+NHMUK_33.4.1.506,Manis pentadactyla,5.5509212496035,1,1929,Asia,Vietnam,100,CR,Terrestrial,0,0,1920,31.27
+NHMUK_33.4.1.507,Manis pentadactyla,5.5509212496035,1,1929,Asia,Vietnam,100,CR,Terrestrial,1,1,1920,31.27
+NHMUK_33.4.1.508,Manis pentadactyla,0,0,NA,Asia,Southeast Asia,100,CR,Terrestrial,0,0,NA,1672.79
+NHMUK_33.4.1.509,Manis pentadactyla,0,0,NA,Asia,Vietnam,100,CR,Terrestrial,0,0,NA,920.18
+NHMUK_33.4.1.510,Manis pentadactyla,0,0,NA,Asia,Vietnam,100,CR,Terrestrial,1,1,NA,920.18
+NHMUK_37.6.10.1,Manis pentadactyla,0,0,NA,Asia,India,100,CR,Terrestrial,1,1,NA,1677.15
+NHMUK_38.9.7.57,Manis pentadactyla,5.18348768689177,1,1932,Asia,China,100,CR,Terrestrial,0,0,1930,32.26
+NHMUK_38.9.7.58,Manis pentadactyla,5.18348768689177,1,NA,Asia,China,100,CR,Terrestrial,1,0,NA,32.26
+NHMUK_43.1.12.85,Manis pentadactyla,0,0,NA,Asia,Nepal,100,CR,Terrestrial,0,0,NA,467.05
+NHMUK_45.1.12.462,Manis pentadactyla,0,0,NA,Asia,Nepal,100,CR,Terrestrial,1,1,NA,467.05
+NHMUK_48.6.11.7,Manis pentadactyla,0,0,NA,Asia,India,100,CR,Terrestrial,0,0,NA,74.41
+NHMUK_57.1.22.8,Manis pentadactyla,0,0,NA,Asia,India,100,CR,Terrestrial,1,1,NA,1677.15
+NHMUK_58.6.24.34,Manis pentadactyla,0,0,NA,Asia,India,100,CR,Terrestrial,1,1,NA,74.41
+NHMUK_58.6.24.35,Manis pentadactyla,0,0,NA,Asia,India,100,CR,Terrestrial,1,1,NA,74.41
+NHMUK_7.7.3.25,Manis pentadactyla,2.29832209393448,1,1900,Asia,China,75,CR,Terrestrial,0,0,1900,50.3
+NHMUK_72.11.13.1,Manis pentadactyla,0,0,1868,Asia,China,100,CR,Terrestrial,0,0,1860,167.98
+NHMUK_72.11.13.2,Manis pentadactyla,0,0,NA,Asia,Taiwan,100,CR,Terrestrial,0,0,NA,218.3
+NHMUK_72.11.13.3,Manis pentadactyla,0,0,NA,Asia,Taiwan,100,CR,Terrestrial,1,1,NA,218.3
+NHMUK_72.11.13.4,Manis pentadactyla,2.62823171549332,1,1867,Asia,China,50,CR,Terrestrial,0,0,1860,46.93
+NHMUK_72.11.13.5,Manis pentadactyla,2.62823171549332,1,NA,Asia,China,50,CR,Terrestrial,1,0,NA,46.93
+NHMUK_72.11.13.6,Manis pentadactyla,2.62823171549332,1,NA,Asia,China,50,CR,Terrestrial,1,1,NA,46.93
+NHMUK_72.11.13.7,Manis pentadactyla,2.62823171549332,1,1867,Asia,China,50,CR,Terrestrial,1,1,1860,46.93
+NHMUK_72.11.13.8,Manis pentadactyla,0,0,1868,Asia,China,100,CR,Terrestrial,1,1,1860,167.98
+NHMUK_79.11.21.646,Manis pentadactyla,0,0,NA,Asia,Bangladesh,100,CR,Terrestrial,0,0,NA,477.63
+NHMUK_79.11.21.651,Manis pentadactyla,12.4460183518081,1,NA,Asia,India,25,CR,Terrestrial,0,0,NA,5.11
+UMMZ_97618,Manis pentadactyla,0,0,1949,Asia,Taiwan,75,CR,Terrestrial,0,0,1940,0.0046
+UMMZ_31587,Manis pentadactyla,49.9249599159742,1,NA,Asia,India,75,CR,Terrestrial,0,0,NA,0.36
+FMNH_32513,Manis pentadactyla,81.6130813234696,1,1929,Asia,Laos,75,CR,Terrestrial,0,0,1920,2.91
+FMNH_32512,Manis pentadactyla,81.6130813234696,1,1929,Asia,Laos,75,CR,Terrestrial,1,1,1920,2.91
+FMNH_39284,Manis pentadactyla,12.0616284208768,1,1929,Asia,Laos,75,CR,Terrestrial,0,0,1920,4.4
+CAS_16619,Manis pentadactyla,16.301451771939,1,1960,Asia,Taiwan,75,CR,Terrestrial,0,0,1960,4.498
+MSB_MSB:Mamm:13147,Manis pentadactyla,16.301451771939,1,1960,Asia,Taiwan,75,CR,Terrestrial,1,1,1960,4.498
+FMNH_114387,Manis pentadactyla,11.0089410338511,1,1973,Asia,Nepal,75,CR,Terrestrial,0,0,1970,4.82
+MVZ_MVZ:Mamm:125554,Manis pentadactyla,18.6655776903632,1,1959,Asia,Taiwan,75,CR,Terrestrial,0,0,1950,7.33
+FMNH_75880,Manis pentadactyla,10.7194632653861,1,1953,Asia,India,75,CR,Terrestrial,0,0,1950,19.85
+FMNH_75879,Manis pentadactyla,10.7194632653861,1,1952,Asia,India,75,CR,Terrestrial,1,0,1950,19.85
+FMNH_75878,Manis pentadactyla,10.7194632653861,1,1952,Asia,India,75,CR,Terrestrial,1,1,1950,19.85
+FMNH_75877,Manis pentadactyla,10.7194632653861,1,1952,Asia,India,75,CR,Terrestrial,1,1,1950,19.85
+FMNH_75875,Manis pentadactyla,10.7194632653861,1,1953,Asia,India,75,CR,Terrestrial,1,1,1950,19.85
+FMNH_75874,Manis pentadactyla,10.7194632653861,1,1953,Asia,India,75,CR,Terrestrial,1,1,1950,19.85
+FMNH_84812,Manis pentadactyla,10.7194632653861,1,1954,Asia,India,75,CR,Terrestrial,1,0,1950,19.85
+AMNH_M-59927,Manis pentadactyla,4.81871282370619,1,1923,Asia,China,75,CR,Terrestrial,0,0,1920,33.32
+FMNH_39384,Manis pentadactyla,0,0,1925,Asia,China,75,CR,Terrestrial,0,0,1920,93.27
+FMNH_39385,Manis pentadactyla,0,0,1921,Asia,China,75,CR,Terrestrial,0,0,1920,132.9
+MHNG_MHNG-MAM-299.042,Manis pentadactyla,0,0,NA,Asia,India,75,CR,Terrestrial,0,0,NA,1200
+MHNG_MHNG-MAM-769.034,Manis pentadactyla,0,0,NA,Asia,India,75,CR,Terrestrial,1,1,NA,1200
+MHNG_MHNG-MAM-769.035,Manis pentadactyla,0,0,NA,Asia,India,75,CR,Terrestrial,1,1,NA,1200
+FMNH_75876,Manis pentadactyla,0,0,NA,Asia,India,75,CR,Terrestrial,1,1,NA,1200
+O_18153,Manis pentadactyla,0,0,NA,Asia,India,100,CR,Terrestrial,1,1,NA,1688.15
+LSUMZ_35002,Manis pentadactyla,0,0,1984,Asia,China,100,CR,Terrestrial,1,0,1980,2824.1
+MCZ_38281,Manis pentadactyla,5.5509212496035,1,1939,Asia,Vietnam,100,CR,Terrestrial,1,0,1930,31.27
+O_18152,Manis pentadactyla,2.73852902579203,1,NA,Asia,China,50,CR,Terrestrial,0,0,NA,46.63
+O_18151,Manis pentadactyla,2.73852902579203,1,NA,Asia,China,50,CR,Terrestrial,1,1,NA,46.63
+CUMV_11091,Manis pentadactyla,2.65835676200931,1,1961,Asia,Taiwan,100,CR,Terrestrial,0,0,1960,46.74
+USNM_355454,Manis pentadactyla,0,0,1960,Asia,Laos,100,CR,Terrestrial,0,0,1960,98.4
+AMNH_M-184958,Manis pentadactyla,0,0,1960,Asia,Taiwan,100,CR,Terrestrial,0,0,1960,106.2
+AMNH_M-184959,Manis pentadactyla,0,0,1960,Asia,Taiwan,100,CR,Terrestrial,1,1,1960,106.2
+MNHN_MO-1868-1376,Manis pentadactyla,0,0,NA,Asia,China,100,CR,Terrestrial,0,0,NA,1013.49
+USNM_240481,Manis pentadactyla,84.2541810423816,1,NA,Asia,Vietnam,25,CR,Terrestrial,0,0,NA,2.63
+USNM_356431,Manis pentadactyla,9.64983007457184,1,1965,Asia,Vietnam,25,CR,Terrestrial,0,0,1960,3.54
+FMNH_39388,Manis pentadactyla,19.7878890504289,1,1923,Asia,China,50,CR,Terrestrial,0,0,1920,5.035
+FMNH_39387,Manis pentadactyla,19.7878890504289,1,1923,Asia,China,50,CR,Terrestrial,1,1,1920,5.035
+FMNH_39386,Manis pentadactyla,19.7878890504289,1,1923,Asia,China,50,CR,Terrestrial,1,1,1920,5.035
+FMNH_146075,Manis pentadactyla,19.8745652557569,1,1923,Asia,China,50,CR,Terrestrial,0,0,1920,5.035
+AMNH_M-200533,Manis pentadactyla,19.8847032976644,1,NA,Asia,China,50,CR,Terrestrial,0,0,NA,5.035
+AMNH_M-60017,Manis pentadactyla,19.8847032976644,1,1923,Asia,China,50,CR,Terrestrial,1,0,1920,5.035
+AMNH_M-60015,Manis pentadactyla,19.8847032976644,1,1923,Asia,China,50,CR,Terrestrial,1,1,1920,5.035
+AMNH_M-60016,Manis pentadactyla,19.8847032976644,1,1923,Asia,China,50,CR,Terrestrial,1,1,1920,5.035
+AMNH_M-60008,Manis pentadactyla,19.8847032976644,1,1923,Asia,China,50,CR,Terrestrial,1,1,1920,5.035
+AMNH_M-60010,Manis pentadactyla,19.8847032976644,1,1923,Asia,China,50,CR,Terrestrial,1,1,1920,5.035
+AMNH_M-60019,Manis pentadactyla,19.8847032976644,1,1923,Asia,China,50,CR,Terrestrial,1,1,1920,5.035
+AMNH_M-60018,Manis pentadactyla,19.8847032976644,1,1923,Asia,China,50,CR,Terrestrial,1,1,1920,5.035
+AMNH_M-60022,Manis pentadactyla,19.8847032976644,1,1923,Asia,China,50,CR,Terrestrial,1,1,1920,5.035
+AMNH_M-60013,Manis pentadactyla,19.8847032976644,1,1923,Asia,China,50,CR,Terrestrial,1,1,1920,5.035
+AMNH_M-60011,Manis pentadactyla,19.8847032976644,1,1923,Asia,China,50,CR,Terrestrial,1,1,1920,5.035
+AMNH_M-60012,Manis pentadactyla,19.8847032976644,1,1923,Asia,China,50,CR,Terrestrial,1,1,1920,5.035
+AMNH_M-60009,Manis pentadactyla,19.8847032976644,1,1923,Asia,China,50,CR,Terrestrial,1,1,1920,5.035
+AMNH_M-60006,Manis pentadactyla,19.8847032976644,1,1923,Asia,China,50,CR,Terrestrial,1,1,1920,5.035
+AMNH_M-60014,Manis pentadactyla,19.8847032976644,1,1923,Asia,China,50,CR,Terrestrial,1,1,1920,5.035
+AMNH_M-60004,Manis pentadactyla,19.8847032976644,1,1922,Asia,China,50,CR,Terrestrial,1,0,1920,5.035
+AMNH_M-60007,Manis pentadactyla,19.8847032976644,1,1923,Asia,China,50,CR,Terrestrial,1,1,1920,5.035
+WNMU_WNMU:Mamm:1241,Manis pentadactyla,11.3640908701265,1,1967,Asia,Taiwan,75,CR,Terrestrial,0,0,1960,10.86
+EMU_EMU M 250,Manis pentadactyla,11.3640908701265,1,NA,Asia,Taiwan,75,CR,Terrestrial,1,0,NA,10.86
+ISM_690311,Manis pentadactyla,11.3640908701265,1,1960,Asia,Taiwan,75,CR,Terrestrial,1,0,1960,10.86
+KU_83579,Manis pentadactyla,11.2099517407804,1,1960,Asia,Taiwan,75,CR,Terrestrial,0,0,1960,11.08
+LACM_008227,Manis pentadactyla,26.693516490163,1,1945,Asia,China,50,CR,Terrestrial,0,0,1940,13.233
+AMNH_M-173637,Manis pentadactyla,5.38630769748309,1,1956,Asia,Taiwan,50,CR,Terrestrial,0,0,1950,31.35
+AMNH_M-60173,Manis pentadactyla,1.4500119077845,1,1925,Asia,China,75,CR,Terrestrial,0,0,1920,66.85
+USNM_238735,Manis pentadactyla,0,0,1922,Asia,China,25,CR,Terrestrial,0,0,1920,93.71
+MCZ_19992,Manis pentadactyla,0,0,1922,Asia,China,75,CR,Terrestrial,0,0,1920,96.65
+FMNH_32697,Manis pentadactyla,1.44921375665865,1,1929,Asia,Vietnam,25,CR,Terrestrial,0,0,1920,356.79
+AMNH_M-115628,Manis pentadactyla,0,0,1956,Asia,Taiwan,100,CR,Terrestrial,1,0,1950,212.06
+LSUMZ_8916,Manis pentadactyla,0,0,1961,Asia,Taiwan,100,CR,Terrestrial,1,0,1960,212.06
+ROM_1406120003,Manis pentadactyla,0,0,NA,Asia,Taiwan,100,CR,Terrestrial,1,1,NA,212.06
+ROM_1406120004,Manis pentadactyla,0,0,NA,Asia,Taiwan,100,CR,Terrestrial,1,1,NA,212.06
+MVZ_MVZ:Mamm:174854,Manis pentadactyla,0,0,1818,Asia,Taiwan,100,CR,Terrestrial,1,0,1810,212.06
+AMNH_M-167959,Manis pentadactyla,20.3140454485538,1,1901,Asia,Thailand,75,CR,Terrestrial,0,0,1900,13.34
+MCZ_35947,Manis pentadactyla,10.2797735503153,1,1937,Asia,Thailand,75,CR,Terrestrial,0,0,1930,21.67
+MCZ_35957,Manis pentadactyla,10.2797735503153,1,1937,Asia,Thailand,75,CR,Terrestrial,1,1,1930,21.67
+UMMZ_114843,Manis pentadactyla,0,0,NA,Asia,Thailand,25,CR,Terrestrial,0,0,NA,0.005
+USNM_332898,Manis pentadactyla,5.14942643120957,1,1958,Asia,Taiwan,100,CR,Terrestrial,0,0,1950,32.187
+USNM_310829,Manis pentadactyla,5.14942643120957,1,1958,Asia,Taiwan,100,CR,Terrestrial,1,1,1950,32.187
+FMNH_46525,Manis pentadactyla,3.25000795944323,1,1937,Asia,Vietnam,75,CR,Terrestrial,0,0,1930,40.234
+FMNH_46524,Manis pentadactyla,3.25000795944323,1,1937,Asia,Vietnam,75,CR,Terrestrial,1,1,1930,40.234
+USNM_332899,Manis pentadactyla,0,0,1951,Asia,Taiwan,100,CR,Terrestrial,0,0,1950,226.92
+USNM_311292,Manis pentadactyla,0,0,1958,Asia,Taiwan,100,CR,Terrestrial,1,0,1950,226.92
+AMNH_M-185133,Manis pentadactyla,0,0,1959,Asia,Taiwan,100,CR,Terrestrial,1,0,1950,226.92
+AMNH_M-33947,Manis pentadactyla,0,0,1910,Asia,Taiwan,100,CR,Terrestrial,1,0,1910,226.92
+USNM_294178,Manis pentadactyla,0,0,1952,Asia,Taiwan,100,CR,Terrestrial,1,0,1950,226.92
+USNM_294179,Manis pentadactyla,0,0,1952,Asia,Taiwan,100,CR,Terrestrial,1,1,1950,226.92
+Royal Ontario Museum: ROM_0589,Manis pentadactyla,0,0,1967,Asia,Taiwan,100,CR,Terrestrial,1,0,1960,226.92
+USNM_308865,Manis pentadactyla,0,0,NA,Asia,Taiwan,100,CR,Terrestrial,1,0,NA,226.92
+USNM_308864,Manis pentadactyla,0,0,NA,Asia,Taiwan,100,CR,Terrestrial,1,1,NA,226.92
+FMNH_32511,Manis pentadactyla,0,0,1929,Asia,Vietnam,100,CR,Terrestrial,1,0,1920,881.55
+AMNH_M-60021,Manis pentadactyla,0,0,1923,Asia,China,100,CR,Terrestrial,1,0,1920,3004.96
+AMNH_M-60020,Manis pentadactyla,0,0,1923,Asia,China,100,CR,Terrestrial,1,1,1920,3004.96
+AMNH_M-60005,Manis pentadactyla,0,0,1923,Asia,China,100,CR,Terrestrial,1,1,1920,3004.96
+AMNH_M-57059,Manis pentadactyla,0,0,1921,Asia,China,100,CR,Terrestrial,1,0,1920,3004.96
+MNHN_MO-1962-61,Manis pentadactyla,0,0,NA,Asia,China,100,CR,Terrestrial,1,1,NA,3004.96
+MNHN_MO-1913-729,Manis pentadactyla,0,0,NA,Asia,China,100,CR,Terrestrial,1,1,NA,3004.96
+USNM_240168,Manis pentadactyla,0,0,1923,Asia,China,100,CR,Terrestrial,1,1,1920,3004.96
+NHMUK_39.2647,Phataginus tetradactyla,37.882119004098,1,NA,Africa,Cameroon,50,VU,Arboreal,0,0,NA,3.82
+NHMUK_39.4041,Phataginus tetradactyla,0,0,NA,Africa,W. Africa,100,VU,Arboreal,0,0,NA,1955.82
+NHMUK_46.498,Phataginus tetradactyla,54.9485428962621,1,1945,Africa,Ghana,75,VU,Arboreal,0,0,1940,2.25
+NHMUK_50.341,Phataginus tetradactyla,5.80801318651015,1,1939,Africa,Nigeria,50,VU,Arboreal,0,0,1930,35.71
+NHMUK_1995.25,Phataginus tetradactyla,100,1,1994,Africa,Nigeria,75,VU,Arboreal,0,0,1990,0.03
+NHMUK_1998.301,Phataginus tetradactyla,21.4092093352355,1,1994,Africa,Nigeria,50,VU,Arboreal,0,0,1990,3.25
+NHMUK_1998.302,Phataginus tetradactyla,97.5428091846759,1,NA,Africa,Nigeria,25,VU,Arboreal,0,0,NA,0.03
+NHMUK_1.11.21.35,Phataginus tetradactyla,47.7879877663271,1,1901,Africa,Equatorial Guinea,25,VU,Arboreal,0,0,1900,0.795
+NHMUK_2.2.14.1,Phataginus tetradactyla,0,0,NA,Africa,Sierra Leone,100,VU,Arboreal,0,0,NA,188.72
+NHMUK_29.4.17.23,Phataginus tetradactyla,71.3583438174775,1,1929,Africa,Gabon,25,VU,Arboreal,0,0,1920,2.04
+NHMUK_35.10.22.150,Phataginus tetradactyla,98.5733591124953,1,NA,Africa,Ghana,25,VU,Arboreal,0,0,NA,1.91
+NHMUK_35.10.22.157,Phataginus tetradactyla,98.5733591124953,1,1934,Africa,Ghana,25,VU,Arboreal,1,0,1930,1.91
+NHMUK_4.3.27.1,Phataginus tetradactyla,25.7951284007675,1,NA,Africa,Nigeria,25,VU,Arboreal,0,0,NA,7.45
+NHMUK_63.2.13.23,Phataginus tetradactyla,0,0,NA,Africa,W. Africa,75,VU,Arboreal,1,1,NA,1955.82
+NHMUK_64.12.1.10,Phataginus tetradactyla,0,0,NA,Africa,W. Africa,100,VU,Arboreal,1,1,NA,1955.82
+NHMUK_67.5.31.3,Phataginus tetradactyla,0,0,NA,Africa,W. Africa,100,VU,Arboreal,1,1,NA,1955.82
+NHMUK_no reg 12,Phataginus tetradactyla,0,0,NA,Africa,W. Africa,100,VU,Arboreal,1,1,NA,1955.82
+MHNG_MHNG-MAM-1497.041,Phataginus tetradactyla,57.3411901439674,1,NA,Africa,Ivory Coast,75,VU,Arboreal,0,0,NA,1.36
+MHNG_MHNG-MAM-912.042,Phataginus tetradactyla,94.2483081792463,1,1955,Africa,Cameroon,75,VU,Arboreal,0,0,1950,1.76
+MHNG_MHNG-MAM-912.043,Phataginus tetradactyla,94.2483081792463,1,1955,Africa,Cameroon,75,VU,Arboreal,1,1,1950,1.76
+MHNG_MHNG-MAM-1494.074,Phataginus tetradactyla,29.2621683428596,1,NA,Africa,Ivory Coast,75,VU,Arboreal,0,0,NA,7.21
+RBINS_9259,Phataginus tetradactyla,0,0,NA,Africa,Democratic Republic of the Congo,75,VU,Arboreal,0,0,NA,1646.07
+RBINS_9258,Phataginus tetradactyla,0,0,NA,Africa,Democratic Republic of the Congo,75,VU,Arboreal,1,1,NA,1646.07
+RBINS_9005,Phataginus tetradactyla,0,0,NA,Africa,Democratic Republic of the Congo,75,VU,Arboreal,1,1,NA,1646.07
+RBINS_7994,Phataginus tetradactyla,0,0,1946,Africa,Democratic Republic of the Congo,75,VU,Arboreal,0,0,1940,1646.07
+RBINS_6962,Phataginus tetradactyla,0,0,NA,Africa,Democratic Republic of the Congo,75,VU,Arboreal,0,0,NA,1646.07
+RBINS_13019,Phataginus tetradactyla,0,0,NA,Africa,Democratic Republic of the Congo,75,VU,Arboreal,1,1,NA,1646.07
+MHNG_MHNG-MAM-619.026,Phataginus tetradactyla,0,0,NA,Africa,Liberia,100,VU,Arboreal,0,0,NA,247.54
+MHNG_MHNG-MAM-619.029,Phataginus tetradactyla,0,0,NA,Africa,Liberia,100,VU,Arboreal,1,1,NA,247.54
+MNHN_MO-1990-48,Phataginus tetradactyla,77.0223989852526,1,1989,Africa,Gabon,25,VU,Arboreal,0,0,1980,5.46
+MNHN_MO-1901-1135,Phataginus tetradactyla,26.4914398222022,1,NA,Africa,Ivory Coast,25,VU,Arboreal,0,0,NA,7.62
+MNHN_MO-1958-193,Phataginus tetradactyla,36.5363848697898,1,1958,Africa,Gabon,25,VU,Arboreal,0,0,1950,7.79
+MNHN_MO-1958-194,Phataginus tetradactyla,36.5363848697898,1,NA,Africa,Gabon,25,VU,Arboreal,1,0,NA,7.79
+MNHN_MO-1962-1174,Phataginus tetradactyla,25.0440202251101,1,NA,Africa,Ivory Coast,50,VU,Arboreal,0,0,NA,7.91
+MNHN_MO-1962-1173,Phataginus tetradactyla,25.0440202251101,1,NA,Africa,Ivory Coast,50,VU,Arboreal,1,1,NA,7.91
+USNM_5142,Phataginus tetradactyla,21.0769910858062,1,NA,Africa,Ghana,25,VU,Arboreal,0,0,NA,8.09
+MNHN_2005-243,Phataginus tetradactyla,45.6643469419342,1,1957,Africa,Central African Republic,25,VU,Arboreal,0,0,1950,9.9
+USNM_218835,Phataginus tetradactyla,20.5543857830411,1,1917,Africa,Gabon,75,VU,Arboreal,0,0,1910,15.46
+AMNH_M-89399,Phataginus tetradactyla,100,1,1940,Africa,Ivory Coast,100,VU,Arboreal,0,0,1940,0.258
+USNM_220402,Phataginus tetradactyla,11.0374363078555,1,1918,Africa,Gabon,100,VU,Arboreal,0,0,1910,25.51
+MNHN_MO-1985-103,Phataginus tetradactyla,5.80234787834629,1,NA,Africa,Republic of the Congo,25,VU,Arboreal,0,0,NA,35.65
+MNHN_MO-1985-102,Phataginus tetradactyla,5.80234787834629,1,NA,Africa,Republic of the Congo,25,VU,Arboreal,1,1,NA,35.65
+USNM_481807,Phataginus tetradactyla,6.22992575300913,1,1971,Africa,Liberia,100,VU,Arboreal,0,0,1970,25
+USNM_481805,Phataginus tetradactyla,6.22992575300913,1,1971,Africa,Liberia,100,VU,Arboreal,1,1,1970,25
+USNM_481806,Phataginus tetradactyla,6.22992575300913,1,1971,Africa,Liberia,100,VU,Arboreal,1,1,1970,25
+MNHN_MO-1872-140,Phataginus tetradactyla,3.28155818876215,1,NA,Africa,Ghana,100,VU,Arboreal,0,0,NA,380.2
+MNHN_MO-1942-189,Phataginus tetradactyla,0,0,NA,Africa,Ivory Coast,100,VU,Arboreal,0,0,NA,439.02
+MNHN_MO-1988-268,Phataginus tetradactyla,0,0,NA,Africa,Ivory Coast,100,VU,Arboreal,1,1,NA,439.02
+MNHN_MO-1962-60,Phataginus tetradactyla,0,0,NA,Africa,Central African Republic,100,VU,Arboreal,0,0,NA,777.06
+MNHN_MO-1985-101,Phataginus tetradactyla,0,0,NA,Africa,Central African Republic,100,VU,Arboreal,1,1,NA,777.06
+NHMUK_39.2645,Phataginus tricuspis,0,0,NA,Africa,Congo,75,EN,Arboreal,0,0,NA,101.46
+NHMUK_46.499,Phataginus tricuspis,63.9663502025098,1,1945,Africa,Ghana,75,EN,Arboreal,0,0,1940,2.25
+NHMUK_46.5,Phataginus tricuspis,63.9663502025098,1,1865,Africa,Ghana,75,EN,Arboreal,1,0,1860,2.25
+NHMUK_46.888,Phataginus tricuspis,99.9852771049033,1,1945,Africa,Sierra Leone,25,EN,Arboreal,0,0,1940,0.892
+NHMUK_46.914,Phataginus tricuspis,63.9663502025098,1,NA,Africa,Ghana,75,EN,Arboreal,1,0,NA,2.25
+NHMUK_46.915,Phataginus tricuspis,63.9663502025098,1,1946,Africa,Ghana,75,EN,Arboreal,1,0,1940,2.25
+NHMUK_46.916,Phataginus tricuspis,63.9663502025098,1,1946,Africa,Ghana,75,EN,Arboreal,1,1,1940,2.25
+NHMUK_48.132,Phataginus tricuspis,69.4871534139602,1,1932,Africa,Cameroon,50,EN,Arboreal,0,0,1930,5
+NHMUK_48.1321,Phataginus tricuspis,91.0665312893423,1,1932,Africa,Cameroon,25,EN,Arboreal,0,0,1930,2.02
+NHMUK_48.1322,Phataginus tricuspis,91.0665312893423,1,1932,Africa,Cameroon,25,EN,Arboreal,1,1,1930,2.02
+NHMUK_48.1323,Phataginus tricuspis,91.0665312893423,1,1932,Africa,Cameroon,25,EN,Arboreal,1,1,1930,2.02
+NHMUK_48.1324,Phataginus tricuspis,91.0665312893423,1,1933,Africa,Cameroon,25,EN,Arboreal,1,0,1930,2.02
+NHMUK_48.1325,Phataginus tricuspis,91.0665312893423,1,1932,Africa,Cameroon,25,EN,Arboreal,1,1,1930,2.02
+NHMUK_48.1326,Phataginus tricuspis,91.0665312893423,1,NA,Africa,Cameroon,25,EN,Arboreal,1,0,NA,2.02
+NHMUK_48.1327,Phataginus tricuspis,51.9478193037414,1,NA,Africa,Cameroon,50,EN,Arboreal,0,0,NA,8
+NHMUK_48.1328,Phataginus tricuspis,26.6503215109042,1,NA,Africa,Cameroon,50,EN,Arboreal,0,0,NA,23
+NHMUK_48.1329,Phataginus tricuspis,26.6503215109042,1,NA,Africa,Cameroon,50,EN,Arboreal,1,1,NA,23
+NHMUK_48.133,Phataginus tricuspis,26.6503215109042,1,NA,Africa,Cameroon,50,EN,Arboreal,1,1,NA,23
+NHMUK_48.1331,Phataginus tricuspis,26.6503215109042,1,NA,Africa,Cameroon,50,EN,Arboreal,1,1,NA,23
+NHMUK_48.1332,Phataginus tricuspis,26.6503215109042,1,NA,Africa,Cameroon,50,EN,Arboreal,1,1,NA,23
+NHMUK_50.2066,Phataginus tricuspis,0,0,1946,Africa,Sierra Leone,100,EN,Arboreal,0,0,1940,188.72
+NHMUK_51.333,Phataginus tricuspis,14.9491799877004,1,1949,Africa,Sierra Leone,50,EN,Arboreal,0,0,1940,10.66
+NHMUK_56.61,Phataginus tricuspis,88.6766223026491,1,1955,Africa,Sierra Leone,25,EN,Arboreal,0,0,1950,2.4
+NHMUK_59.269,Phataginus tricuspis,2.88224172203489,1,1952,Africa,Sierra Leone,75,EN,Arboreal,0,0,1950,81.78
+NHMUK_66.3562,Phataginus tricuspis,62.4944697023218,1,1965,Africa,Cameroon,25,EN,Arboreal,0,0,1960,2.42
+NHMUK_69.505,Phataginus tricuspis,41.6254882613851,1,NA,Africa,Uganda,100,EN,Arboreal,0,0,NA,3.95
+NHMUK_76.1813,Phataginus tricuspis,99.9954887247372,1,1971,Africa,Ghana,50,EN,Arboreal,0,0,1970,0.7
+NHMUK_79.2034,Phataginus tricuspis,0,0,NA,Africa,Central African Republic,100,EN,Arboreal,0,0,NA,787.84
+NHMUK_1996.314,Phataginus tricuspis,100,1,1995,Africa,Nigeria,75,EN,Arboreal,0,0,1990,0.03
+NHMUK_1999.1,Phataginus tricuspis,24.5643380756544,1,NA,Africa,Nigeria,50,EN,Arboreal,0,0,NA,21.74
+NHMUK_1999.101,Phataginus tricuspis,24.5643380756544,1,NA,Africa,Nigeria,50,EN,Arboreal,1,1,NA,21.74
+NHMUK_1999.115,Phataginus tricuspis,0,0,1963,Africa,Nigeria,100,EN,Arboreal,0,0,1960,756.06
+NHMUK_1999.116,Phataginus tricuspis,0,0,NA,Africa,Nigeria,100,EN,Arboreal,1,0,NA,756.06
+NHMUK_1999.117,Phataginus tricuspis,0,0,NA,Africa,Nigeria,100,EN,Arboreal,1,1,NA,756.06
+NHMUK_1999.118,Phataginus tricuspis,0,0,NA,Africa,Nigeria,100,EN,Arboreal,1,1,NA,756.06
+NHMUK_1999.119,Phataginus tricuspis,0,0,NA,Africa,Nigeria,100,EN,Arboreal,1,1,NA,756.06
+NHMUK_1999.12,Phataginus tricuspis,0,0,NA,Africa,Nigeria,100,EN,Arboreal,1,1,NA,756.06
+NHMUK_1999.121,Phataginus tricuspis,0,0,NA,Africa,Nigeria,100,EN,Arboreal,1,1,NA,756.06
+NHMUK_1999.122,Phataginus tricuspis,0,0,NA,Africa,Nigeria,100,EN,Arboreal,1,1,NA,756.06
+NHMUK_1999.91,Phataginus tricuspis,24.5643380756544,1,NA,Africa,Nigeria,50,EN,Arboreal,1,1,NA,21.74
+NHMUK_1999.92,Phataginus tricuspis,24.5643380756544,1,NA,Africa,Nigeria,50,EN,Arboreal,1,1,NA,21.74
+NHMUK_1999.93,Phataginus tricuspis,24.5643380756544,1,NA,Africa,Nigeria,50,EN,Arboreal,1,1,NA,21.74
+NHMUK_1999.95,Phataginus tricuspis,24.5643380756544,1,NA,Africa,Nigeria,50,EN,Arboreal,1,1,NA,21.74
+NHMUK_1999.96,Phataginus tricuspis,24.5643380756544,1,NA,Africa,Nigeria,50,EN,Arboreal,1,1,NA,21.74
+NHMUK_1999.97,Phataginus tricuspis,24.5643380756544,1,NA,Africa,Nigeria,50,EN,Arboreal,1,1,NA,21.74
+NHMUK_1999.99,Phataginus tricuspis,24.5643380756544,1,NA,Africa,Nigeria,50,EN,Arboreal,1,1,NA,21.74
+NHMUK_10.6.11.4,Phataginus tricuspis,74.1759379663968,1,NA,Africa,Ghana,25,EN,Arboreal,0,0,NA,2.96
+NHMUK_11.6.2.18,Phataginus tricuspis,74.1759379663968,1,NA,Africa,Ghana,25,EN,Arboreal,1,1,NA,2.96
+NHMUK_12.10.28.58,Phataginus tricuspis,4.17260978308824,1,1911,Africa,Nigeria,75,EN,Arboreal,0,0,1910,64.35
+NHMUK_12.12.3.1,Phataginus tricuspis,98.0295506731327,1,NA,Africa,Congo,25,EN,Arboreal,0,0,NA,0.914
+NHMUK_12.12.3.2,Phataginus tricuspis,9.00434504336635,1,NA,Africa,Congo,100,EN,Arboreal,0,0,NA,340.5
+NHMUK_19.5.8.163,Phataginus tricuspis,99.781956997397,1,1914,Africa,Congo,25,EN,Arboreal,0,0,1910,1.22
+NHMUK_19.5.8.164,Phataginus tricuspis,99.781956997397,1,1914,Africa,Congo,25,EN,Arboreal,1,1,1910,1.22
+NHMUK_22.12.19.38,Phataginus tricuspis,0,0,NA,Africa,Congo,100,EN,Arboreal,0,0,NA,257.73
+NHMUK_28.9.8.37,Phataginus tricuspis,26.438948405707,1,1928,Africa,Uganda,100,EN,Arboreal,0,0,1920,17.805
+NHMUK_29.5.29.39,Phataginus tricuspis,6.37941582007306,1,NA,Africa,Ghana,100,EN,Arboreal,0,0,NA,385.52
+NHMUK_29.5.29.40,Phataginus tricuspis,6.37941582007306,1,NA,Africa,Ghana,100,EN,Arboreal,1,1,NA,385.52
+NHMUK_34.11.18.9,Phataginus tricuspis,97.3234976682142,1,NA,Africa,Congo,25,EN,Arboreal,0,0,NA,1.75
+NHMUK_34.6.2.92,Phataginus tricuspis,32.914924837587,1,NA,Africa,Uganda,25,EN,Arboreal,0,0,NA,3.82
+NHMUK_34.6.2.93,Phataginus tricuspis,32.914924837587,1,1933,Africa,Uganda,25,EN,Arboreal,1,0,1930,3.82
+NHMUK_34.6.2.94,Phataginus tricuspis,32.914924837587,1,NA,Africa,Uganda,25,EN,Arboreal,1,1,NA,3.82
+NHMUK_34.6.2.95,Phataginus tricuspis,32.914924837587,1,NA,Africa,Uganda,25,EN,Arboreal,1,1,NA,3.82
+NHMUK_34.6.2.96,Phataginus tricuspis,32.914924837587,1,NA,Africa,Uganda,25,EN,Arboreal,1,1,NA,3.82
+NHMUK_34.6.2.97,Phataginus tricuspis,32.914924837587,1,NA,Africa,Uganda,25,EN,Arboreal,1,1,NA,3.82
+NHMUK_34.6.2.98,Phataginus tricuspis,32.914924837587,1,NA,Africa,Uganda,25,EN,Arboreal,1,1,NA,3.82
+NHMUK_34.6.2.99,Phataginus tricuspis,32.914924837587,1,NA,Africa,Uganda,25,EN,Arboreal,1,1,NA,3.82
+NHMUK_35.10.22.155,Phataginus tricuspis,79.0660201001749,1,1935,Africa,Ghana,25,EN,Arboreal,0,0,1930,2.97
+NHMUK_35.10.22.156,Phataginus tricuspis,98.5752489352175,1,1934,Africa,Ghana,25,EN,Arboreal,0,0,1930,1.91
+NHMUK_4.6.9.14,Phataginus tricuspis,63.9663502025098,1,1846,Africa,Ghana,75,EN,Arboreal,1,0,1840,2.25
+NHMUK_43.2.23.2,Phataginus tricuspis,0,0,NA,Africa,W. Africa,100,EN,Arboreal,0,0,NA,1955.82
+NHMUK_46.5.13.18,Phataginus tricuspis,0,0,NA,Africa,W. Africa,100,EN,Arboreal,1,1,NA,1955.82
+NHMUK_48.7.11.5,Phataginus tricuspis,0,0,NA,Africa,W. Africa,100,EN,Arboreal,1,1,NA,1955.82
+NHMUK_51.11.6.2,Phataginus tricuspis,11.0239852726187,1,NA,Africa,Gabon,100,EN,Arboreal,0,0,NA,381.24
+NHMUK_6.3.8.52,Phataginus tricuspis,35.4943091031811,1,NA,Africa,Uganda,50,EN,Arboreal,0,0,NA,5.65
+NHMUK_65.3.30.9,Phataginus tricuspis,6.35562357283305,1,NA,Africa,Equatorial Guinea,100,EN,Arboreal,0,0,NA,50.4
+NHMUK_7.1.2.5,Phataginus tricuspis,99.9822885964416,1,NA,Africa,Congo,25,EN,Arboreal,0,0,NA,2.12
+NHMUK_7.11.19.5,Phataginus tricuspis,4.17260978308824,1,NA,Africa,Nigeria,75,EN,Arboreal,1,0,NA,64.35
+NHMUK_8.10.27.5,Phataginus tricuspis,32.914924837587,1,NA,Africa,Uganda,25,EN,Arboreal,1,1,NA,3.82
+NHMUK_9.8.18.2,Phataginus tricuspis,0,0,NA,Africa,Sierra Leone,100,EN,Arboreal,1,0,NA,188.72
+NHMUK_95.7.17.1,Phataginus tricuspis,53.0811503642646,1,NA,Africa,Nigeria,25,EN,Arboreal,0,0,NA,7.45
+UMMZ_38382,Phataginus tricuspis,100,1,NA,Africa,Cameroon,75,EN,Arboreal,0,0,NA,0.0025
+UMMZ_62835,Phataginus tricuspis,100,1,NA,Africa,Cameroon,75,EN,Arboreal,0,0,NA,0.00705
+USNM_465927,Phataginus tricuspis,100,1,1969,Africa,Ghana,75,EN,Arboreal,0,0,1960,0.109
+USNM_465928,Phataginus tricuspis,100,1,1969,Africa,Ghana,75,EN,Arboreal,1,1,1960,0.109
+USNM_435022,Phataginus tricuspis,99.9768354693576,1,1968,Africa,Ghana,75,EN,Arboreal,0,0,1960,0.309
+MHNG_MHNG-MAM-1736.019,Phataginus tricuspis,85.6303187887318,1,1953,Africa,Ivory Coast,75,EN,Arboreal,0,0,1950,1.06
+MHNG_MHNG-MAM-1736.020,Phataginus tricuspis,57.3878305535204,1,1953,Africa,Ivory Coast,75,EN,Arboreal,0,0,1950,1.36
+USNM_412726,Phataginus tricuspis,52.7278096720005,1,1967,Africa,Ghana,75,EN,Arboreal,0,0,1960,1.86
+ROM_34406,Phataginus tricuspis,42.9347940185163,1,1965,Africa,Uganda,75,EN,Arboreal,0,0,1960,1.96
+LACM_053511,Phataginus tricuspis,90.2175355067419,1,1967,Africa,Uganda,75,EN,Arboreal,0,0,1960,2.094
+LACM_053513,Phataginus tricuspis,90.2175355067419,1,1967,Africa,Uganda,75,EN,Arboreal,1,1,1960,2.094
+LACM_053512,Phataginus tricuspis,90.2175355067419,1,1968,Africa,Uganda,75,EN,Arboreal,1,0,1960,2.094
+USNM_465921,Phataginus tricuspis,63.7301453110646,1,1969,Africa,Ivory Coast,75,EN,Arboreal,0,0,1960,2.16
+USNM_576120,Phataginus tricuspis,63.7301453110646,1,1969,Africa,Ivory Coast,75,EN,Arboreal,1,1,1960,2.16
+USNM_448340,Phataginus tricuspis,91.4449242964389,1,NA,Africa,Democratic Republic of the Congo,75,EN,Arboreal,0,0,NA,3.27
+MHNG_MHNG-MAM-912.040,Phataginus tricuspis,88.9257176558296,1,1954,Africa,Cameroon,75,EN,Arboreal,0,0,1950,3.56
+MHNG_MHNG-MAM-912.039,Phataginus tricuspis,88.9257176558296,1,1954,Africa,Cameroon,75,EN,Arboreal,1,1,1950,3.56
+MHNG_MHNG-MAM-912.038,Phataginus tricuspis,90.1139613244611,1,1953,Africa,Cameroon,75,EN,Arboreal,0,0,1950,3.56
+MHNG_MHNG-MAM-912.041,Phataginus tricuspis,89.8283615969544,1,1955,Africa,Cameroon,75,EN,Arboreal,0,0,1950,3.56
+MVZ_MVZ:Mamm:133085,Phataginus tricuspis,46.3751857169625,1,1946,Africa,Liberia,75,EN,Arboreal,0,0,1940,4.993
+MHNG_MHNG-MAM-1736.021,Phataginus tricuspis,54.3299487374319,1,NA,Africa,Ivory Coast,75,EN,Arboreal,0,0,NA,5.16
+USNM_465920,Phataginus tricuspis,37.5271278494834,1,1969,Africa,Ivory Coast,75,EN,Arboreal,0,0,1960,7.21
+MNHN_MO-1995-3295,Phataginus tricuspis,37.5271278494834,1,NA,Africa,Ivory Coast,75,EN,Arboreal,1,0,NA,7.21
+MNHN_MO-1993-4803,Phataginus tricuspis,37.5271278494834,1,NA,Africa,Ivory Coast,75,EN,Arboreal,1,1,NA,7.21
+MNHN_MO-1993-216,Phataginus tricuspis,37.5271278494834,1,NA,Africa,Ivory Coast,75,EN,Arboreal,1,1,NA,7.21
+MNHN_MO-1993-215,Phataginus tricuspis,37.5271278494834,1,1963,Africa,Ivory Coast,75,EN,Arboreal,1,0,1960,7.21
+USNM_537784,Phataginus tricuspis,80.3400248729624,1,1979,Africa,Democratic Republic of the Congo,75,EN,Arboreal,0,0,1970,8
+USNM_537783,Phataginus tricuspis,80.3400248729624,1,1979,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,1,1970,8
+MHNG_MHNG-MAM-1871.020,Phataginus tricuspis,80.4512573040285,1,1979,Africa,Democratic Republic of the Congo,75,EN,Arboreal,0,0,1970,8
+USNM_465925,Phataginus tricuspis,25.919577900931,1,1969,Africa,Ivory Coast,75,EN,Arboreal,0,0,1960,10.12
+LSUMZ_8688,Phataginus tricuspis,23.368854478825,1,1961,Africa,Kenya,75,EN,Arboreal,0,0,1960,14.07
+USNM_450072,Phataginus tricuspis,18.4179078750969,1,1969,Africa,Ivory Coast,75,EN,Arboreal,0,0,1960,14.32
+USNM_450073,Phataginus tricuspis,18.4179078750969,1,1969,Africa,Ivory Coast,75,EN,Arboreal,1,1,1960,14.32
+YPM_YPM MAM 009956,Phataginus tricuspis,9.38597833336695,1,1958,Africa,Liberia,75,EN,Arboreal,0,0,1950,20
+YPM_YPM MAM 009957,Phataginus tricuspis,9.38597833336695,1,NA,Africa,Liberia,75,EN,Arboreal,1,0,NA,20
+ROM_41765,Phataginus tricuspis,20.7496778205085,1,1967,Africa,Uganda,75,EN,Arboreal,0,0,1960,23.76
+USNM_465926,Phataginus tricuspis,13.2965908972269,1,1969,Africa,Ivory Coast,75,EN,Arboreal,0,0,1960,24.75
+USNM_465923,Phataginus tricuspis,13.2965908972269,1,1969,Africa,Ivory Coast,75,EN,Arboreal,1,1,1960,24.75
+USNM_576121,Phataginus tricuspis,13.2965908972269,1,1969,Africa,Ivory Coast,75,EN,Arboreal,1,1,1960,24.75
+USNM_465922,Phataginus tricuspis,13.2965908972269,1,1969,Africa,Ivory Coast,75,EN,Arboreal,1,1,1960,24.75
+USNM_465924,Phataginus tricuspis,13.2965908972269,1,1969,Africa,Ivory Coast,75,EN,Arboreal,1,1,1960,24.75
+TTU_18039,Phataginus tricuspis,23.603925667398,1,1972,Africa,Cameroon,75,EN,Arboreal,0,0,1970,24.838
+AMNH_M-241131,Phataginus tricuspis,23.603925667398,1,1972,Africa,Cameroon,75,EN,Arboreal,1,1,1970,24.838
+AMNH_M-241130,Phataginus tricuspis,23.603925667398,1,1972,Africa,Cameroon,75,EN,Arboreal,1,1,1970,24.838
+USNM_537785,Phataginus tricuspis,5.54624207098204,1,1979,Africa,Democratic Republic of the Congo,75,EN,Arboreal,0,0,1970,54.43
+MHNG_MHNG-MAM-1871.021,Phataginus tricuspis,5.15339671796242,1,1979,Africa,Democratic Republic of the Congo,75,EN,Arboreal,0,0,1970,56.78
+MSU_MR.15233,Phataginus tricuspis,2.53022608860376,1,1968,Africa,Liberia,75,EN,Arboreal,0,0,1960,90.326
+KU_147238,Phataginus tricuspis,0,0,1951,Africa,Democratic Republic of the Congo,75,EN,Arboreal,0,0,1950,91.5
+KU_147237,Phataginus tricuspis,0,0,1951,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,1,1950,91.5
+MHNG_MHNG-MAM-1686.061,Phataginus tricuspis,0,0,1985,Africa,Central African Republic,75,EN,Arboreal,0,0,1980,106.47
+USNM_439127,Phataginus tricuspis,0,0,1968,Africa,Benin,75,EN,Arboreal,0,0,1960,500.76
+AMNH_M-236363,Phataginus tricuspis,0,0,1974,Africa,Cameroon,75,EN,Arboreal,0,0,1970,520
+YPM_YPM MAM 014712,Phataginus tricuspis,0,0,1972,Africa,Cameroon,75,EN,Arboreal,0,0,1970,520
+YPM_YPM MAM 014869,Phataginus tricuspis,0,0,1973,Africa,Cameroon,75,EN,Arboreal,1,0,1970,520
+MHNG_MHNG-MAM-1828.023,Phataginus tricuspis,0,0,NA,Africa,Cameroon,75,EN,Arboreal,0,0,NA,520
+RBINS_15500,Phataginus tricuspis,0,0,1953,Africa,Democratic Republic of the Congo,75,EN,Arboreal,0,0,1950,1646.07
+AMNH_M-53919,Phataginus tricuspis,0,0,1913,Africa,Democratic Republic of the Congo,75,EN,Arboreal,0,0,1910,1646.07
+RBINS_34554,Phataginus tricuspis,0,0,1950,Africa,Democratic Republic of the Congo,75,EN,Arboreal,0,0,1950,1646.07
+RBINS_4847,Phataginus tricuspis,0,0,1938,Africa,Democratic Republic of the Congo,75,EN,Arboreal,0,0,1930,1646.07
+RBINS_13020,Phataginus tricuspis,0,0,NA,Africa,Democratic Republic of the Congo,75,EN,Arboreal,0,0,NA,1646.07
+RBINS_12877,Phataginus tricuspis,0,0,1951,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,0,1950,1646.07
+RBINS_17311,Phataginus tricuspis,0,0,1953,Africa,Democratic Republic of the Congo,75,EN,Arboreal,0,0,1950,1646.07
+RBINS_7999,Phataginus tricuspis,0,0,1948,Africa,Democratic Republic of the Congo,75,EN,Arboreal,0,0,1940,1646.07
+RBINS_8000,Phataginus tricuspis,0,0,NA,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,0,NA,1646.07
+RBINS_7998,Phataginus tricuspis,0,0,1947,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,0,1940,1646.07
+RBINS_303C,Phataginus tricuspis,0,0,NA,Africa,Democratic Republic of the Congo,75,EN,Arboreal,0,0,NA,1646.07
+RBINS_6978,Phataginus tricuspis,0,0,NA,Africa,Democratic Republic of the Congo,75,EN,Arboreal,0,0,NA,1646.07
+RBINS_35053,Phataginus tricuspis,0,0,1981,Africa,Democratic Republic of the Congo,75,EN,Arboreal,0,0,1980,1646.07
+RBINS_35051,Phataginus tricuspis,0,0,1981,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,1,1980,1646.07
+RBINS_35046,Phataginus tricuspis,0,0,1980,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,0,1980,1646.07
+RBINS_35049,Phataginus tricuspis,0,0,1980,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,1,1980,1646.07
+RBINS_35050,Phataginus tricuspis,0,0,1980,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,1,1980,1646.07
+RBINS_35047,Phataginus tricuspis,0,0,1980,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,1,1980,1646.07
+RBINS_35048,Phataginus tricuspis,0,0,1980,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,1,1980,1646.07
+RBINS_35056,Phataginus tricuspis,0,0,1982,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,0,1980,1646.07
+RBINS_35055,Phataginus tricuspis,0,0,1981,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,1,1980,1646.07
+RBINS_35054,Phataginus tricuspis,0,0,1981,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,1,1980,1646.07
+RBINS_35044,Phataginus tricuspis,0,0,1979,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,0,1970,1646.07
+RBINS_35045,Phataginus tricuspis,0,0,1980,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,1,1980,1646.07
+RBINS_35058,Phataginus tricuspis,0,0,1982,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,1,1980,1646.07
+RBINS_35057,Phataginus tricuspis,0,0,1982,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,1,1980,1646.07
+RBINS_35052,Phataginus tricuspis,0,0,1981,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,1,1980,1646.07
+MHNG_MHNG-MAM-619.027,Phataginus tricuspis,0,0,NA,Africa,Liberia,100,EN,Arboreal,0,0,NA,247.54
+MHNG_MHNG-MAM-619.030,Phataginus tricuspis,0,0,NA,Africa,Liberia,100,EN,Arboreal,1,1,NA,247.54
+RBINS_16432,Phataginus tricuspis,3.72632095712705,1,1965,Africa,Liberia,100,EN,Arboreal,0,0,1960,305.4
+RBINS_16431,Phataginus tricuspis,3.72632095712705,1,1965,Africa,Liberia,100,EN,Arboreal,1,1,1960,305.4
+RBINS_16433,Phataginus tricuspis,3.72632095712705,1,1965,Africa,Liberia,100,EN,Arboreal,1,1,1960,305.4
+RBINS_16430,Phataginus tricuspis,3.72632095712705,1,1965,Africa,Liberia,100,EN,Arboreal,1,1,1960,305.4
+ROM_9508130012,Phataginus tricuspis,3.72632095712705,1,NA,Africa,Liberia,100,EN,Arboreal,1,0,NA,305.4
+ROM_9508130013,Phataginus tricuspis,3.72632095712705,1,NA,Africa,Liberia,100,EN,Arboreal,1,1,NA,305.4
+O_18158,Phataginus tricuspis,0,0,NA,Africa,Republic of the Congo,100,EN,Arboreal,0,0,NA,586.6
+O_18157,Phataginus tricuspis,0,0,NA,Africa,Republic of the Congo,100,EN,Arboreal,1,1,NA,586.6
+AMNH_M-269889,Phataginus tricuspis,0,0,1996,Africa,Central African Republic,100,EN,Arboreal,0,0,1990,136.15
+AMNH_M-269861,Phataginus tricuspis,0,0,1996,Africa,Central African Republic,100,EN,Arboreal,1,1,1990,136.15
+AMNH_M-269905,Phataginus tricuspis,0,0,1996,Africa,Central African Republic,100,EN,Arboreal,1,1,1990,136.15
+AMNH_M-269901,Phataginus tricuspis,0,0,1996,Africa,Central African Republic,100,EN,Arboreal,1,1,1990,136.15
+USNM_101448,Phataginus tricuspis,0,0,NA,Africa,Democratic Republic of the Congo,100,EN,Arboreal,0,0,NA,304.87
+GNM_Ma ex 790,Phataginus tricuspis,23.4169005971789,1,1911,Africa,Democratic Republic of the Congo,75,EN,Arboreal,0,0,1910,364.34
+GNM_Ma ex 789,Phataginus tricuspis,23.4169005971789,1,1911,Africa,Democratic Republic of the Congo,75,EN,Arboreal,1,1,1910,364.34
+MNHN_MO-1847-1839,Phataginus tricuspis,0,0,NA,Africa,Mozambique,100,EN,Arboreal,0,0,NA,1386.06
+MVZ_MVZ:Mamm:183664,Phataginus tricuspis,100,1,1963,Africa,Sierra Leone,25,EN,Arboreal,0,0,1960,0.297
+MNHN_MO-1942-190,Phataginus tricuspis,72.3918232790027,1,NA,Africa,Liberia,25,EN,Arboreal,0,0,NA,0.414
+MNHN_MO-1981-1372,Phataginus tricuspis,99.9776397242009,1,NA,Africa,Gabon,25,EN,Arboreal,0,0,NA,0.832
+YPM_YPM MAM 014711,Phataginus tricuspis,67.2022978831744,1,1971,Africa,Cameroon,25,EN,Arboreal,0,0,1970,1.08
+UMZC_E.1258,Phataginus tricuspis,91.0665312893423,1,1932,Africa,Cameroon,25,EN,Arboreal,1,1,1930,2.02
+UMZC_E.1257,Phataginus tricuspis,91.0665312893423,1,1932,Africa,Cameroon,25,EN,Arboreal,1,1,1930,2.02
+AMNH_M-119963,Phataginus tricuspis,75.9355133212309,1,NA,Africa,Gabon,25,EN,Arboreal,0,0,NA,2.37
+YPM_YPM MAM 002128,Phataginus tricuspis,77.3716982448264,1,1961,Africa,Liberia,25,EN,Arboreal,0,0,1960,2.67
+USNM_220403,Phataginus tricuspis,39.906492804408,1,1918,Africa,Gabon,50,EN,Arboreal,0,0,1910,3.34
+MNHN_MO-1993-214,Phataginus tricuspis,63.8696148954137,1,1962,Africa,Ivory Coast,50,EN,Arboreal,0,0,1960,4.5
+MSB_MSB:Mamm:25218,Phataginus tricuspis,60.2987069150308,1,1967,Africa,Equatorial Guinea,50,EN,Arboreal,0,0,1960,4.794
+USNM_598578,Phataginus tricuspis,60.2987069150308,1,1967,Africa,Equatorial Guinea,50,EN,Arboreal,1,1,1960,4.794
+MNHN_MO-1962-1172,Phataginus tricuspis,33.8302684978529,1,NA,Africa,Ivory Coast,50,EN,Arboreal,0,0,NA,7.91
+MNHN_MO-1962-1171,Phataginus tricuspis,33.8302684978529,1,NA,Africa,Ivory Coast,50,EN,Arboreal,1,1,NA,7.91
+O_18160,Phataginus tricuspis,16.3354415731517,1,NA,Africa,Liberia,25,EN,Arboreal,0,0,NA,11.37
+USNM_377283,Phataginus tricuspis,28.4835306572457,1,1965,Africa,Nigeria,50,EN,Arboreal,0,0,1960,15.88
+GNM_Ma ex 791,Phataginus tricuspis,24.0887055479458,1,1911,Africa,Democratic Republic of the Congo,25,EN,Arboreal,0,0,1910,23.77
+AMNH_M-269820,Phataginus tricuspis,22.6615622505858,1,1996,Africa,Uganda,100,EN,Arboreal,0,0,1990,22.7
+USNM_379617,Phataginus tricuspis,23.754341765853,1,1966,Africa,Nigeria,100,EN,Arboreal,0,0,1960,23.16
+MNHN_MO-1898-1598,Phataginus tricuspis,12.0919854079944,1,NA,Africa,Republic of the Congo,25,EN,Arboreal,0,0,NA,35.65
+MNHN_MO-1986-1035,Phataginus tricuspis,12.0919854079944,1,NA,Africa,Republic of the Congo,25,EN,Arboreal,1,1,NA,35.65
+USNM_377284,Phataginus tricuspis,84.393676583986,1,1966,Africa,Nigeria,75,EN,Arboreal,0,0,1960,2.414
+MHNG_MHNG-MAM-946.030,Phataginus tricuspis,80.693548879948,1,NA,Africa,Cameroon,100,EN,Arboreal,0,0,NA,6
+MHNG_MHNG-MAM-946.031,Phataginus tricuspis,80.693548879948,1,NA,Africa,Cameroon,100,EN,Arboreal,1,1,NA,6
+MHNG_MHNG-MAM-946.032,Phataginus tricuspis,80.693548879948,1,1955,Africa,Cameroon,100,EN,Arboreal,1,0,1950,6
+MHNG_MHNG-MAM-946.028,Phataginus tricuspis,80.693548879948,1,NA,Africa,Cameroon,100,EN,Arboreal,1,1,NA,6
+MHNG_MHNG-MAM-946.033,Phataginus tricuspis,80.693548879948,1,NA,Africa,Cameroon,100,EN,Arboreal,1,1,NA,6
+MHNG_MHNG-MAM-946.029,Phataginus tricuspis,80.693548879948,1,NA,Africa,Cameroon,100,EN,Arboreal,1,1,NA,6
+USNM_481813,Phataginus tricuspis,10.0490004689474,1,1971,Africa,Liberia,100,EN,Arboreal,0,0,1970,25
+USNM_481811,Phataginus tricuspis,10.0490004689474,1,1971,Africa,Liberia,100,EN,Arboreal,1,1,1970,25
+USNM_481810,Phataginus tricuspis,10.0490004689474,1,1971,Africa,Liberia,100,EN,Arboreal,1,1,1970,25
+USNM_481812,Phataginus tricuspis,10.0490004689474,1,1971,Africa,Liberia,100,EN,Arboreal,1,1,1970,25
+USNM_481809,Phataginus tricuspis,10.0490004689474,1,1971,Africa,Liberia,100,EN,Arboreal,1,1,1970,25
+USNM_481808,Phataginus tricuspis,10.0490004689474,1,1971,Africa,Liberia,100,EN,Arboreal,1,1,1970,25
+USNM_582985,Phataginus tricuspis,10.0490004689474,1,1971,Africa,Liberia,100,EN,Arboreal,1,1,1970,25
+ROM_122972,Phataginus tricuspis,6.86580959305552,1,1967,Africa,Uganda,75,EN,Arboreal,0,0,1960,48.28
+USNM_598580,Phataginus tricuspis,54.540545506671,1,1968,Africa,Equatorial Guinea,50,EN,Arboreal,0,0,1960,4.495
+USNM_598579,Phataginus tricuspis,0,0,1967,Africa,Equatorial Guinea,100,EN,Arboreal,0,0,1960,133.59
+MNHN_MO-1956-727,Phataginus tricuspis,0,0,NA,Africa,Togo,100,EN,Arboreal,0,0,NA,291.11
+MNHN_MO-1956-726,Phataginus tricuspis,0,0,NA,Africa,Togo,100,EN,Arboreal,1,1,NA,291.11
+MNHN_MO-1956-725,Phataginus tricuspis,0,0,NA,Africa,Togo,100,EN,Arboreal,1,1,NA,291.11
+MNHN_MO-1956-731,Phataginus tricuspis,0,0,NA,Africa,Togo,100,EN,Arboreal,1,1,NA,291.11
+MNHN_MO-1956-728,Phataginus tricuspis,0,0,NA,Africa,Togo,100,EN,Arboreal,1,1,NA,291.11
+MNHN_MO-1956-730,Phataginus tricuspis,0,0,NA,Africa,Togo,100,EN,Arboreal,1,1,NA,291.11
+MNHN_MO-1956-729,Phataginus tricuspis,0,0,NA,Africa,Togo,100,EN,Arboreal,1,1,NA,291.11
+MSU_MR.15232,Phataginus tricuspis,3.4732590370773,1,1968,Africa,Liberia,100,EN,Arboreal,1,0,1960,300.44
+MNHN_MO-1986-1043,Phataginus tricuspis,5.85662786843401,1,NA,Africa,Ghana,100,EN,Arboreal,1,1,NA,380.2
+MNHN_MO-1995-320,Phataginus tricuspis,5.85662786843401,1,1957,Africa,Ghana,100,EN,Arboreal,1,0,1950,380.2
+MNHN_MO-1959-943,Phataginus tricuspis,5.85662786843401,1,NA,Africa,Ghana,100,EN,Arboreal,1,1,NA,380.2
+AMNH_M-119964,Phataginus tricuspis,9.09706117168831,1,NA,Africa,Gabon,100,EN,Arboreal,0,0,NA,386.49
+MNHN_AC-1939-173,Phataginus tricuspis,0,0,NA,Africa,Ivory Coast,100,EN,Arboreal,0,0,NA,439.02
+MNHN_MO-1993-213,Phataginus tricuspis,0,0,1963,Africa,Ivory Coast,100,EN,Arboreal,1,0,1960,439.02
+O_18159,Phataginus tricuspis,0,0,NA,Africa,Republic of the Congo,100,EN,Arboreal,1,1,NA,619.79
+MNHN_MO-1995-298,Phataginus tricuspis,0,0,1968,Africa,Central African Republic,100,EN,Arboreal,1,0,1960,777.06
+MNHN_MO-1995-297,Phataginus tricuspis,0,0,1965,Africa,Central African Republic,100,EN,Arboreal,1,0,1960,777.06
+MNHN_MO-1967-980,Phataginus tricuspis,0,0,NA,Africa,Central African Republic,100,EN,Arboreal,1,1,NA,777.06
+MNHN_MO-1967-981,Phataginus tricuspis,0,0,NA,Africa,Central African Republic,100,EN,Arboreal,1,1,NA,777.06
+UMZC_E.1255,Phataginus tricuspis,0,0,1932,Africa,Cameroon,100,EN,Arboreal,0,0,1930,832.66
+UMZC_E.1256,Phataginus tricuspis,0,0,1932,Africa,Cameroon,100,EN,Arboreal,1,1,1930,832.66
+NHMUK_61.1095,Smutsia gigantea,24.7659466967925,1,1905,Africa,Uganda,25,EN,Terrestrial,0,0,1900,4.92
+NHMUK_61.1096,Smutsia gigantea,2.3415315101200598,1,1913,Africa,Democratic Republic of the Congo,25,EN,Terrestrial,0,0,1910,62.79
+NHMUK_69.371,Smutsia gigantea,0,0,NA,Africa,W. Africa,100,EN,Terrestrial,0,0,NA,1955.82
+NHMUK_81.241,Smutsia gigantea,0,0,NA,Africa,Central African Republic,100,EN,Terrestrial,0,0,NA,110.96
+NHMUK_22.12.17.248,Smutsia gigantea,3.93779043833573,1,NA,Africa,Nigeria,25,EN,Terrestrial,0,0,NA,44.4
+NHMUK_29.5.29.38,Smutsia gigantea,14.6226321738925,1,NA,Africa,Ghana,25,EN,Terrestrial,0,0,NA,3.15
+NHMUK_35.12.18.3,Smutsia gigantea,0,0,1935,Africa,South Sudan,100,EN,Terrestrial,0,0,1930,145.39
+NHMUK_65.3.30.3,Smutsia gigantea,0,0,NA,Africa,W. Africa,100,EN,Terrestrial,1,1,NA,1955.82
+NHMUK_69.5.13.5,Smutsia gigantea,9.20282740012838,1,NA,Africa,Ghana,50,EN,Terrestrial,0,0,NA,8.09
+NHMUK_no reg 1,Smutsia gigantea,25.1285321590002,1,1946,Africa,Sierra Leone,75,EN,Terrestrial,0,0,1940,3.08
+NHMUK_no reg 11,Smutsia gigantea,0,0,NA,Africa,W. Africa,100,EN,Terrestrial,1,1,NA,1955.82
+UMMZ_39509,Smutsia gigantea,100,1,NA,Africa,Cameroon,75,EN,Terrestrial,0,0,NA,0.00705
+UMMZ_39140,Smutsia gigantea,100,1,NA,Africa,Cameroon,75,EN,Terrestrial,1,1,NA,0.00705
+MHNG_MHNG-MAM-912.044,Smutsia gigantea,77.962995345619,1,1954,Africa,Cameroon,75,EN,Terrestrial,0,0,1950,3.56
+KU_147239,Smutsia gigantea,0,0,1951,Africa,Democratic Republic of the Congo,75,EN,Terrestrial,0,0,1950,91.5
+ROM_34405,Smutsia gigantea,0,0,1965,Africa,Uganda,75,EN,Terrestrial,0,0,1960,276
+USNM_101449,Smutsia gigantea,0,0,NA,Africa,Democratic Republic of the Congo,75,EN,Terrestrial,0,0,NA,290.87
+AMNH_M-53858,Smutsia gigantea,0,0,1914,Africa,Democratic Republic of the Congo,75,EN,Terrestrial,0,0,1910,1646.07
+AMNH_M-53857,Smutsia gigantea,0,0,1914,Africa,Democratic Republic of the Congo,75,EN,Terrestrial,1,1,1910,1646.07
+RBINS_35059,Smutsia gigantea,0,0,1981,Africa,Democratic Republic of the Congo,75,EN,Terrestrial,0,0,1980,1646.07
+AMNH_M-53846,Smutsia gigantea,0,0,1913,Africa,Democratic Republic of the Congo,75,EN,Terrestrial,0,0,1910,1646.07
+MHNG_MHNG-MAM-619.045,Smutsia gigantea,0,0,NA,Africa,Liberia,100,EN,Terrestrial,0,0,NA,247.54
+MHNG_MHNG-MAM-620.056,Smutsia gigantea,0,0,NA,Africa,Liberia,100,EN,Terrestrial,1,1,NA,247.54
+USNM_269706,Smutsia gigantea,43.8642065092621,1,1940,Africa,Liberia,25,EN,Terrestrial,0,0,1940,0.125
+USNM_220404,Smutsia gigantea,10.8570539231959,1,1918,Africa,Gabon,100,EN,Terrestrial,0,0,1910,25.51
+GNM_Ma ex 877,Smutsia gigantea,100,1,1916,Africa,Democratic Republic of the Congo,50,EN,Terrestrial,0,0,1910,0.01
+USNM_598577,Smutsia gigantea,47.1483225101136,1,1968,Africa,Equatorial Guinea,50,EN,Terrestrial,0,0,1960,4.495
+USNM_598576,Smutsia gigantea,5.01254736332372,1,1967,Africa,Equatorial Guinea,100,EN,Terrestrial,0,0,1960,38.795
+MNHN_AC-1869-760,Smutsia gigantea,0,0,1869,Africa,Togo,100,EN,Terrestrial,0,0,1860,291.11
+MNHN_MO-1991-301,Smutsia gigantea,2.71135117379493,1,NA,Africa,Ghana,100,EN,Terrestrial,0,0,NA,380.2
+MHNG_MHNG-MAM-601.074,Smutsia gigantea,13.8010513396241,1,NA,Africa,Sierra Leone,75,EN,Terrestrial,0,0,NA,8.76
+MHNG_MHNG-MAM-601.080,Smutsia gigantea,13.8010513396241,1,NA,Africa,Sierra Leone,75,EN,Terrestrial,1,1,NA,8.76
+O_18155,Smutsia gigantea,0,0,NA,Africa,West Africa,75,EN,Terrestrial,1,1,NA,1955.82
+MNHN_AC-VI-253,Smutsia gigantea,0,0,1850,Africa,Togo,100,EN,Terrestrial,1,0,1850,291.11
+NHMUK_69.506,Smutsia temminckii,68.3360438479097,1,NA,Africa,Uganda,100,VU,Terrestrial,0,0,NA,3.95
+NHMUK_1.4.27.12,Smutsia temminckii,0,0,1901,Africa,Malawi,75,VU,Terrestrial,0,0,1900,442.75
+NHMUK_1.5.3.4,Smutsia temminckii,0,0,NA,Africa,Zambia,50,VU,Terrestrial,0,0,NA,81.95
+NHMUK_25.1.2.262,Smutsia temminckii,38.5139867772862,1,1923,Africa,Namibia,50,VU,Terrestrial,0,0,1920,4.66
+NHMUK_25.1.2.263,Smutsia temminckii,0,0,NA,Africa,Namibia,100,VU,Terrestrial,0,0,NA,255.89
+NHMUK_25.5.9.1,Smutsia temminckii,0,0,NA,Africa,Angola,100,VU,Terrestrial,0,0,NA,897.67
+NHMUK_28.9.11.465,Smutsia temminckii,0,0,1927,Africa,Namibia,25,VU,Terrestrial,0,0,1920,0.182
+NHMUK_34.7.4.1,Smutsia temminckii,77.5527067516065,1,NA,Africa,South Sudan,25,VU,Terrestrial,0,0,NA,3.63
+NHMUK_34.7.4.2,Smutsia temminckii,77.5527067516065,1,NA,Africa,South Sudan,25,VU,Terrestrial,1,1,NA,3.63
+NHMUK_35.9.1.847,Smutsia temminckii,100,1,1929,Africa,Namibia,25,VU,Terrestrial,0,0,1920,0.396
+NHMUK_35.9.1.848,Smutsia temminckii,0,0,1929,Africa,Namibia,50,VU,Terrestrial,0,0,1920,210.08
+NHMUK_37.9.1.847,Smutsia temminckii,100,1,NA,Africa,Namibia,25,VU,Terrestrial,1,0,NA,0.396
+NHMUK_52.3.24.2,Smutsia temminckii,0,0,NA,Africa,South Africa,50,VU,Terrestrial,0,0,NA,1184.88
+NHMUK_90.6.8.35,Smutsia temminckii,0,0,NA,Africa,Tanzania,25,VU,Terrestrial,0,0,NA,73.15
+NHMUK_92.8.1.67,Smutsia temminckii,0,0,NA,Africa,Mozambique,50,VU,Terrestrial,0,0,NA,301.44
+NHMUK_93.7.9.18,Smutsia temminckii,52.7165604890992,1,NA,Africa,Malawi,75,VU,Terrestrial,0,0,NA,11.44
+NHMUK_96.1.10.1,Smutsia temminckii,0,0,NA,Africa,South Africa,50,VU,Terrestrial,1,1,NA,1184.88
+NHMUK_97.3.11.1,Smutsia temminckii,0,0,NA,Africa,South Africa,50,VU,Terrestrial,1,1,NA,1184.88
+RBINS_302,Smutsia temminckii,0,0,NA,Africa,South Africa,75,VU,Terrestrial,0,0,NA,120
+RBINS_302B,Smutsia temminckii,0,0,NA,Africa,South Africa,75,VU,Terrestrial,1,1,NA,120
+AWMM_LM212,Smutsia temminckii,0,0,NA,Africa,Namibia,100,VU,Terrestrial,0,0,NA,736.75
+AMNH_M-90095,Smutsia temminckii,0,0,NA,Africa,Angola,100,VU,Terrestrial,1,1,NA,879.68
+O_18154,Smutsia temminckii,0,0,NA,Africa,South Africa,50,VU,Terrestrial,1,1,NA,1184.88
+TM_17137,Smutsia temminckii,100,1,1970,Africa,Namibia,25,VU,Terrestrial,0,0,1970,1
+MNHN_MO-1948-501,Smutsia temminckii,43.8261995771378,1,NA,Africa,Central African Republic,25,VU,Terrestrial,0,0,NA,1.8
+USNM_256926,Smutsia temminckii,59.9102964701329,1,1928,Africa,Namibia,50,VU,Terrestrial,0,0,1920,2.81
+USNM_368617,Smutsia temminckii,80.9339011022999,1,1964,Africa,Zimbabwe,75,VU,Terrestrial,0,0,1960,6.54
+IICT_CZ000001554,Smutsia temminckii,65.2917009016835,1,1955,Africa,Mozambique,75,VU,Terrestrial,0,0,1950,8.44
+HSU_3201,Smutsia temminckii,9.60692710798265,1,NA,Africa,South Africa,75,VU,Terrestrial,0,0,NA,50.68
+MHNG_MHNG-MAM-1492.037,Smutsia temminckii,0,0,NA,Africa,Angola,75,VU,Terrestrial,0,0,NA,129.21
+DMNS_DMNS:Mamm:6180,Smutsia temminckii,0,0,1969,Africa,Botswana,25,VU,Terrestrial,0,0,1960,193.121
+UMZC_E.1275,Smutsia temminckii,68.3266089911378,1,1970,Africa,Zambia,75,VU,Terrestrial,0,0,1970,5.825
+MCZ_5957,Smutsia temminckii,0,0,1700,Africa,Namibia,100,VU,Terrestrial,1,0,1700,950.45
