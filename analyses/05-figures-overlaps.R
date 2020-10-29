@@ -64,7 +64,7 @@ species_plota <-
                                    face = "italic")) +
   stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
   stat_summary(fun = mean, geom = 'point', size = 2)  +
-  labs(tag = "a") +
+  labs(tag = "A") +
   theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
@@ -75,7 +75,7 @@ year_plota <-
   ylab('% overlap') +
   theme_bw(base_size = 14) +
   theme(axis.text.x = element_text(angle = 45, vjust = 0.6))  +
-  labs(tag = "b") +
+  labs(tag = "B") +
   theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
@@ -87,7 +87,7 @@ continent_plota <-
   theme_bw(base_size = 14) +
   stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
   stat_summary(fun = mean, geom = 'point', size = 2)  +
-  labs(tag = "c") +
+  labs(tag = "C") +
   theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
@@ -99,7 +99,7 @@ ecology_plota <-
   theme_bw(base_size = 14) +
   stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
   stat_summary(fun = mean, geom = 'point', size = 2)  +
-  labs(tag = "d") +
+  labs(tag = "D") +
   theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
@@ -111,7 +111,7 @@ redlist_plota <-
   theme_bw(base_size = 14) +
   stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
   stat_summary(fun = mean, geom = 'point', size = 2) +
-  labs(tag = "e") +
+  labs(tag = "E") +
   theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
@@ -138,7 +138,7 @@ species_plotb <-
   stat_summary(fun = mean, geom = 'point', size = 2) +
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5, 
                                    face = "italic"))+
-  labs(tag = "a") +
+  labs(tag = "A") +
   theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
@@ -150,7 +150,7 @@ year_plotb <-
   coord_cartesian(ylim = c(80, 100)) +
   theme_bw(base_size = 14) +
   theme(axis.text.x = element_text(angle = 45, vjust = 0.6)) +
-  labs(tag = "b") +
+  labs(tag = "B") +
   theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
@@ -163,7 +163,7 @@ continent_plotb <-
   theme_bw(base_size = 14) +
   stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
   stat_summary(fun = mean, geom = 'point', size = 2) +
-  labs(tag = "c") +
+  labs(tag = "C") +
   theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
@@ -176,7 +176,7 @@ ecology_plotb <-
   theme_bw(base_size = 14) +
   stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
   stat_summary(fun = mean, geom = 'point', size = 2) +
-  labs(tag = "d") +
+  labs(tag = "D") +
   theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
@@ -189,7 +189,7 @@ redlist_plotb <-
   theme_bw(base_size = 14) +
   stat_summary(fun.data = se, geom = 'errorbar', width = 0.2) +
   stat_summary(fun = mean, geom = 'point', size = 2) +
-  labs(tag = "e") +
+  labs(tag = "E") +
   theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
