@@ -33,11 +33,12 @@ aoh <-
 # aoh
 ```
 
-Merge with the specimen data
+Merge with the specimen data, but remove specimens without AOH overlaps, i.e. Smutsia temmincki.
 ```{r}
 overlaps_aoh <- 
-  specs %>%
-  full_join(aoh, by = c("RegistrationNumber", "binomial"))
+  aoh %>%
+  left_join(specs, by = c("RegistrationNumber", "binomial")) %>%
+  distinct()
 ```
 
 Read in the IUCN data and remove defunct columns and _ from species names
@@ -73,6 +74,9 @@ temm <-
   filter(binomial == "Smutsia temminckii")
 
 overlaps_combined <- rbind(overlaps_aoh, temm)
+
+# Look at it
+# overlaps_combined
 ```
 
 Save the files for use in models
