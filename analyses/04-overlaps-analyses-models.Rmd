@@ -326,5 +326,5 @@ lrtest(model2e1.br, model2e2.br)
 
 ```{r}
 ## Model outputs
-summary(model2e2)
+summary(model2e1)
 ```
