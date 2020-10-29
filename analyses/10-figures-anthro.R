@@ -1,5 +1,5 @@
 # ## Figures of overlaps
-# Nov 2019
+# Oct 2020
 
 ##----------------------------------------------
 # Prep
@@ -41,7 +41,7 @@ overlaps_anthro <-
 
 ## Next read in overlaps data so we can get the number of overlaps
 overlaps <- 
-  read_csv(here("data/overlaps.csv")) 
+  read_csv(here("data/overlaps_combined.csv")) 
 
 overlaps <- 
   as.data.frame(overlaps) %>%
@@ -60,7 +60,7 @@ pop_plot_1850 <-
   ylab('% overlap') +
   theme_bw(base_size = 14) +
   xlim(0, 15) +
-  ylim(0, 100) +
+  coord_cartesian(ylim = c(0, 100)) +
   labs(title = "1850") +
   theme(plot.title = element_text(size = 12, hjust = 0.5),
         axis.title = element_text(size = 12))
@@ -71,7 +71,7 @@ pop_plot_1900 <-
   xlab("ln(population count)") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
-  ylim(0, 100) +
+  coord_cartesian(ylim = c(0, 100)) +
   xlim(0, 15) +
   labs(title = "1900") +
   theme(plot.title = element_text(size = 12, hjust = 0.5),
@@ -83,7 +83,7 @@ pop_plot_1950 <-
   xlab("") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
-  ylim(0, 100) +
+  coord_cartesian(ylim = c(0, 100)) +
   xlim(0, 15) +
   labs(title = "1950") +
   theme(plot.title = element_text(size = 12, hjust = 0.5),
@@ -95,8 +95,7 @@ popd_plot_1850 <-
   xlab("") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
-  ylim(0, 100) +
-  xlim(0, 10) +
+  coord_cartesian(ylim = c(0, 100)) +
   scale_x_continuous(breaks = c(0, 5, 10)) +
   labs(title = "1850") +
   theme(plot.title = element_text(size = 12, hjust = 0.5),
@@ -108,7 +107,7 @@ popd_plot_1900 <-
   xlab("ln(population density)") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
-  ylim(0, 100) +
+  coord_cartesian(ylim = c(0, 100)) +
   scale_x_continuous(breaks = c(-5, 0, 5, 10)) +
   labs(title = "1900") +
   theme(plot.title = element_text(size = 12, hjust = 0.5),
@@ -120,7 +119,7 @@ popd_plot_1950 <-
   xlab("") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
-  ylim(0, 100) +
+  coord_cartesian(ylim = c(0, 100)) +
   scale_x_continuous(breaks = c(-5, 0, 5, 10)) +
   labs(title = "1950") +
   theme(plot.title = element_text(size = 12, hjust = 0.5),
@@ -129,7 +128,7 @@ popd_plot_1950 <-
 (pop_plot_1850 + pop_plot_1900 + pop_plot_1950) / 
   (popd_plot_1850 + popd_plot_1900 + popd_plot_1950)
 
-#ggsave(here("figures/popsize-overlap.png"), width = 6)
+#ggsave(here("figures/popsize-overlap_revision.png"), width = 7, height = 6)
 
 ##-----------------------------------------------------------
 # % area overlap plots landuse
@@ -141,7 +140,7 @@ primf_plot_1850 <-
   ylab('% overlap') +
   theme_bw(base_size = 14) +
   xlim(-0.8, 0) +
-  ylim(0, 100) +
+  coord_cartesian(ylim = c(0, 100)) +
   labs(title = "1850") +
   theme(plot.title = element_text(size = 12, hjust = 0.5),
         axis.title = element_text(size = 12))
@@ -152,7 +151,7 @@ primf_plot_1900 <-
   xlab("primary forest") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
-  ylim(0, 100) +
+  coord_cartesian(ylim = c(0, 100)) +
   xlim(-0.8, 0) +
   labs(title = "1900") +
   theme(plot.title = element_text(size = 12, hjust = 0.5),
@@ -164,7 +163,7 @@ primf_plot_1950 <-
   xlab("") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
-  ylim(0, 100) +
+  coord_cartesian(ylim = c(0, 100)) +
   xlim(-0.8, 0) +
   labs(title = "1950") +
   theme(plot.title = element_text(size = 12, hjust = 0.5),
@@ -177,7 +176,7 @@ primn_plot_1850 <-
   ylab('% overlap') +
   theme_bw(base_size = 14) +
   xlim(-0.8, 0) +
-  ylim(0, 100) +
+  coord_cartesian(ylim = c(0, 100)) +
   labs(title = "1850") +
   theme(plot.title = element_text(size = 12, hjust = 0.5),
         axis.title = element_text(size = 12))
@@ -188,7 +187,7 @@ primn_plot_1900 <-
   xlab("primary non-forest") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
-  ylim(0, 100) +
+  coord_cartesian(ylim = c(0, 100)) +
   xlim(-0.8, 0) +
   labs(title = "1900") +
   theme(plot.title = element_text(size = 12, hjust = 0.5),
@@ -200,7 +199,7 @@ primn_plot_1950 <-
   xlab("") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
-  ylim(0, 100) +
+  coord_cartesian(ylim = c(0, 100)) +
   xlim(-0.8, 0) +
   labs(title = "1950") +
   theme(plot.title = element_text(size = 12, hjust = 0.5),
@@ -213,7 +212,7 @@ urb_plot_1850 <-
   ylab('% overlap') +
   theme_bw(base_size = 14) +
   #xlim(-0.8, 0) +
-  ylim(0, 100) +
+  coord_cartesian(ylim = c(0, 100)) +
   labs(title = "1850") +
   theme(plot.title = element_text(size = 12, hjust = 0.5),
         axis.title = element_text(size = 12))
@@ -224,7 +223,7 @@ urb_plot_1900 <-
   xlab("urban land") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
-  ylim(0, 100) +
+  coord_cartesian(ylim = c(0, 100)) +
   xlim(0, 0.6) +
   labs(title = "1900") +
   theme(plot.title = element_text(size = 12, hjust = 0.5),
@@ -236,7 +235,7 @@ urb_plot_1950 <-
   xlab("") +
   ylab('% overlap') +
   theme_bw(base_size = 14) +
-  ylim(0, 100) +
+  coord_cartesian(ylim = c(0, 100)) +
   xlim(0, 0.6) +
   labs(title = "1950") +
   theme(plot.title = element_text(size = 12, hjust = 0.5),
@@ -247,4 +246,5 @@ urb_plot_1950 <-
   (primn_plot_1850 + primn_plot_1900 + primn_plot_1950) /
   (urb_plot_1850 + urb_plot_1900 + urb_plot_1950)
 
-#ggsave(here("figures/landuse-overlap.png"), width = 6)
+#ggsave(here("figures/landuse-overlap_revision.png"), width = 7, height = 8)
+
