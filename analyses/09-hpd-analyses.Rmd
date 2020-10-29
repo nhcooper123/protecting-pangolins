@@ -26,7 +26,7 @@ overlaps_hpd <-
 Next read in overlaps data so we can get the number of overlaps
 ```{r}
 overlaps <- 
-  read_csv(here("data/overlaps.csv")) 
+  read_csv(here("data/overlaps_combined.csv")) 
 
 overlaps <- 
   as.data.frame(overlaps) %>%
@@ -110,7 +110,7 @@ lrtest(model1a1.br, model1a2.br)
 
 ```{r}
 ## Model outputs
-summary(model1a1)
+summary(model1a2)
 ```
 
 ### popc_1900
@@ -147,7 +147,7 @@ lrtest(model1a1.br, model1a2.br)
 
 ```{r}
 ## Model outputs
-summary(model1a1)
+summary(model1a2)
 ```
 
 ### log_popc_1950
@@ -184,7 +184,7 @@ lrtest(model1a1.br, model1a2.br)
 
 ```{r}
 ## Model outputs
-summary(model1a1)
+summary(model1a2)
 ```
 
 ## Population density
@@ -222,7 +222,7 @@ lrtest(model1a1.br, model1a2.br)
 
 ```{r}
 ## Model outputs
-summary(model1a1)
+summary(model1a2)
 ```
 
 ### log_popd_1900
@@ -259,7 +259,7 @@ lrtest(model1a1.br, model1a2.br)
 
 ```{r}
 ## Model outputs
-summary(model1a1)
+summary(model1a2)
 ```
 
 ### log_popd_1950
@@ -296,5 +296,5 @@ lrtest(model1a1.br, model1a2.br)
 
 ```{r}
 ## Model outputs
-summary(model1a1)
+summary(model1a2)
 ```
