@@ -82,6 +82,6 @@ overlaps_combined <- rbind(overlaps_aoh, temm)
 Save the files for use in models
 ```{r}
 #write_csv(overlaps_iucn, file = here("data/overlaps_iucn.csv"))
-write_csv(overlaps_aoh, file = here("data/overlaps_aoh.csv"))
-write_csv(overlaps_combined, file = here("data/overlaps_combined.csv"))
+write_csv(overlaps_aoh, path = here("data/overlaps_aoh.csv"))
+write_csv(overlaps_combined, path = here("data/overlaps_combined.csv"))
 ```
