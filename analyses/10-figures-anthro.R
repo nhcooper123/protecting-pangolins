@@ -61,8 +61,8 @@ pop_plot_1850 <-
   theme_bw(base_size = 14) +
   xlim(0, 15) +
   coord_cartesian(ylim = c(0, 100)) +
-  labs(title = "1850") +
-  theme(plot.title = element_text(size = 12, hjust = 0.5),
+  labs(tag = "A") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
 pop_plot_1900 <- 
@@ -73,8 +73,8 @@ pop_plot_1900 <-
   theme_bw(base_size = 14) +
   coord_cartesian(ylim = c(0, 100)) +
   xlim(0, 15) +
-  labs(title = "1900") +
-  theme(plot.title = element_text(size = 12, hjust = 0.5),
+  labs(tag = "B") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
 pop_plot_1950 <- 
@@ -85,8 +85,8 @@ pop_plot_1950 <-
   theme_bw(base_size = 14) +
   coord_cartesian(ylim = c(0, 100)) +
   xlim(0, 15) +
-  labs(title = "1950") +
-  theme(plot.title = element_text(size = 12, hjust = 0.5),
+  labs(tag = "C") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
 popd_plot_1850 <- 
@@ -97,8 +97,8 @@ popd_plot_1850 <-
   theme_bw(base_size = 14) +
   coord_cartesian(ylim = c(0, 100)) +
   scale_x_continuous(breaks = c(0, 5, 10)) +
-  labs(title = "1850") +
-  theme(plot.title = element_text(size = 12, hjust = 0.5),
+  labs(tag = "D") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
 popd_plot_1900 <- 
@@ -109,8 +109,8 @@ popd_plot_1900 <-
   theme_bw(base_size = 14) +
   coord_cartesian(ylim = c(0, 100)) +
   scale_x_continuous(breaks = c(-5, 0, 5, 10)) +
-  labs(title = "1900") +
-  theme(plot.title = element_text(size = 12, hjust = 0.5),
+  labs(tag = "E") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
 popd_plot_1950 <- 
@@ -121,8 +121,8 @@ popd_plot_1950 <-
   theme_bw(base_size = 14) +
   coord_cartesian(ylim = c(0, 100)) +
   scale_x_continuous(breaks = c(-5, 0, 5, 10)) +
-  labs(title = "1950") +
-  theme(plot.title = element_text(size = 12, hjust = 0.5),
+  labs(tag = "F") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
 (pop_plot_1850 + pop_plot_1900 + pop_plot_1950) / 
@@ -141,8 +141,8 @@ primf_plot_1850 <-
   theme_bw(base_size = 14) +
   xlim(-0.8, 0) +
   coord_cartesian(ylim = c(0, 100)) +
-  labs(title = "1850") +
-  theme(plot.title = element_text(size = 12, hjust = 0.5),
+  labs(tag = "A") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
 primf_plot_1900 <- 
@@ -153,8 +153,8 @@ primf_plot_1900 <-
   theme_bw(base_size = 14) +
   coord_cartesian(ylim = c(0, 100)) +
   xlim(-0.8, 0) +
-  labs(title = "1900") +
-  theme(plot.title = element_text(size = 12, hjust = 0.5),
+  labs(tag = "B") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
 primf_plot_1950 <- 
@@ -165,8 +165,8 @@ primf_plot_1950 <-
   theme_bw(base_size = 14) +
   coord_cartesian(ylim = c(0, 100)) +
   xlim(-0.8, 0) +
-  labs(title = "1950") +
-  theme(plot.title = element_text(size = 12, hjust = 0.5),
+  labs(tag = "C") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
 primn_plot_1850 <- 
@@ -177,8 +177,8 @@ primn_plot_1850 <-
   theme_bw(base_size = 14) +
   xlim(-0.8, 0) +
   coord_cartesian(ylim = c(0, 100)) +
-  labs(title = "1850") +
-  theme(plot.title = element_text(size = 12, hjust = 0.5),
+  labs(tag = "D") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
 primn_plot_1900 <- 
@@ -189,8 +189,8 @@ primn_plot_1900 <-
   theme_bw(base_size = 14) +
   coord_cartesian(ylim = c(0, 100)) +
   xlim(-0.8, 0) +
-  labs(title = "1900") +
-  theme(plot.title = element_text(size = 12, hjust = 0.5),
+  labs(tag = "E") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
 primn_plot_1950 <- 
@@ -201,8 +201,8 @@ primn_plot_1950 <-
   theme_bw(base_size = 14) +
   coord_cartesian(ylim = c(0, 100)) +
   xlim(-0.8, 0) +
-  labs(title = "1950") +
-  theme(plot.title = element_text(size = 12, hjust = 0.5),
+  labs(tag = "F") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
 urb_plot_1850 <- 
@@ -213,8 +213,8 @@ urb_plot_1850 <-
   theme_bw(base_size = 14) +
   #xlim(-0.8, 0) +
   coord_cartesian(ylim = c(0, 100)) +
-  labs(title = "1850") +
-  theme(plot.title = element_text(size = 12, hjust = 0.5),
+  labs(tag = "G") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
 urb_plot_1900 <- 
@@ -225,8 +225,8 @@ urb_plot_1900 <-
   theme_bw(base_size = 14) +
   coord_cartesian(ylim = c(0, 100)) +
   xlim(0, 0.6) +
-  labs(title = "1900") +
-  theme(plot.title = element_text(size = 12, hjust = 0.5),
+  labs(tag = "H") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
 urb_plot_1950 <- 
@@ -237,8 +237,8 @@ urb_plot_1950 <-
   theme_bw(base_size = 14) +
   coord_cartesian(ylim = c(0, 100)) +
   xlim(0, 0.6) +
-  labs(title = "1950") +
-  theme(plot.title = element_text(size = 12, hjust = 0.5),
+  labs(tag = "I") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
         axis.title = element_text(size = 12))
 
 # Plot
