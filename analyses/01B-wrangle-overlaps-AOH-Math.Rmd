@@ -1,0 +1,147 @@
+---
+title: "Create .shp files and calculate overlaps"
+output: html_document
+---
+
+Load necessary libraries
+```{r}
+library(rgdal)
+library(sf)
+library(stars)
+library(sfe)
+```
+
+Convert .tif files made using GIS software (ARC) into .shp files
+.tifs/.shp files are stored on the NHM data portal as they are too large to 
+practically upload and host on git.
+
+```{r}
+GeoTiffToPolygon <- function(directory) 
+{
+  ##get the full path as a string
+  fileList = list.files(path = directory, pattern = "*.tif", full.names = TRUE)
+  for (file in fileList) 
+  {
+    specificName = str_extract(file, regex("\\/{1}\\w+\\."))
+    specificName = gsub("/", "", specificName)
+    specificName = gsub("\\.", "\\.shp", specificName)
+    ##pass to read_stars
+    rasterFile = read_stars(file)
+    ##pass to st_as_sf
+    polygonFile = st_as_sf(rasterFile)
+    ##check to see if outut dir exists and create if not
+    dir.create(file.path("../data/shpFiles"), showWarnings = FALSE)
+    ##save the new object
+    st_write(polygonFile, paste0("../data/shpFiles", "/", specificName))
+  }
+}
+
+# not sure how Natalie has dir set up so e.g.
+GeoTiffToPolygon("../data/aohRaw/")
+```
+
+Overlap calculation functions needed rewriting as AOH .shp files are very large
+and old functions were not memory efficient enough to deal with them.
+```{r}
+#Functions go here
+# two input function for calculating the percentage overlap
+calcOverlaps <- function(df1, df2) {
+  df1 <- lwgeom::lwgeom_make_valid(df1)
+  df2 <- lwgeom::lwgeom_make_valid(df2)
+  # gives percentage overlap between NHM and IUCN
+  overlap <- st_intersection(df1, df2) %>% st_area() / st_area(df1, df2) * 100
+  # at this point the output is of class "units" which don't play nice
+  overlap <- units::drop_units(overlap)
+  # allows for handling of cases of zero overlap
+  if (purrr::is_empty(overlap) == T) {
+    # as it otherwise returns a list of length zero,
+    # which cannot be appended to a df
+    overlap <- c(0)
+  }
+  overlap <- as.list(overlap)
+  # returns the result, so can be passed to another fun
+  return(overlap)
+}
+
+hullOverFun <- function(df1, df2) {
+  df1$Percent_overlap <- NA
+  for (row in 1:nrow(df1)) {
+    # extract the geometry
+    geom <- df1$geometry[row]
+    x <- calcOverlaps(geom, df2)
+    df1$Percent_overlap[row] <- x
+  }
+  return(df1) # return the modified df for use in another fun
+}
+
+calculateOverlaps <- function(NHM, AOH) {
+  # create an empty list to store results
+  output <- c()
+  NHM <- st_transform(NHM, 2163)
+  AOH <- st_transform(AOH, 2163)
+  tmp <- hullOverFun(NHM, AOH)
+  # rebuilding the input df with a new col
+  output <- rbind(tmp, output)
+  output$Percent_overlap <- as.numeric(output$Percent_overlap)
+  return(output)
+}
+MakeNHMIntoDFList <- function(NHM_Pangolins) 
+{
+  pangolinDfList <- split(NHM_Pangolins, f = NHM_Pangolins$binomial)
+  return(invisible(pangolinDfList))
+}
+RunAOHAnalysis <- function(NHM_Pangolins, AOHDataDir, isIUCN = F)
+{
+  NHMPangolinList <- MakeNHMIntoDFList(NHM_Pangolins)
+  AOHFileList = list.files(path = AOHDataDir, pattern = "*.shp", full.names = TRUE)
+  for (file in AOHFileList)
+  {
+    sppName = str_extract(file, regex("\\/\\w+\\_\\w+"))
+    sppName = gsub("/", "", sppName)
+    sppName = gsub("\\_$", "", sppName)
+    # read the file in!
+    sppFile = st_read(dsn = file)
+    if (isIUCN == T) {
+      # change BINOMIAL to binomial
+      names(file)[names(file) == "BINOMIAL"] <- "binomial"
+    }
+    else
+    {
+      names(sppFile)[1] <- 'binomial'
+      sppName <- gsub("_aoh", "", sppName)
+    }
+    print(sppName)
+    # pass it to this little pipline
+    sppFile$binomial <- sppName
+    sppFile <-
+      sppFile %>%
+      st_as_sf() %>%
+      st_union()
+    sppFile <- st_make_valid(sppFile)
+    # calculate the overlaps and append to a df
+    for (item in NHMPangolinList) {
+      Spp <- unique(item$binomial)
+      if (unique(item$binomial) == sppName) {
+        overlaps <- calculateOverlaps(item, sppFile)
+        overlaps <- binomialOverlap(overlaps)
+        fullFilePath <- paste("../data/overlaps_", sppName, ".csv", sep = "")
+        if (file.exists(fullFilePath)) { #if you want new output/ fresh rerun must delete all output files
+          print('file already exists, this run is likely for just land use!')
+          newFileName <- paste("../data/overlaps_", sppName, "_landUse", ".csv", sep = "")
+          st_write(overlaps, newFileName)
+        }
+        if (!file.exists(fullFilePath)) {
+          st_write(overlaps, paste("../data/overlaps_", sppName, ".csv", sep = ""))
+        }
+      }
+    }
+  }
+}
+```
+
+Run the .shp files through these new functions, with the output generated in the
+previous script (specs object)
+```{r}
+RunAOHAnalysis(specs, "../data/shpFiles")
+```
+Output stored in X???????
