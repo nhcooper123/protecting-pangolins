@@ -1,5 +1,5 @@
 # Make maps for figure 1/2
-# Nov 2019
+# Oct 2020
 
 ## Load libraries
 library(sfe)
@@ -24,11 +24,54 @@ remove_x <-
         axis.ticks.x=element_blank())
 
 ##------------------------------------------------
-## Read in the IUCN data and transform
+## Read in the AOH data and transform
+# One per species - should write a function...
 ##------------------------------------------------
-iucn <- 
-  readOGR(dsn = here("raw-data/IUCN_pholidota"), 
-                layer = 'maps_pholidota') %>%
+aoh_mcu <- 
+  readOGR(dsn = here("raw-data/AOH_shpFiles"), 
+                layer = 'Manis_culionensis_aoh') %>%
+  st_as_sf() %>%
+  st_transform(4326)
+
+aoh_mja <- 
+  readOGR(dsn = here("raw-data/AOH_shpFiles"), 
+          layer = 'Manis_javanica_aoh') %>%
+  st_as_sf() %>%
+  st_transform(4326)
+
+aoh_mpe <- 
+  readOGR(dsn = here("raw-data/AOH_shpFiles"), 
+          layer = 'Manis_pentadactyla_aoh') %>%
+  st_as_sf() %>%
+  st_transform(4326)
+
+aoh_mcr <- 
+  readOGR(dsn = here("raw-data/AOH_shpFiles"), 
+          layer = 'Manis_crassicaudata_aoh') %>%
+  st_as_sf() %>%
+  st_transform(4326)
+
+aoh_pte <- 
+  readOGR(dsn = here("raw-data/AOH_shpFiles"), 
+          layer = 'Phataginus_tetradactyla_aoh') %>%
+  st_as_sf() %>%
+  st_transform(4326)
+
+aoh_ptr <- 
+  readOGR(dsn = here("raw-data/AOH_shpFiles"), 
+          layer = 'Phataginus_tricuspis_aoh') %>%
+  st_as_sf() %>%
+  st_transform(4326)
+
+aoh_sgi <- 
+  readOGR(dsn = here("raw-data/AOH_shpFiles"), 
+          layer = 'Smutsia_gigantea_aoh') %>%
+  st_as_sf() %>%
+  st_transform(4326)
+
+aoh_ste <- 
+  readOGR(dsn = here("raw-data/AOH_shpFiles"), 
+          layer = 'Smutsia_temminckii_aoh') %>%
   st_as_sf() %>%
   st_transform(4326)
 
@@ -48,54 +91,94 @@ specs_errors <-
   mutate(Extent_km = as.numeric(as.character(Extent_km)))
 
 ##----------------------------------------------
-# Split into African and Asian species
+# Split into species
 # Remove huge extents > 1000km
+# Specimen point localities
 ##----------------------------------------------
-specs_africa <-
+specs_pte <-
   specs %>%
   filter(Extent_km < 1000) %>%
-  filter(binomial == "Phataginus tetradactyla" |
-         binomial == "Phataginus tricuspis" |
-         binomial == "Smutsia gigantea" |
-         binomial == "Smutsia temminckii")
+  filter(binomial == "Phataginus tetradactyla")
 
-specs_asia <-
+specs_ptr <-
   specs %>%
   filter(Extent_km < 1000) %>%
-  filter(binomial != "Phataginus tetradactyla" &
-           binomial != "Phataginus tricuspis" &
-           binomial != "Smutsia gigantea" &
-           binomial != "Smutsia temminckii")
+  filter(binomial == "Phataginus tricuspis")
 
-specs_errors_africa <-
+specs_sgi <-
+  specs %>%
+  filter(Extent_km < 1000) %>%
+  filter(binomial == "Smutsia gigantea")
+
+specs_ste <-
+  specs %>%
+  filter(Extent_km < 1000) %>%
+  filter(binomial == "Smutsia temminckii")
+
+specs_mcu <-
+  specs %>%
+  filter(Extent_km < 1000) %>%
+  filter(binomial == "Manis culionensis")
+
+specs_mcr <-
+  specs %>%
+  filter(Extent_km < 1000) %>%
+  filter(binomial == "Manis crassicaudata")
+
+specs_mja <-
+  specs %>%
+  filter(Extent_km < 1000) %>%
+  filter(binomial == "Manis javanica")
+
+specs_mpe <-
+  specs %>%
+  filter(Extent_km < 1000) %>%
+  filter(binomial == "Manis pentadactyla")
+
+##----------------------------------------------
+# Split into species
+# Remove huge extents > 1000km
+# Specimen error extents
+##----------------------------------------------
+specs_errors_pte <-
   specs_errors %>%
   filter(Extent_km < 1000) %>%
-  filter(binomial == "Phataginus tetradactyla" |
-           binomial == "Phataginus tricuspis" |
-           binomial == "Smutsia gigantea" |
-           binomial == "Smutsia temminckii")
+  filter(binomial == "Phataginus tetradactyla")
 
-specs_errors_asia <-
+specs_errors_ptr <-
   specs_errors %>%
   filter(Extent_km < 1000) %>%
-  filter(binomial != "Phataginus tetradactyla" &
-           binomial != "Phataginus tricuspis" &
-           binomial != "Smutsia gigantea" &
-           binomial != "Smutsia temminckii")
+  filter(binomial == "Phataginus tricuspis")
 
-iucn_africa <-
-  iucn %>%
-  filter(binomial == "Phataginus tetradactyla" |
-           binomial == "Phataginus tricuspis" |
-           binomial == "Smutsia gigantea" |
-           binomial == "Smutsia temminckii")
+specs_errors_sgi <-
+  specs_errors %>%
+  filter(Extent_km < 1000) %>%
+  filter(binomial == "Smutsia gigantea")
 
-iucn_asia <-
-  iucn %>%
-  filter(binomial != "Phataginus tetradactyla" &
-           binomial != "Phataginus tricuspis" &
-           binomial != "Smutsia gigantea" &
-           binomial != "Smutsia temminckii")
+specs_errors_ste <-
+  specs_errors %>%
+  filter(Extent_km < 1000) %>%
+  filter(binomial == "Smutsia temminckii")
+
+specs_errors_mcu <-
+  specs_errors %>%
+  filter(Extent_km < 1000) %>%
+  filter(binomial == "Manis culionensis")
+
+specs_errors_mcr <-
+  specs_errors %>%
+  filter(Extent_km < 1000) %>%
+  filter(binomial == "Manis crassicaudata")
+
+specs_errors_mja <-
+  specs_errors %>%
+  filter(Extent_km < 1000) %>%
+  filter(binomial == "Manis javanica")
+
+specs_errors_mpe <-
+  specs_errors %>%
+  filter(Extent_km < 1000) %>%
+  filter(binomial == "Manis pentadactyla")
 
 ##----------------------------------------------
 # Make a base map of the land
@@ -124,43 +207,175 @@ ylim_as <- c(asia_bbox[2], asia_bbox[4])
 # Make maps
 ##-------------------------------------------------
 # African species
-africa <-
+##-------------------------------------------------
+## Phataginus tetradactyla
+##-------------------------------------------------
+pte <-
   ggplot(baseMap) +
   geom_sf() +
   geom_sf(alpha = 0.5, fill = "#7fcdbb", colour = NA,
-          data = specs_errors_africa, show.legend = FALSE) +
+          data = specs_errors_pte, show.legend = FALSE) +
   geom_sf(alpha = 0.5, fill = "#2c7fb8", colour = NA,
-          data = iucn_africa, show.legend = FALSE) +
+          data = aoh_pte, show.legend = FALSE) +
   geom_sf(alpha = 1, fill = "black", size = 0.5,
-          data = specs_africa, show.legend = FALSE) +
+          data = specs_pte, show.legend = FALSE) +
   coord_sf(xlim = xlim_af, ylim = ylim_af, expand = TRUE) +
   theme_bw() +
   remove_x +
   remove_y +
-  facet_wrap(~binomial, ncol = 2) +
-  theme(strip.background = element_rect(fill = "white"),
-        strip.text.x = element_text(size = 10, face = "italic"))
-africa
+  labs(tag = "A") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
+        axis.title = element_text(size = 12))
+##-------------------------------------------------
+# Phataginus tricuspis
+##-------------------------------------------------
+ptr <-
+  ggplot(baseMap) +
+  geom_sf() +
+  geom_sf(alpha = 0.5, fill = "#7fcdbb", colour = NA,
+          data = specs_errors_ptr, show.legend = FALSE) +
+  geom_sf(alpha = 0.5, fill = "#2c7fb8", colour = NA,
+          data = aoh_ptr, show.legend = FALSE) +
+  geom_sf(alpha = 1, fill = "black", size = 0.5,
+          data = specs_ptr, show.legend = FALSE) +
+  coord_sf(xlim = xlim_af, ylim = ylim_af, expand = TRUE) +
+  theme_bw() +
+  remove_x +
+  remove_y +
+  labs(tag = "B") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
+        axis.title = element_text(size = 12))
+##-------------------------------------------------
+# Smutsia gigantea
+##-------------------------------------------------
+sgi <-
+  ggplot(baseMap) +
+  geom_sf() +
+  geom_sf(alpha = 0.5, fill = "#7fcdbb", colour = NA,
+          data = specs_errors_sgi, show.legend = FALSE) +
+  geom_sf(alpha = 0.5, fill = "#2c7fb8", colour = NA,
+          data = aoh_sgi, show.legend = FALSE) +
+  geom_sf(alpha = 1, fill = "black", size = 0.5,
+          data = specs_sgi, show.legend = FALSE) +
+  coord_sf(xlim = xlim_af, ylim = ylim_af, expand = TRUE) +
+  theme_bw() +
+  remove_x +
+  remove_y +
+  labs(tag = "C") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
+        axis.title = element_text(size = 12))
+##-------------------------------------------------
+# Smutsia temmincki
+##-------------------------------------------------
+ste <-
+  ggplot(baseMap) +
+  geom_sf() +
+  geom_sf(alpha = 0.5, fill = "#7fcdbb", colour = NA,
+          data = specs_errors_ste, show.legend = FALSE) +
+  geom_sf(alpha = 0.5, fill = "#2c7fb8", colour = NA,
+          data = aoh_ste, show.legend = FALSE) +
+  geom_sf(alpha = 1, fill = "black", size = 0.5,
+          data = specs_ste, show.legend = FALSE) +
+  coord_sf(xlim = xlim_af, ylim = ylim_af, expand = TRUE) +
+  theme_bw() +
+  remove_x +
+  remove_y +
+  labs(tag = "D") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
+        axis.title = element_text(size = 12))
+
+(pte + ptr)/(sgi + ste) 
   
+# Save plots  
+# ggsave(here("figures/african-maps_revision.png"))
+##-------------------------------------------------
 # Asian species  
-  asia <-
+##-------------------------------------------------
+# Manis crassicaudata
+##-------------------------------------------------
+mcr <-
     ggplot(baseMap) +
     geom_sf() +
     geom_sf(alpha = 0.5, fill = "#7fcdbb", colour = NA,
-            data = specs_errors_asia, show.legend = FALSE) +
+            data = specs_errors_mcr, show.legend = FALSE) +
     geom_sf(alpha = 0.5, fill = "#2c7fb8", colour = NA, 
-            data = iucn_asia, show.legend = FALSE) +
+            data = iucn_mcr, show.legend = FALSE) +
     geom_sf(alpha = 1, fill = "black", size = 0.5,
-            data = specs_asia, show.legend = FALSE) +
+            data = specs_mcr, show.legend = FALSE) +
     coord_sf(xlim = xlim_as, ylim = ylim_as, expand = TRUE) +
     theme_bw() +
     remove_x +
     remove_y +
-    facet_wrap(~binomial, ncol = 2) +
-    theme(strip.background = element_rect(fill = "white"),
-          strip.text.x = element_text(size = 10, face = "italic"))
-asia
+  labs(tag = "A") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
+        axis.title = element_text(size = 12))
+##-------------------------------------------------
+# Manis culionensis
+##-------------------------------------------------
+## Add different limits for the small range 
+mcu_bbox <- c(115, 5, 
+              125, 15)
+
+xlim_mcu <- c(mcu_bbox[1], mcu_bbox[3])
+ylim_mcu <- c(mcu_bbox[2], mcu_bbox[4])
+
+mcu <-
+    ggplot(baseMap) +
+    geom_sf() +
+    geom_sf(alpha = 0.5, fill = "#7fcdbb", colour = NA,
+            data = specs_errors_mcu, show.legend = FALSE) +
+    geom_sf(alpha = 0.5, fill = "#2c7fb8", colour = NA, 
+            data = aoh_mcu, show.legend = FALSE) +
+    geom_sf(alpha = 1, fill = "black", size = 0.5,
+            data = specs_mcu, show.legend = FALSE) +
+    coord_sf(xlim = xlim_mcu, ylim = ylim_mcu, expand = TRUE) +
+    theme_bw() +
+    remove_x +
+    remove_y +
+  labs(tag = "B") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
+        axis.title = element_text(size = 12))
+
+##-------------------------------------------------
+# Manis javanica
+##-------------------------------------------------  
+mja <-
+  ggplot(baseMap) +
+  geom_sf() +
+  geom_sf(alpha = 0.5, fill = "#7fcdbb", colour = NA,
+          data = specs_errors_mja, show.legend = FALSE) +
+  geom_sf(alpha = 0.5, fill = "#2c7fb8", colour = NA, 
+          data = aoh_mja, show.legend = FALSE) +
+  geom_sf(alpha = 1, fill = "black", size = 0.5,
+          data = specs_mja, show.legend = FALSE) +
+  coord_sf(xlim = xlim_as, ylim = ylim_as, expand = TRUE) +
+  theme_bw() +
+  remove_x +
+  remove_y +
+  labs(tag = "C") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
+        axis.title = element_text(size = 12))
+##-------------------------------------------------
+# Manis pentadactyla
+##------------------------------------------------- 
+mpe <-
+  ggplot(baseMap) +
+  geom_sf() +
+  geom_sf(alpha = 0.5, fill = "#7fcdbb", colour = NA,
+          data = specs_errors_mpe, show.legend = FALSE) +
+  geom_sf(alpha = 0.5, fill = "#2c7fb8", colour = NA, 
+          data = iucn_mpe, show.legend = FALSE) +
+  geom_sf(alpha = 1, fill = "black", size = 0.5,
+          data = specs_mpe, show.legend = FALSE) +
+  coord_sf(xlim = xlim_as, ylim = ylim_as, expand = TRUE) +
+  theme_bw() +
+  remove_x +
+  remove_y +
+  labs(tag = "D") +
+  theme(plot.tag = element_text(size = 12, face = "bold"),
+        axis.title = element_text(size = 12))
+  
+(mcr + mcu)/(mja + mpe) 
 
 # Save plots  
-#ggsave(here("figures/african-maps.png"), africa)
-#ggsave(here("figures/asian-maps.png"), asia)
+# ggsave(here("figures/asian-maps_revision.png"))
