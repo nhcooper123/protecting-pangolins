@@ -8,9 +8,9 @@ To cite the paper:
 > Emily Buckingham, Jake Curry, Charles Emogor, Louise Tomsett and Natalie Cooper. Using natural history collections to investigate changes in pangolin (Pholidota: Manidae) geographic ranges through time. PeerJ.
 
 To cite this repo: 
-> Natalie Cooper, Jake Curry and Emily Buckingham. 2020. GitHub: nhcooper123/protecting-pangolins: code for the paper v2. Zenodo. DOI: [add doi].
+> Natalie Cooper, Jake Curry and Emily Buckingham. 2020. GitHub: nhcooper123/protecting-pangolins: Code for the paper. Zenodo. DOI: 10.5281/zenodo.4266580.
 
-[![DOI](https://zenodo.org/badge/161480153.svg)](https://zenodo.org/badge/latestdoi/161480153) [add doi badge]
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4266580.svg)](https://doi.org/10.5281/zenodo.4266580)
 
 ## Data
 All cleaned data are available from the [NHM Data Portal](https://doi.org/10.5519/0065209).
