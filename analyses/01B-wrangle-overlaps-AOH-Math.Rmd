@@ -9,11 +9,14 @@ library(rgdal)
 library(sf)
 library(stars)
 library(sfe)
+library(stringr)
 ```
 
 Convert .tif files made using GIS software (ARC) into .shp files
 .tifs/.shp files are stored on the NHM data portal as they are too large to 
-practically upload and host on git.
+practically upload and host on git. If trying to replicate this analysis please
+download these data from the NHM data portal and add to the file structure under 
+data/aohRaw.
 
 ```{r}
 GeoTiffToPolygon <- function(directory) 
@@ -140,8 +143,16 @@ RunAOHAnalysis <- function(NHM_Pangolins, AOHDataDir, isIUCN = F)
 ```
 
 Run the .shp files through these new functions, with the output generated in the
-previous script (specs object)
+previous script (specs object). The specs object must be in the global environment
+for this to work.
 ```{r}
+  #Running in an Rmd document, this function doesnt seem to write out correctly.
+  #I suspect it struggles with the really large file sizes of the .shp files, 
+  # I think due to the way RStudio and Rmd allocate memory.
+  #If I hand it a smaller data set its fine. Equally if this function is run 
+  # outside of Rmd, i.e. in a script its fine. 
 RunAOHAnalysis(specs, "../data/shpFiles")
 ```
-Output stored in X???????
+Output stored in data folder, with species name as part of file title. Elongated
+if duplicated as this indicates this is an AOH made using just land use and not 
+elevation data.
