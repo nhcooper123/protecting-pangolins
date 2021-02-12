@@ -2,10 +2,10 @@
 
 Author(s): [Natalie Cooper](mailto:natalie.cooper.@nhm.ac.uk), Jake Curry and Emily Buckingham.
 
-This repository contains all the code and some data used in the [paper](add link later). 
+This repository contains all the code and some data used in the [paper](https://peerj.com/articles/10843/). 
 
 To cite the paper: 
-> Emily Buckingham, Jake Curry, Charles Emogor, Louise Tomsett and Natalie Cooper. Using natural history collections to investigate changes in pangolin (Pholidota: Manidae) geographic ranges through time. PeerJ.
+> Emily Buckingham, Jake Curry, Charles Emogor, Louise Tomsett and Natalie Cooper. Using natural history collections to investigate changes in pangolin (Pholidota: Manidae) geographic ranges through time. PeerJ. 9:e10843. https://doi.org/10.7717/peerj.10843
 
 To cite this repo: 
 > Natalie Cooper, Jake Curry and Emily Buckingham. 2020. GitHub: nhcooper123/protecting-pangolins: Code for the paper. Zenodo. DOI: 10.5281/zenodo.4266580.
@@ -17,7 +17,7 @@ All cleaned data are available from the [NHM Data Portal](https://doi.org/10.551
 We were unable to upload most of the raw data to GitHub because the files are too large; however this data is mostly freely available to download as shown below.
 
 If you use the cleaned data please cite as follows: 
-> Emily Buckingham, Jake Curry, Charles Emogor, Louise Tomsett and Natalie Cooper (2019). Dataset: Pangolin georeferencing. Natural History Museum Data Portal (data.nhm.ac.uk). [ https://doi.org/10.5519/0058821](https://doi.org/10.5519/0058821).
+> Emily Buckingham, Jake Curry, Charles Emogor, Louise Tomsett and Natalie Cooper (2019). Dataset: Pangolin georeferencing. Natural History Museum Data Portal (data.nhm.ac.uk). [https://doi.org/10.5519/0058821](https://doi.org/10.5519/0058821).
 
 Please also cite the original sources of the data as follows:
 
